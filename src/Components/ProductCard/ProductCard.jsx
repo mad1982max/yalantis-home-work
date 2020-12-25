@@ -1,4 +1,6 @@
 import "./productCard.css";
+const productImg = require("../../Shares/img/dummy.jpeg");
+console.log(productImg);
 
 const ProductCard = (props) => {
   const { name, price, origin } = props.product;
@@ -6,7 +8,7 @@ const ProductCard = (props) => {
     <div className="product-shadow-box">
       <div className="product-wrapper">
         <div className="product-img">
-          <img src="../../Shares/img/dummy.jpeg" alt="dummy img" />
+          <img src={productImg.default} alt="dummy img" />
         </div>
         <div className="product-name">{name}</div>
         <div className="product-origin">{origin}</div>
