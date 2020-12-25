@@ -4,7 +4,7 @@ import "./App.css";
 import Header from "./Components/Header/Header";
 
 const App = () => (
-  <div>
+  <div className="app">
     <Header />
     <Main />
   </div>
