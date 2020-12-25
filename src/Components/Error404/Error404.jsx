@@ -1,7 +1,9 @@
+import "./error404.css";
+
 const Error404 = () => {
   return (
     <>
-      <header className="error">Error</header>
+      <div className="error">Sorry, root doesn't exist</div>
     </>
   );
 };

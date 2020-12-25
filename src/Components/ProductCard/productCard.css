@@ -27,6 +27,11 @@ img {
   height: 210px;
 }
 
+.product-wrapper:hover {
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 5px 15px;
+  cursor: pointer;
+}
+
 .product-price::before {
   content: "$ ";
 }
