@@ -1,8 +1,13 @@
+import Main from "./Components/Main/Main";
 import "./App.css";
+
 import Header from "./Components/Header/Header";
 
-function App() {
-  return <Header />;
-}
+const App = () => (
+  <div>
+    <Header />
+    <Main />
+  </div>
+);
 
 export default App;
