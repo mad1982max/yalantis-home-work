@@ -5,12 +5,12 @@
   font-size: 26px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   background: linear-gradient(
     45deg,
-    rgb(26, 31, 61),
-    rgb(61, 82, 158),
-    rgb(26, 31, 61)
+    rgb(31, 31, 33),
+    rgb(112, 112, 119),
+    rgb(31, 31, 33)
   );
   position: fixed;
   width: 100%;
@@ -36,16 +36,37 @@ img {
   width: 100%;
 }
 
-.bascket-img {
+.bascket-wrapper {
   width: 40px;
   padding: 0 5px;
-  margin-right: 20px;
   display: inline-flex;
   align-items: center;
+  position: relative;
 }
 
 .bascket-img a,
 .header-logo a {
   display: inline-flex;
   align-items: center;
+}
+
+.basket-number {
+  position: absolute;
+  top: 0;
+  left: 45px;
+  font-size: 12px;
+  padding: 3px;
+  color: #ff3333;
+  border: 2px solid #ff3333;
+  border-radius: 50%;
+}
+
+.basket-value {
+  position: absolute;
+  font-size: 5px;
+  top: 25px;
+  left: 40px;
+  color: #66ff66;
+
+  font-size: 15px;
 }

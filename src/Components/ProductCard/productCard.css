@@ -30,9 +30,7 @@ a {
 }
 
 .product-shadow-box {
-  /* width: 300px; */
   width: 100%;
-  /* max-width: 300px; */
 }
 
 .product-wrapper:hover {

@@ -13,9 +13,11 @@ const Header = () => {
           </Link>
         </div>
         <div className="header-company-name">on-line shop</div>
-        <div className="bascket-img">
+        <div className="bascket-wrapper">
           <Link to={"/basket"}>
             <img src={basket.default} alt="basket" />
+            <div className="basket-number">25</div>
+            <div className="basket-value">1569$</div>
           </Link>
         </div>
       </header>
