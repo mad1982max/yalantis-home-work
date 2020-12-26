@@ -16,7 +16,6 @@ const Header = () => {
         <Link to={"/basket"}>
           <div className="basket-wrapper">
             <div className="basket-number">5</div>
-
             {/* <div className="basket-value">1569$</div> */}
           </div>
         </Link>

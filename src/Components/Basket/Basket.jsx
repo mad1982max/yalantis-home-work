@@ -1,7 +1,7 @@
 import "./basket.css";
 
 const Basket = () => {
-  return <div className="basket-wrapper">BASKET</div>;
+  return <div className="basket-page-wrapper">BASKET</div>;
 };
 
 export default Basket;
