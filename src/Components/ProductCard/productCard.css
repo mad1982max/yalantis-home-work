@@ -54,6 +54,27 @@ a {
   font-weight: bold;
 }
 
+.basket-wrapper-card {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.add-to-cart_wrapper {
+  border-radius: 10px;
+  border: none;
+  padding: 6px;
+  background: rgb(17, 129, 173);
+  color: aliceblue;
+}
+
+.add-to-cart_wrapper:hover {
+  background: rgb(228, 68, 28);
+  color: raliceblue;
+  cursor: pointer;
+}
+
 @media (min-width: 560px) {
   .product-shadow-box {
     width: 50%;
@@ -66,8 +87,8 @@ a {
   }
 }
 
-@media (min-width: 751px) and (min-width: 1200px) {
+/* @media (min-width: 751px) and (min-width: 1200px) {
   .product-shadow-box {
     width: 25%;
   }
-}
+} */

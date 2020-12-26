@@ -17,7 +17,10 @@ const ProductCard = (props) => {
           </div>
           <div className="product-name">{name}</div>
           <div className="product-origin">{origin.toUpperCase()}</div>
-          <div className="product-price">{price}</div>
+          <div className="basket-wrapper-card">
+            <div className="product-price">{price}</div>
+            <button className="add-to-cart_wrapper">ADD TO CART</button>
+          </div>
         </div>
       </Link>
     </div>
