@@ -6,13 +6,12 @@ import Loader from "../Loader/Loader";
 
 const ListOgGoods = () => {
   const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     let timer;
     const getAllGoods = async () => {
       try {
-        setIsLoading(true);
         const goods = await api.getAll();
         console.log("goods", goods.data.items);
         setProducts(goods.data.items);
@@ -20,7 +19,6 @@ const ListOgGoods = () => {
       } catch (error) {
         console.log("--error--", error);
       }
-
       return () => clearTimeout(timer);
     };
     getAllGoods();
@@ -32,7 +30,7 @@ const ListOgGoods = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="list-of-goods">
+        <div style={{ opacity: 1 }} className="list-of-goods">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

@@ -8,3 +8,16 @@
   align-items: center;
   justify-content: center;
 }
+
+.header-logo {
+  width: 130px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 5px;
+}
+
+.header-company-name {
+  line-height: 50px;
+  padding-left: 5px;
+}

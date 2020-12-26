@@ -7,7 +7,7 @@ const Main = () => (
   <main>
     <Switch>
       <Route exact path="/" component={ListOgGoods} />
-      <Route path="/product" component={Product} />
+      <Route path="/product/:id" component={Product} />
       <Route path="*" component={Error404} />
     </Switch>
   </main>
