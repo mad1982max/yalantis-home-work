@@ -6,12 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: linear-gradient(
-    45deg,
-    rgb(31, 31, 33),
-    rgb(112, 112, 119),
-    rgb(31, 31, 33)
-  );
+  background: #131921;
   position: fixed;
   width: 100%;
   top: 0;
@@ -24,7 +19,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: 20px;
 }
 
 .header-company-name {
@@ -32,41 +26,36 @@
   font-size: 30px;
 }
 
-img {
-  width: 100%;
-}
-
-.bascket-wrapper {
-  width: 40px;
-  padding: 0 5px;
-  display: inline-flex;
-  align-items: center;
+.basket-wrapper {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
   position: relative;
-}
-
-.bascket-img a,
-.header-logo a {
-  display: inline-flex;
-  align-items: center;
+  background: url("../../Shares/img/basket.svg");
 }
 
 .basket-number {
-  position: absolute;
-  top: 0;
-  left: 45px;
-  font-size: 12px;
-  padding: 3px;
-  color: #ff3333;
-  border: 2px solid #ff3333;
-  border-radius: 50%;
+  text-align: center;
+  font-size: 14px;
+  font-size: bold;
+  color: #eee677;
+  margin-top: 5px;
+  margin-left: 2px;
+}
+
+.header-logo a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .basket-value {
   position: absolute;
   font-size: 5px;
-  top: 25px;
+  font-size: bold;
+  top: 0px;
   left: 40px;
-  color: #66ff66;
-
-  font-size: 15px;
+  color: #eeacac;
+  font-size: 11px;
 }
