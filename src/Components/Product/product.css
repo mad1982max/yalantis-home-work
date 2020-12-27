@@ -2,5 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 65px;
+  margin-top: 10px;
+}
+
+.product-header {
+  font-size: 24px;
+}
+
+.basket-btn-group button:hover {
+  background: rgb(236, 172, 34);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: #1a1919;
 }

@@ -26,7 +26,7 @@ const ListOfGoods = () => {
 
   return (
     <>
-      <div className="main">List of goods:</div>
+      <div className="main-header-inList">List of goods:</div>
       {isLoading ? (
         <Loader />
       ) : (

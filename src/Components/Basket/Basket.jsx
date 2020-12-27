@@ -1,11 +1,18 @@
 import "./basket.css";
 import { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import CTX from "../../Context/localContext";
 import basketCountingRepFn from "../../Services/groupedByCount";
 
 const Basket = () => {
   const { basket } = useContext(CTX);
   const basketCountingRep = basketCountingRepFn(basket, "id");
+
+  const history = useHistory();
+
+  const returnToMainPage = () => {
+    history.push("/");
+  };
 
   return (
     <div className="basket-page-wrapper">
@@ -52,8 +59,13 @@ const Basket = () => {
           <span>EMPTY</span>
         </div>
       )}
-      <div className="return-btn">
-        <button>Return to main page</button>
+      <div className="basket-btn-group">
+        <button onClick={returnToMainPage} type="button" id="return">
+          TO GOODS
+        </button>
+        <button type="button" disabled id="buy-basket">
+          PURCHASE
+        </button>
       </div>
     </div>
   );

@@ -6,7 +6,8 @@
 .basket-table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 80%;
+  margin: auto;
 }
 
 .basket-table td,
@@ -31,7 +32,7 @@ tbody td {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: #4caf50;
+  background: rgb(17, 129, 173);
   color: white;
 }
 
@@ -40,34 +41,42 @@ tbody td {
 }
 
 .sum {
-  background: #af4c4c;
+  background: rgb(228, 68, 28);
   color: white;
 }
 
 .msg span {
   font-size: 26px;
   color: #f1eded;
-  background: #af4c4c;
+  background: rgb(228, 68, 28);
   border-radius: 6px;
   padding: 10px;
 }
 
-.return-btn {
-  text-align: left;
+.basket-btn-group {
   margin-top: 20px;
-  margin-left: 20px;
+  display: flex;
+  justify-content: center;
 }
 
-.return-btn button {
+.basket-btn-group button {
   border: none;
+  margin: 0 10px;
   border-radius: 4px;
-  background: rgb(235, 164, 10);
-  color: rgb(245, 243, 243);
+  background: rgb(78, 78, 78);
+  color: rgb(32, 32, 32);
   font-size: 20px;
   padding: 10px;
   cursor: pointer;
+  color: #fdfdfd;
 }
 
-.return-btn button:hover {
+#return:hover {
+  background: rgb(236, 172, 34);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: #1a1919;
+}
+
+#buy-basket {
+  cursor: not-allowed;
 }
