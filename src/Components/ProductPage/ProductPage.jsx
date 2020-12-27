@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import api from "../../Services/api";
 import Loader from "../Loader/Loader";
-import "./product.css";
+import "./productPage.css";
 import ProductCard from "../ProductCard/ProductCard";
 
-const Product = (props) => {
+const ProductPage = (props) => {
   const id = props.match.params.id;
 
   const [product, setProduct] = useState([]);
@@ -52,4 +52,4 @@ const Product = (props) => {
   );
 };
 
-export default Product;
+export default ProductPage;
