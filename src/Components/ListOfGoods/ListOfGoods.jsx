@@ -4,7 +4,7 @@ import "./listOfGoods.css";
 import ProductCard from "../ProductCard/ProductCard";
 import Loader from "../Loader/Loader";
 
-const ListOgGoods = () => {
+const ListOfGoods = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -40,4 +40,4 @@ const ListOgGoods = () => {
   );
 };
 
-export default ListOgGoods;
+export default ListOfGoods;

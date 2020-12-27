@@ -6,7 +6,7 @@ import ProductCard from "../ProductCard/ProductCard";
 
 const Product = (props) => {
   const id = props.match.params.id;
-  console.log("id", id);
+  // console.log("id", id);
 
   const [product, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

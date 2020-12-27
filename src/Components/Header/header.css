@@ -19,24 +19,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-.basket-wrapper {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  background: url("../../Shares/img/basket.svg");
-}
-
-.basket-number {
-  text-align: center;
-  font-size: 14px;
-  font-size: bold;
-  color: #eee677;
-  margin-top: 5px;
-  margin-left: 2px;
+  margin-left: 55px;
 }
 
 .header-logo a {
@@ -45,12 +28,29 @@
   justify-content: center;
 }
 
+.basket-wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.basket-number {
+  width: 50px;
+  height: 50px;
+  background: url("../../Shares/img/basket.svg");
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: #eee677;
+  line-height: 40px;
+  padding-left: 2px;
+}
+
 .basket-value {
-  position: absolute;
-  font-size: 5px;
-  font-size: bold;
-  top: 0px;
-  left: 40px;
-  color: #eeacac;
-  font-size: 11px;
+  width: 55px;
+  padding: 0 5px;
+  font-weight: 400;
+  color: #32f895;
+  font-size: 14px;
+  line-height: 50px;
 }

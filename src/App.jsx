@@ -1,13 +1,20 @@
+import { useState } from "react";
 import Main from "./Components/Main/Main";
+import Header from "./Components/Header/Header";
+import CTX from "./Context/localContext.jsx";
 import "./App.css";
 
-import Header from "./Components/Header/Header";
+const App = () => {
+  const [basket, setBasket] = useState([]);
 
-const App = () => (
-  <div className="app">
-    <Header />
-    <Main />
-  </div>
-);
+  return (
+    <CTX.Provider value={{ basket, setBasket }}>
+      <div className="app">
+        <Header />
+        <Main />
+      </div>
+    </CTX.Provider>
+  );
+};
 
 export default App;

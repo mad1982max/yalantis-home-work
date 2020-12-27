@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import CTX from "../../Context/localContext";
 import "./header.css";
 const logo = require("../../Shares/img/logo_.png");
 
 const Header = () => {
+  const { basket } = useContext(CTX);
   return (
     <>
       <header className="header">
@@ -13,8 +16,13 @@ const Header = () => {
         </div>
         <Link to={"/basket"}>
           <div className="basket-wrapper">
-            <div className="basket-number">5</div>
-            {/* <div className="basket-value">1569$</div> */}
+            <div className="basket-number">{basket.length}</div>
+
+            <div className="basket-value">
+              {basket.length > 0
+                ? basket.reduce((sum, product) => sum + product.price, 0) + " $"
+                : ""}
+            </div>
           </div>
         </Link>
       </header>
