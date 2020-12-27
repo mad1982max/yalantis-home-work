@@ -51,3 +51,23 @@ tbody td {
   border-radius: 6px;
   padding: 10px;
 }
+
+.return-btn {
+  text-align: left;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.return-btn button {
+  border: none;
+  border-radius: 4px;
+  background: rgb(235, 164, 10);
+  color: rgb(245, 243, 243);
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.return-btn button:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
