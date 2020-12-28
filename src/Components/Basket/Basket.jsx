@@ -32,6 +32,11 @@ const Basket = () => {
   const dellProduct = (id) =>
     setBasket((prev) => prev.filter((product) => product.id !== id));
 
+  const deletebasket = () => {
+    let isConfirmed = window.confirm("Are you shure?");
+    if (isConfirmed) setBasket([]);
+  };
+
   return (
     <div className="basket-page-wrapper">
       <div className="basket-name">Your Basket:</div>
@@ -109,10 +114,13 @@ const Basket = () => {
       )}
       <div className="basket-btn-group">
         <button onClick={returnToMainPage} type="button" id="return">
-          TO GOODS
+          TO NAIN
+        </button>
+        <button onClick={deletebasket} type="button" id="delbasket">
+          DELETE ALL
         </button>
         <button type="button" disabled id="buy-basket">
-          PURCHASE
+          BUY ALL
         </button>
       </div>
     </div>
