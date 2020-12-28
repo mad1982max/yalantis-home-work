@@ -56,6 +56,7 @@ tbody td {
   margin-top: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .basket-btn-group button {
@@ -83,14 +84,14 @@ tbody td {
 .quantity-changer {
   display: flex;
   justify-content: space-between;
-  align-content: flex-end;
+  align-items: center;
 }
 
 .quantity {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   width: 30px;
   height: 30px;
   background: rgb(236, 172, 34);

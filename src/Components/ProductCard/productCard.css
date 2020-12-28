@@ -54,7 +54,7 @@ a {
   margin-top: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 10px;
   background: rgba(13, 14, 14, 0.1);
   border-bottom-left-radius: 4px;
@@ -94,4 +94,20 @@ button:focus {
 
 button:active {
   transform: translateY(2px);
+}
+
+.badge {
+  background: rgb(236, 172, 34);
+  color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 10px;
+}
+
+.basket-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

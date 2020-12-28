@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useCallback } from "react";
 import basketCTX from "../../Context/localContext";
 import { Link } from "react-router-dom";
 import "./productCard.css";
@@ -6,7 +6,7 @@ import getImageByName from "../../Services/getImage";
 
 const ProductCard = (props) => {
   const { name, price, origin, id } = props.product;
-  const { setBasket } = useContext(basketCTX);
+  const { basket, setBasket } = useContext(basketCTX);
 
   const clearNameOfProduct = name.split(" ")[2].toLowerCase();
   let currentImage = getImageByName(clearNameOfProduct);
@@ -30,6 +30,12 @@ const ProductCard = (props) => {
     });
   };
 
+  const countQuantity = (id) => {
+    let productInBasket = basket.find((item) => item.id === id);
+    if (productInBasket) return productInBasket.quantity;
+    return 0;
+  };
+
   return (
     <div className="product-shadow-box">
       <Link to={`/product/${id}`}>
@@ -41,9 +47,16 @@ const ProductCard = (props) => {
           <div className="product-origin">{origin.toUpperCase()}</div>
           <div className="basket-wrapper-card">
             <div className="product-price">$ {price}</div>
-            <button className="add-to-cart_button" onClick={addToCart}>
-              ADD TO CART
-            </button>
+            <div className="basket-group">
+              {countQuantity(id) !== 0 ? (
+                <div className="badge">{countQuantity(id)}</div>
+              ) : (
+                ""
+              )}
+              <button className="add-to-cart_button" onClick={addToCart}>
+                ADD TO CART
+              </button>
+            </div>
           </div>
         </div>
       </Link>
