@@ -63,7 +63,6 @@ tbody td {
   margin: 0 10px;
   border-radius: 4px;
   background: rgb(78, 78, 78);
-  color: rgb(32, 32, 32);
   font-size: 20px;
   padding: 10px;
   cursor: pointer;
@@ -74,8 +73,11 @@ tbody td {
   background: rgb(236, 172, 34);
 }
 
-#buy-basket {
+.basket-btn-group button:disabled {
   cursor: not-allowed;
+  background: rgb(197, 196, 196);
+  box-shadow: none;
+  color: rgb(34, 33, 33);
 }
 
 .quantity-changer {

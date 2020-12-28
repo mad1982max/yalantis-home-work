@@ -114,9 +114,13 @@ const Basket = () => {
       )}
       <div className="basket-btn-group">
         <button onClick={returnToMainPage} type="button" id="return">
-          TO NAIN
+          TO MAIN
         </button>
-        <button onClick={deletebasket} type="button" id="delbasket">
+        <button
+          onClick={deletebasket}
+          disabled={basket.length === 0}
+          type="button"
+          id="delbasket">
           DELETE ALL
         </button>
         <button type="button" disabled id="buy-basket">
