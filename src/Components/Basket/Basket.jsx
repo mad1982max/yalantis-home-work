@@ -2,13 +2,12 @@ import "./basket.css";
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import CTX from "../../Context/localContext";
-import basketCountingRepFn from "../../Services/groupedByCount";
+const resycleBinIco = require("../../Shares/img/recycle-bin.svg");
+const minus = require("../../Shares/img/minus.svg");
+const plus = require("../../Shares/img/plus.svg");
 
 const Basket = () => {
   const { basket, setBasket } = useContext(CTX);
-  console.log("basket", basket);
-  // const basketCountingRep = basketCountingRepFn(basket, "id");
-  const basketCountingRep = basket;
 
   const history = useHistory();
   const returnToMainPage = () => {
@@ -16,14 +15,22 @@ const Basket = () => {
   };
 
   const adderFn = (adder, id) => {
-    console.log(adder, id);
-    let product = basketCountingRep.find((product) => product.id === id);
-    if (product.q + adder < 1) {
+    let productInBasket = basket.find((product) => product.id === id);
+    if (productInBasket.q + adder < 1) {
     } else {
-      product.q += adder;
+      setBasket((prev) => {
+        let q = productInBasket.q + adder;
+        return [
+          ...prev.map((product) =>
+            product.id === id ? { ...product, q } : product
+          ),
+        ];
+      });
     }
-    console.log(product);
   };
+
+  const dellProduct = (id) =>
+    setBasket((prev) => prev.filter((product) => product.id !== id));
 
   return (
     <div className="basket-page-wrapper">
@@ -43,7 +50,7 @@ const Basket = () => {
             </tr>
           </thead>
           <tbody>
-            {basketCountingRep.map((product, i) => {
+            {basket.map((product, i) => {
               const [, material, type] = product.name.split(" ");
 
               return (
@@ -54,20 +61,25 @@ const Basket = () => {
                   <td>{product.origin}</td>
                   <td>{material}</td>
                   <td>
-                    <div className="quantityChanger">
+                    <div className="quantity-changer">
                       <div className="adder-button-group">
                         <button
                           onClick={() => adderFn(-1, product.id)}
-                          className="adder minus-one">
-                          -
+                          className="basket-btn-action minus-one">
+                          <img src={minus.default} alt="minus" />
                         </button>
                         <button
                           onClick={() => adderFn(+1, product.id)}
-                          className="adder plus-one">
-                          +
+                          className="basket-btn-action plus-one">
+                          <img src={plus.default} alt="plus" />
+                        </button>
+                        <button
+                          onClick={() => dellProduct(product.id)}
+                          className="basket-btn-action del-all">
+                          <img src={resycleBinIco.default} alt="bin" />
                         </button>
                       </div>
-                      <span className="q">{product.q}</span>
+                      <div className="q">{product.q}</div>
                     </div>
                   </td>
                   <td>{product.price}</td>
@@ -82,7 +94,10 @@ const Basket = () => {
                 TOTAL
               </td>
               <td className="bold sum">
-                {basket.reduce((sum, product) => sum + product.price, 0)}
+                {basket.reduce(
+                  (sum, product) => sum + product.price * product.q,
+                  0
+                )}
               </td>
             </tr>
           </tfoot>

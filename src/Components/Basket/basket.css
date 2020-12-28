@@ -31,7 +31,6 @@ tbody td {
 .basket-table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: center;
   background: rgb(17, 129, 173);
   color: white;
 }
@@ -71,36 +70,54 @@ tbody td {
   color: #fdfdfd;
 }
 
-#return:hover {
+.basket-btn-group button:hover {
   background: rgb(236, 172, 34);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  color: #1a1919;
 }
 
 #buy-basket {
   cursor: not-allowed;
 }
 
-.quantityChanger {
+.quantity-changer {
   display: flex;
   justify-content: space-between;
+  align-content: flex-end;
+}
+
+.adder-button-group {
+  display: flex;
+  justify-content: center;
   align-content: center;
 }
 
-.adder {
+.q {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 30px;
+  height: 30px;
+  background: rgba(228, 176, 33, 0.5);
+  border-radius: 4px;
+}
+
+.basket-btn-action {
   margin: 0 2px;
-  width: 20px;
+  width: 30px;
+  height: 30px;
   text-align: center;
   border: none;
-
-  color: #fff;
   border-radius: 4px;
 }
 
 .plus-one {
-  background: rgb(78, 202, 99);
+  background: rgba(78, 202, 99, 0.5);
 }
 
 .minus-one {
-  background: rgb(228, 68, 28);
+  background: rgba(125, 224, 241, 0.5);
+}
+
+.del-all {
+  background: rgba(228, 68, 28, 0.5);
 }

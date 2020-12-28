@@ -3,7 +3,6 @@ import CTX from "../../Context/localContext";
 import { Link } from "react-router-dom";
 import "./productCard.css";
 import getImageByName from "../../Services/getImage";
-import basketCountingRepFn from "../../Services/groupedByCount";
 
 const ProductCard = (props) => {
   const { name, price, origin, id } = props.product;
