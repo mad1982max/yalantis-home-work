@@ -1,31 +1,31 @@
 import { useContext } from "react";
-import CTX from "../../Context/localContext";
+import basketCTX from "../../Context/localContext";
 import { Link } from "react-router-dom";
 import "./productCard.css";
 import getImageByName from "../../Services/getImage";
 
 const ProductCard = (props) => {
   const { name, price, origin, id } = props.product;
-  const { setBasket } = useContext(CTX);
+  const { setBasket } = useContext(basketCTX);
 
   const clearNameOfProduct = name.split(" ")[2].toLowerCase();
   let currentImage = getImageByName(clearNameOfProduct);
 
   const addToCart = (e) => {
     e.preventDefault();
-    setBasket((prev) => {
+    setBasket((prevBasket) => {
       let id = props.product.id;
-      let productInBasket = prev.find((item) => item.id === id);
+      let productInBasket = prevBasket.find((item) => item.id === id);
       if (productInBasket) {
-        let q = productInBasket.q + 1;
+        let quantity = productInBasket.quantity + 1;
         return [
-          ...prev.map((product) =>
-            product.id === id ? { ...product, q } : product
+          ...prevBasket.map((product) =>
+            product.id === id ? { ...product, quantity } : product
           ),
         ];
       } else {
-        props.product.q = 1;
-        return [...prev, props.product];
+        props.product.quantity = 1;
+        return [...prevBasket, props.product];
       }
     });
   };

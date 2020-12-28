@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import CTX from "../../Context/localContext";
+import basketCTX from "../../Context/localContext";
 import "./header.css";
 const logo = require("../../Shares/img/logo.png");
 
 const Header = () => {
-  const { basket } = useContext(CTX);
+  const { basket } = useContext(basketCTX);
 
   return (
     <>
@@ -19,14 +19,14 @@ const Header = () => {
           <div className="basket-wrapper">
             <div className="basket-number">
               {basket.length > 0
-                ? basket.reduce((accum, item) => accum + item.q, 0)
+                ? basket.reduce((accum, item) => accum + item.quantity, 0)
                 : 0}
             </div>
 
             <div className="basket-value">
               {basket.length > 0
                 ? basket.reduce(
-                    (sum, product) => sum + product.price * product.q,
+                    (sum, product) => sum + product.price * product.quantity,
                     0
                   ) + " $"
                 : ""}

@@ -1,41 +1,20 @@
 import "./basket.css";
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import CTX from "../../Context/localContext";
-const resycleBinIco = require("../../Shares/img/recycle-bin.svg");
-const minus = require("../../Shares/img/minus.svg");
-const plus = require("../../Shares/img/plus.svg");
+import BasketBtnActionForAll from "../BasketBtnActionForAll/BasketBtnActionForAll";
+import ChangeQuantityBtnGroup from "../ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
+import basketCTX from "../../Context/localContext";
 
 const Basket = () => {
-  const { basket, setBasket } = useContext(CTX);
+  const { basket } = useContext(basketCTX);
 
   const history = useHistory();
   const returnToMainPage = () => {
     history.push("/");
   };
 
-  const adderFn = (adder, id) => {
-    let productInBasket = basket.find((product) => product.id === id);
-    if (productInBasket.q + adder < 1) {
-    } else {
-      setBasket((prev) => {
-        let q = productInBasket.q + adder;
-        return [
-          ...prev.map((product) =>
-            product.id === id ? { ...product, q } : product
-          ),
-        ];
-      });
-    }
-  };
-
-  const dellProduct = (id) =>
-    setBasket((prev) => prev.filter((product) => product.id !== id));
-
-  const deletebasket = () => {
-    let isConfirmed = window.confirm("Are you shure?");
-    if (isConfirmed) setBasket([]);
-  };
+  const sum = () =>
+    basket.reduce((sum, product) => sum + product.price * product.quantity, 0);
 
   return (
     <div className="basket-page-wrapper">
@@ -67,28 +46,12 @@ const Basket = () => {
                   <td>{material}</td>
                   <td>
                     <div className="quantity-changer">
-                      <div className="adder-button-group">
-                        <button
-                          onClick={() => adderFn(-1, product.id)}
-                          className="basket-btn-action minus-one">
-                          <img src={minus.default} alt="minus" />
-                        </button>
-                        <button
-                          onClick={() => adderFn(+1, product.id)}
-                          className="basket-btn-action plus-one">
-                          <img src={plus.default} alt="plus" />
-                        </button>
-                        <button
-                          onClick={() => dellProduct(product.id)}
-                          className="basket-btn-action del-all">
-                          <img src={resycleBinIco.default} alt="bin" />
-                        </button>
-                      </div>
-                      <div className="q">{product.q}</div>
+                      <ChangeQuantityBtnGroup product={product} />
+                      <div className="quantity">{product.quantity}</div>
                     </div>
                   </td>
                   <td>{product.price}</td>
-                  <td>{product.q * product.price}</td>
+                  <td>{product.quantity * product.price}</td>
                 </tr>
               );
             })}
@@ -98,12 +61,7 @@ const Basket = () => {
               <td className="bold" colSpan="7">
                 TOTAL
               </td>
-              <td className="bold sum">
-                {basket.reduce(
-                  (sum, product) => sum + product.price * product.q,
-                  0
-                )}
-              </td>
+              <td className="bold sum">{sum()}</td>
             </tr>
           </tfoot>
         </table>
@@ -112,20 +70,12 @@ const Basket = () => {
           <span>EMPTY</span>
         </div>
       )}
+
       <div className="basket-btn-group">
         <button onClick={returnToMainPage} type="button" id="return">
           TO MAIN
         </button>
-        <button
-          onClick={deletebasket}
-          disabled={basket.length === 0}
-          type="button"
-          id="delbasket">
-          DELETE ALL
-        </button>
-        <button type="button" disabled id="buy-basket">
-          BUY ALL
-        </button>
+        <BasketBtnActionForAll />
       </div>
     </div>
   );

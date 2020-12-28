@@ -1,0 +1,26 @@
+.adder-button-group {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.basket-btn-action {
+  margin: 0 2px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+}
+
+.plus-one {
+  background: rgba(138, 143, 139, 0.3);
+}
+
+.minus-one {
+  background: rgba(138, 143, 139, 0.3);
+}
+
+.del-all {
+  background: rgba(228, 68, 28, 0.3);
+}
