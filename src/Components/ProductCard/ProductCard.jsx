@@ -3,6 +3,7 @@ import CTX from "../../Context/localContext";
 import { Link } from "react-router-dom";
 import "./productCard.css";
 import getImageByName from "../../Services/getImage";
+import basketCountingRepFn from "../../Services/groupedByCount";
 
 const ProductCard = (props) => {
   const { name, price, origin, id } = props.product;
@@ -13,7 +14,21 @@ const ProductCard = (props) => {
 
   const addToCart = (e) => {
     e.preventDefault();
-    setBasket((prev) => [...prev, props.product]);
+    setBasket((prev) => {
+      let id = props.product.id;
+      let productInBasket = prev.find((item) => item.id === id);
+      if (productInBasket) {
+        let q = productInBasket.q + 1;
+        return [
+          ...prev.map((product) =>
+            product.id === id ? { ...product, q } : product
+          ),
+        ];
+      } else {
+        props.product.q = 1;
+        return [...prev, props.product];
+      }
+    });
   };
 
   return (

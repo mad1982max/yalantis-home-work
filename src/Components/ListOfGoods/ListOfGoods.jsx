@@ -15,7 +15,7 @@ const ListOfGoods = () => {
         const goods = await api.getAll();
         console.log("goods", goods.data.items);
         setProducts(goods.data.items);
-        timer = setTimeout(() => setIsLoading(false), 1000);
+        timer = setTimeout(() => setIsLoading(false), 500);
       } catch (error) {
         console.log("--error--", error);
       }

@@ -24,7 +24,7 @@ const ProductPage = (props) => {
         const product = await api.getProductById(id);
         console.log("--product--", product.data);
         setProduct(product.data);
-        timer = setTimeout(() => setIsLoading(false), 1000);
+        timer = setTimeout(() => setIsLoading(false), 500);
       } catch (error) {
         console.log("--error--", error);
       }
