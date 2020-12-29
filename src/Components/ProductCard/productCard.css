@@ -8,6 +8,7 @@
 img {
   width: 100%;
   transition: transform 200ms;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
 }
 
 .product-wrapper img {
@@ -67,6 +68,7 @@ a {
   padding: 10px;
   background: rgb(17, 129, 173);
   color: aliceblue;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
 }
 
 .add-to-cart_button:hover {
@@ -104,6 +106,7 @@ button:active {
   height: 30px;
   line-height: 30px;
   margin-right: 10px;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
 }
 
 .basket-group {

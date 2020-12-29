@@ -16,18 +16,8 @@
   border-radius: 4px;
 }
 
-.plus-one {
-  background: rgba(138, 143, 139, 0.3);
-}
-
-.minus-one {
-  background: rgba(138, 143, 139, 0.3);
-}
-
-.del-all {
-  background: rgba(228, 68, 28, 0.3);
-}
-
 .adder-button-group button {
   cursor: pointer;
+  background: rgba(193, 196, 193, 0.4);
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }

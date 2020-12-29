@@ -9,6 +9,9 @@ const BasketTable = () => {
   const sum = () =>
     basket.reduce((sum, product) => sum + product.price * product.quantity, 0);
 
+  const amount = () =>
+    basket.reduce((sum, product) => sum + product.quantity, 0);
+
   return (
     <>
       {basket.length > 0 ? (
@@ -21,8 +24,8 @@ const BasketTable = () => {
               <th>Origin</th>
               <th>Material</th>
               <th>Quantity</th>
-              <th>Price</th>
-              <th>TOTAL</th>
+              <th>Price, $</th>
+              <th>TOTAL, $</th>
             </tr>
           </thead>
           <tbody>
@@ -50,9 +53,13 @@ const BasketTable = () => {
           </tbody>
           <tfoot>
             <tr>
-              <td className="bold" colSpan="7">
+              <td className="bold" colSpan="5">
                 TOTAL
               </td>
+              <td className="bold total">
+                <div className="quantity">{amount()}</div>
+              </td>
+              <td className="bold empty"></td>
               <td className="bold sum">{sum()}</td>
             </tr>
           </tfoot>
