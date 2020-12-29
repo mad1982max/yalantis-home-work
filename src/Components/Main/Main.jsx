@@ -5,8 +5,6 @@ import ProductPage from "../ProductPage/ProductPage";
 import "./main.css";
 import BasketPage from "../BasketPage/BasketPage";
 
-console.log(process.env.PUBLIC_URL);
-
 const Main = () => (
   <main>
     <Switch>
