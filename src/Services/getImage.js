@@ -1,11 +1,13 @@
+import { dummyImgName, defaultImgExt } from "../Shares/config";
+
 const images = require.context("../Shares/img", true);
 
 const getImageByName = (name) => {
   let currentImage;
   try {
-    currentImage = images(`./${name}.png`);
+    currentImage = images(`./${name}.${defaultImgExt}`);
   } catch (e) {
-    currentImage = images(`./dummy.png`);
+    currentImage = images(`./${dummyImgName}.${defaultImgExt}`);
   }
   return currentImage.default;
 };

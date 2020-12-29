@@ -6,7 +6,7 @@ const BasketBtnActionForAll = () => {
   const { basket, setBasket } = useContext(basketCTX);
 
   const deletebasket = () => {
-    let isConfirmed = window.confirm("Are you shure?");
+    let isConfirmed = window.confirm("Are you sure?");
     if (isConfirmed) setBasket([]);
   };
 

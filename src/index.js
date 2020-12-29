@@ -7,7 +7,7 @@ import App from "./App.jsx";
 
 ReactDOM.render(
   <StrictMode>
-    <HashRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter basename="/">
       <App />
     </HashRouter>
   </StrictMode>,
