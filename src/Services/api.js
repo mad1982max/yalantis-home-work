@@ -1,10 +1,8 @@
 import axios from "axios";
-import { url } from "../Shares/config";
-
-const totalProducts = 20;
+import { url, productsPerPage } from "../Shares/config";
 
 const api = {
-  getAll: () => axios.get(`${url}?perPage=${totalProducts}`),
+  getAll: () => axios.get(`${url}?perPage=${productsPerPage}`),
   getProductById: (id) => axios.get(`${url}/${id}`),
 };
 
