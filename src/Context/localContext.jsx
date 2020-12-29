@@ -1,4 +1,5 @@
 import { createContext } from "react";
 
 const basketCTX = createContext();
-export default basketCTX;
+const fetchedDataCTX = createContext();
+export { basketCTX, fetchedDataCTX };

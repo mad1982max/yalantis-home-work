@@ -1,6 +1,6 @@
 import "./headerBasketWidget.css";
 import { useContext } from "react";
-import basketCTX from "../../Context/localContext";
+import { basketCTX } from "../../Context/localContext";
 
 const HeaderBasketWidget = () => {
   const { basket } = useContext(basketCTX);

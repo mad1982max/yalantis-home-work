@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import basketCTX from "../../Context/localContext";
+import { basketCTX } from "../../Context/localContext";
 import { Link } from "react-router-dom";
 import "./productCard.css";
 import getImageByName from "../../Services/getImage";

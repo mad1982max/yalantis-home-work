@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import "./basketTable.css";
 import ChangeQuantityBtnGroup from "../ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
-import basketCTX from "../../Context/localContext";
+import { basketCTX } from "../../Context/localContext";
 
 const BasketTable = () => {
   const { basket } = useContext(basketCTX);
 
   const sum = () =>
     basket.reduce((sum, product) => sum + product.price * product.quantity, 0);
+
   return (
     <>
       {basket.length > 0 ? (

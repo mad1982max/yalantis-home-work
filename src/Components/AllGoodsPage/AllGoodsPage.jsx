@@ -1,28 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import api from "../../Services/api";
 import "./allGoodsPage.css";
+import { fetchedDataCTX } from "../../Context/localContext";
 import ProductCard from "../ProductCard/ProductCard";
 import Loader from "../Loader/Loader";
 
 const AllGoodsPage = () => {
-  const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { allGoods, setAllGoods } = useContext(fetchedDataCTX);
 
   useEffect(() => {
     let timer;
     const getAllGoods = async () => {
-      try {
-        const goods = await api.getAll();
-        console.log("goods", goods.data.items);
-        setProducts(goods.data.items);
-        timer = setTimeout(() => setIsLoading(false), 500);
-      } catch (error) {
-        console.log("--error--", error);
+      if (allGoods.length > 0) {
+        setIsLoading(false);
+      } else {
+        try {
+          const goods = await api.getAll();
+          console.log("goods", goods.data.items);
+          setAllGoods(goods.data.items);
+          timer = setTimeout(() => setIsLoading(false), 500);
+        } catch (error) {
+          console.log("--error--", error);
+        }
       }
       return () => clearTimeout(timer);
     };
     getAllGoods();
-  }, []);
+  }, [setAllGoods, allGoods.length]);
 
   return (
     <>
@@ -31,7 +36,7 @@ const AllGoodsPage = () => {
         <Loader />
       ) : (
         <div style={{ opacity: 1 }} className="list-of-goods">
-          {products.map((product) => (
+          {allGoods.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

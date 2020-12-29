@@ -1,6 +1,6 @@
 import "./changeQuantityBtnGroup.css";
 import { useContext } from "react";
-import basketCTX from "../../Context/localContext";
+import { basketCTX } from "../../Context/localContext";
 const resycleBinIco = require("../../Shares/img/recycle-bin.svg");
 const minus = require("../../Shares/img/minus.svg");
 const plus = require("../../Shares/img/plus.svg");

@@ -1,5 +1,5 @@
 import "./basketBtnActionForAll.css";
-import basketCTX from "../../Context/localContext";
+import { basketCTX } from "../../Context/localContext";
 import { useContext } from "react";
 
 const BasketBtnActionForAll = () => {
