@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import api from "../../Services/api";
-import "./listOfGoods.css";
+import "./allGoodsPage.css";
 import ProductCard from "../ProductCard/ProductCard";
 import Loader from "../Loader/Loader";
 
-const ListOfGoods = () => {
+const AllGoodsPage = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -40,4 +40,4 @@ const ListOfGoods = () => {
   );
 };
 
-export default ListOfGoods;
+export default AllGoodsPage;

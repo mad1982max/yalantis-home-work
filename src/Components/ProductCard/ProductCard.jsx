@@ -36,6 +36,16 @@ const ProductCard = (props) => {
     return 0;
   };
 
+  //how to use?
+  // const countQuantity = useCallback(
+  //   (id) => {
+  //     let productInBasket = basket.find((item) => item.id === id);
+  //     if (productInBasket) return productInBasket.quantity;
+  //     return 0;
+  //   },
+  //   [basket]
+  // );
+
   return (
     <div className="product-shadow-box">
       <Link to={`/product/${id}`}>

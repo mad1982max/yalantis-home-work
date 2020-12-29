@@ -1,24 +1,15 @@
-import "./basket.css";
 import { useContext } from "react";
-import { useHistory } from "react-router-dom";
-import BasketBtnActionForAll from "../BasketBtnActionForAll/BasketBtnActionForAll";
+import "./basketTable.css";
 import ChangeQuantityBtnGroup from "../ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
 import basketCTX from "../../Context/localContext";
 
-const Basket = () => {
+const BasketTable = () => {
   const { basket } = useContext(basketCTX);
-
-  const history = useHistory();
-  const returnToMainPage = () => {
-    history.push("/");
-  };
 
   const sum = () =>
     basket.reduce((sum, product) => sum + product.price * product.quantity, 0);
-
   return (
-    <div className="basket-page-wrapper">
-      <div className="basket-name">Your Basket:</div>
+    <>
       {basket.length > 0 ? (
         <table className="basket-table">
           <thead>
@@ -70,15 +61,8 @@ const Basket = () => {
           <span>EMPTY</span>
         </div>
       )}
-
-      <div className="basket-btn-group">
-        <button onClick={returnToMainPage} type="button" id="return">
-          TO MAIN
-        </button>
-        <BasketBtnActionForAll />
-      </div>
-    </div>
+    </>
   );
 };
 
-export default Basket;
+export default BasketTable;
