@@ -3,7 +3,8 @@ import { useHistory } from "react-router-dom";
 import api from "../../Services/api";
 import Loader from "../Loader/Loader";
 import "./productPage.css";
-import ProductCard from "../ProductCard/ProductCard";
+// import ProductCard from "../ProductCard/ProductCard";
+import ExtendedProductCard from "../ExtendedProductCard/ExtendedProductCard";
 
 const ProductPage = (props) => {
   const id = props.match.params.id;
@@ -37,7 +38,7 @@ const ProductPage = (props) => {
     <>
       <div className="product-header">Product:</div>
       <div className="product-page">
-        {isLoading ? <Loader /> : <ProductCard product={product} />}
+        {isLoading ? <Loader /> : <ExtendedProductCard product={product} />}
       </div>
 
       <div className="basket-btn-group">

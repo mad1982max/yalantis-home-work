@@ -1,5 +1,5 @@
 import axios from "axios";
-import url from "../Shares/config";
+import { url } from "../Shares/config";
 
 const totalProducts = 20;
 

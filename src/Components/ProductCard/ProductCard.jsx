@@ -1,4 +1,4 @@
-import { useContext, useCallback } from "react";
+import { useContext } from "react";
 import basketCTX from "../../Context/localContext";
 import { Link } from "react-router-dom";
 import "./productCard.css";

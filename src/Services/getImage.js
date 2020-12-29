@@ -3,11 +3,11 @@ const images = require.context("../Shares/img", true);
 const getImageByName = (name) => {
   let currentImage;
   try {
-    currentImage = images(`./${name}.png`).default;
+    currentImage = images(`./${name}.png`);
   } catch (e) {
-    currentImage = images(`./dummy.png`).default;
+    currentImage = images(`./dummy.png`);
   }
-  return currentImage;
+  return currentImage.default;
 };
 
 export default getImageByName;
