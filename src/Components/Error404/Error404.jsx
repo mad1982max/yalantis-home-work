@@ -1,11 +1,8 @@
 import "./error404.css";
 
-const Error404 = () => {
-  return (
-    <>
-      <div className="error">Sorry, root doesn't exist</div>
-    </>
-  );
+const Error404 = (props) => {
+  const msg = props.location.state || "Sorry, root doesn't exist";
+  return <div className="error">{msg}</div>;
 };
 
 export default Error404;

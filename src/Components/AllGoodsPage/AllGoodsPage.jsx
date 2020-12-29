@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import api from "../../Services/api";
 import "./allGoodsPage.css";
 import { fetchedDataCTX } from "../../Context/localContext";
@@ -8,6 +9,7 @@ import Loader from "../Loader/Loader";
 const AllGoodsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { allGoods, setAllGoods } = useContext(fetchedDataCTX);
+  const history = useHistory();
 
   useEffect(() => {
     let timer;
@@ -17,17 +19,19 @@ const AllGoodsPage = () => {
       } else {
         try {
           const goods = await api.getAll();
-          console.log("goods", goods.data.items);
+          console.log("goods:", goods.data.items);
           setAllGoods(goods.data.items);
           timer = setTimeout(() => setIsLoading(false), 500);
         } catch (error) {
-          console.log("--error--", error);
+          console.log("--error--", error.message);
+          const msg = `${error.name}: ${error.message}`;
+          history.push({ pathname: "/error", state: msg });
         }
       }
       return () => clearTimeout(timer);
     };
     getAllGoods();
-  }, [setAllGoods, allGoods.length]);
+  }, [setAllGoods, allGoods.length, history]);
 
   return (
     <>

@@ -27,3 +27,7 @@
 .del-all {
   background: rgba(228, 68, 28, 0.3);
 }
+
+.adder-button-group button {
+  cursor: pointer;
+}

@@ -11,6 +11,7 @@ const Main = () => (
       <Route exact path="/" component={AllGoodsPage} />
       <Route path="/product/:id" component={ProductPage} />
       <Route path="/basket" component={BasketPage} />
+      <Route path="/error" component={Error404} />
       <Route path="*" component={Error404} />
     </Switch>
   </main>

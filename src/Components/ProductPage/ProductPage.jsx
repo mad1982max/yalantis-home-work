@@ -27,11 +27,13 @@ const ProductPage = (props) => {
         timer = setTimeout(() => setIsLoading(false), 500);
       } catch (error) {
         console.log("--error--", error);
+        const msg = `${error.name}: ${error.message}`;
+        history.push({ pathname: "/error", state: msg });
       }
       return () => clearTimeout(timer);
     };
     getProduct(id);
-  }, [id]);
+  }, [id, history]);
 
   return (
     <>
