@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/yalantis-home-work/static/css/main.9b5b7bad.chunk.css",
-    "main.js": "/yalantis-home-work/static/js/main.fe60588f.chunk.js",
-    "main.js.map": "/yalantis-home-work/static/js/main.fe60588f.chunk.js.map",
+    "main.js": "/yalantis-home-work/static/js/main.b2e39889.chunk.js",
+    "main.js.map": "/yalantis-home-work/static/js/main.b2e39889.chunk.js.map",
     "runtime-main.js": "/yalantis-home-work/static/js/runtime-main.606d94a5.js",
     "runtime-main.js.map": "/yalantis-home-work/static/js/runtime-main.606d94a5.js.map",
     "static/js/2.18c07186.chunk.js": "/yalantis-home-work/static/js/2.18c07186.chunk.js",
@@ -37,6 +37,6 @@
     "static/js/runtime-main.606d94a5.js",
     "static/js/2.18c07186.chunk.js",
     "static/css/main.9b5b7bad.chunk.css",
-    "static/js/main.fe60588f.chunk.js"
+    "static/js/main.b2e39889.chunk.js"
   ]
 }
