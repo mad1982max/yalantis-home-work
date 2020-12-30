@@ -9,7 +9,9 @@ const ChangeQuantityBtnGroup = ({ product }) => {
   const { basket, setBasket } = useContext(basketCTX);
 
   const adderFn = (adder, id, e) => {
+    console.log(e);
     e.preventDefault();
+    e.stopPropagation();
     let productInBasket = basket.find((product) => product.id === id);
     if (productInBasket.quantity + adder < 1) {
     } else {
@@ -26,6 +28,7 @@ const ChangeQuantityBtnGroup = ({ product }) => {
 
   const dellProduct = (id, e) => {
     e.preventDefault();
+    e.stopPropagation();
     setBasket((prev) => prev.filter((product) => product.id !== id));
   };
 

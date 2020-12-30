@@ -1,16 +1,22 @@
 import { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import "./basketTable.css";
 import ChangeQuantityBtnGroup from "../ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
 import { basketCTX } from "../../Context/localContext";
 
 const BasketTable = () => {
   const { basket } = useContext(basketCTX);
+  const history = useHistory();
 
   const sum = () =>
     basket.reduce((sum, product) => sum + product.price * product.quantity, 0);
 
   const amount = () =>
     basket.reduce((sum, product) => sum + product.quantity, 0);
+
+  const goToProduct = (id) => {
+    history.push(`/product/${id}`);
+  };
 
   return (
     <>
@@ -33,7 +39,9 @@ const BasketTable = () => {
               const [, material, type] = product.name.split(" ");
 
               return (
-                <tr key={product.id + i}>
+                <tr
+                  key={product.id + i}
+                  onClick={() => goToProduct(product.id)}>
                   <td>{++i}</td>
                   <td>{type}</td>
                   <td>{product.name}</td>
