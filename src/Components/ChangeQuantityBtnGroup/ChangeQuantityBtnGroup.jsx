@@ -8,7 +8,8 @@ const plus = require("../../Shares/img/plus.svg");
 const ChangeQuantityBtnGroup = ({ product }) => {
   const { basket, setBasket } = useContext(basketCTX);
 
-  const adderFn = (adder, id) => {
+  const adderFn = (adder, id, e) => {
+    e.preventDefault();
     let productInBasket = basket.find((product) => product.id === id);
     if (productInBasket.quantity + adder < 1) {
     } else {
@@ -23,23 +24,25 @@ const ChangeQuantityBtnGroup = ({ product }) => {
     }
   };
 
-  const dellProduct = (id) =>
+  const dellProduct = (id, e) => {
+    e.preventDefault();
     setBasket((prev) => prev.filter((product) => product.id !== id));
+  };
 
   return (
     <div className="adder-button-group">
       <button
-        onClick={() => adderFn(-1, product.id)}
+        onClick={(e) => adderFn(-1, product.id, e)}
         className="basket-btn-action minus-one">
         <img src={minus.default} alt="minus" />
       </button>
       <button
-        onClick={() => adderFn(+1, product.id)}
+        onClick={(e) => adderFn(+1, product.id, e)}
         className="basket-btn-action plus-one">
         <img src={plus.default} alt="plus" />
       </button>
       <button
-        onClick={() => dellProduct(product.id)}
+        onClick={(e) => dellProduct(product.id, e)}
         className="basket-btn-action del-all">
         <img src={resycleBinIco.default} alt="bin" />
       </button>

@@ -2,7 +2,9 @@ import { useContext } from "react";
 import { basketCTX } from "../../Context/localContext";
 import { Link } from "react-router-dom";
 import "./productCard.css";
+
 import getImageByName from "../../Services/getImage";
+import ChangeQuantityBtnGroup from "../ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
 
 const ProductCard = (props) => {
   const { name, price, origin, id } = props.product;
@@ -57,15 +59,22 @@ const ProductCard = (props) => {
           <div className="product-origin">{origin.toUpperCase()}</div>
           <div className="basket-wrapper-card">
             <div className="product-price">$ {price}</div>
+
             <div className="basket-group">
               {countQuantity(id) !== 0 ? (
-                <div className="badge">{countQuantity(id)}</div>
+                <>
+                  <div className="replacer-add-to-cart-btn">
+                    <div className="bg-as-add-to-cart">
+                      <ChangeQuantityBtnGroup product={props.product} />
+                    </div>
+                    <div className="badge">{countQuantity(id)}</div>
+                  </div>
+                </>
               ) : (
-                ""
+                <button className="add-to-cart_button" onClick={addToCart}>
+                  ADD TO CART
+                </button>
               )}
-              <button className="add-to-cart_button" onClick={addToCart}>
-                ADD TO CART
-              </button>
             </div>
           </div>
         </div>

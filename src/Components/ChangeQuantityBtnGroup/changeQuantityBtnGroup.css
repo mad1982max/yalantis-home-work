@@ -2,22 +2,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 4px;
 }
 
 .basket-btn-action {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 2px;
   width: 25px;
   height: 25px;
   text-align: center;
   border: none;
-  border-radius: 4px;
 }
 
 .adder-button-group button {
   cursor: pointer;
-  background: rgba(193, 196, 193, 0.4);
-  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+  background: none;
 }
