@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/yalantis-home-work/static/css/main.9b5b7bad.chunk.css",
-    "main.js": "/yalantis-home-work/static/js/main.316fa59b.chunk.js",
-    "main.js.map": "/yalantis-home-work/static/js/main.316fa59b.chunk.js.map",
+    "main.js": "/yalantis-home-work/static/js/main.fe60588f.chunk.js",
+    "main.js.map": "/yalantis-home-work/static/js/main.fe60588f.chunk.js.map",
     "runtime-main.js": "/yalantis-home-work/static/js/runtime-main.606d94a5.js",
     "runtime-main.js.map": "/yalantis-home-work/static/js/runtime-main.606d94a5.js.map",
-    "static/js/2.8750670e.chunk.js": "/yalantis-home-work/static/js/2.8750670e.chunk.js",
-    "static/js/2.8750670e.chunk.js.map": "/yalantis-home-work/static/js/2.8750670e.chunk.js.map",
+    "static/js/2.18c07186.chunk.js": "/yalantis-home-work/static/js/2.18c07186.chunk.js",
+    "static/js/2.18c07186.chunk.js.map": "/yalantis-home-work/static/js/2.18c07186.chunk.js.map",
     "index.html": "/yalantis-home-work/index.html",
     "static/css/main.9b5b7bad.chunk.css.map": "/yalantis-home-work/static/css/main.9b5b7bad.chunk.css.map",
-    "static/js/2.8750670e.chunk.js.LICENSE.txt": "/yalantis-home-work/static/js/2.8750670e.chunk.js.LICENSE.txt",
+    "static/js/2.18c07186.chunk.js.LICENSE.txt": "/yalantis-home-work/static/js/2.18c07186.chunk.js.LICENSE.txt",
     "static/media/add_to_cart.webp": "/yalantis-home-work/static/media/add_to_cart.29c6aecc.webp",
     "static/media/bacon.png": "/yalantis-home-work/static/media/bacon.55691bb6.png",
     "static/media/ball.png": "/yalantis-home-work/static/media/ball.45290e18.png",
@@ -35,8 +35,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.606d94a5.js",
-    "static/js/2.8750670e.chunk.js",
+    "static/js/2.18c07186.chunk.js",
     "static/css/main.9b5b7bad.chunk.css",
-    "static/js/main.316fa59b.chunk.js"
+    "static/js/main.fe60588f.chunk.js"
   ]
 }
