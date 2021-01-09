@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import api from "Helpers/api";
 import { fetchedDataCTX } from "Context/localContext";
-import ProductCard from "Components/ProductCard/ProductCard";
+import ListOfProducts from "Components/ListOfProducts/ListOfProducts";
 import Loader from "Components/Loader/Loader";
 import "Components/MainPage/allGoodsPage.css";
 
@@ -36,15 +36,7 @@ const AllGoodsPage = () => {
   return (
     <>
       <div className="main-header-inList">List of goods:</div>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <div className="list-of-goods">
-          {allGoods.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      )}
+      {isLoading ? <Loader /> : <ListOfProducts goods={allGoods} />}
     </>
   );
 };

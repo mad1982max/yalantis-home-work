@@ -1,16 +1,17 @@
 import { useContext } from "react";
 import { basketCTX } from "Context/localContext";
-import resycleBinIco from "Helpers/img/recycle-bin.svg";
-import minus from "Helpers/img/minus.svg";
-import plus from "Helpers/img/plus.svg";
+import resycleBinIco from "Helpers/img/ico/recycle-bin.svg";
+import minus from "Helpers/img/ico/minus.svg";
+import plus from "Helpers/img/ico/plus.svg";
 import "Components/ChangeQuantityBtnGroup/changeQuantityBtnGroup.css";
 
-const ChangeQuantityBtnGroup = ({ product }) => {
+const ChangeQuantityBtnGroup = ({ id }) => {
   const { basket, setBasket } = useContext(basketCTX);
 
   const adderFn = (adder, id, e) => {
     e.preventDefault();
     e.stopPropagation();
+
     let productInBasket = basket.find((product) => product.id === id);
     if (productInBasket.quantity + adder >= 1) {
       setBasket((prev) => {
@@ -33,17 +34,17 @@ const ChangeQuantityBtnGroup = ({ product }) => {
   return (
     <div className="adder-button-group">
       <button
-        onClick={(e) => adderFn(-1, product.id, e)}
+        onClick={(e) => adderFn(-1, id, e)}
         className="basket-btn-action minus-one">
         <img src={minus} alt="minus" />
       </button>
       <button
-        onClick={(e) => adderFn(+1, product.id, e)}
+        onClick={(e) => adderFn(+1, id, e)}
         className="basket-btn-action plus-one">
         <img src={plus} alt="plus" />
       </button>
       <button
-        onClick={(e) => dellProduct(product.id, e)}
+        onClick={(e) => dellProduct(id, e)}
         className="basket-btn-action del-all">
         <img src={resycleBinIco} alt="bin" />
       </button>

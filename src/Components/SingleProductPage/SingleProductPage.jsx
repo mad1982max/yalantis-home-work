@@ -3,9 +3,9 @@ import { useHistory } from "react-router-dom";
 import Loader from "Components/Loader/Loader";
 import ExtendedProductCard from "Components/ExtendedProductCard/ExtendedProductCard";
 import api from "Helpers/api";
-import "Components/ProductPage/productPage.css";
+import "Components/SingleProductPage/singleProductPage.css";
 
-const ProductPage = (props) => {
+const SingleProductPage = (props) => {
   const id = props.match.params.id;
 
   const [product, setProduct] = useState([]);
@@ -51,4 +51,4 @@ const ProductPage = (props) => {
   );
 };
 
-export default ProductPage;
+export default SingleProductPage;

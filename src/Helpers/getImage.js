@@ -1,6 +1,6 @@
 import { dummyImgName, defaultImgExt } from "Helpers/config";
 
-const images = require.context("Helpers/img", false);
+const images = require.context("Helpers/img/cardImg", false);
 
 const getImageByName = (name) => {
   let currentImage;
