@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import ChangeQuantityBtnGroup from "Components/ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
 import { basketCTX } from "Context/localContext";
+import nameParser from "Helpers/takeNameParts";
+import showCurrentProductKeyInBasket from "Helpers/showCurrentProductKeyInBasket";
 import "Components/BasketTable/basketTable.css";
 
 const BasketTable = () => {
@@ -36,7 +38,7 @@ const BasketTable = () => {
           </thead>
           <tbody>
             {basket.map((product, i) => {
-              const [, material, type] = product.name.split(" ");
+              const { material, type } = nameParser(product.name);
 
               return (
                 <tr
@@ -49,7 +51,7 @@ const BasketTable = () => {
                   <td>{material}</td>
                   <td>
                     <div className="quantity-changer">
-                      <ChangeQuantityBtnGroup product={product} />
+                      <ChangeQuantityBtnGroup id={product.id} />
                       <div className="quantity">{product.quantity}</div>
                     </div>
                   </td>

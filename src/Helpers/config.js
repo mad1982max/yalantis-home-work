@@ -4,7 +4,7 @@ const productsPerPage = 200;
 const dummyImgName = "dummy";
 const defaultImgExt = "png";
 const dateFormat = "MM-DD-YYYY";
-const originOrder = 1;
+const materialOrder = 1;
 const typeOrder = 2;
 
 export {
@@ -14,6 +14,6 @@ export {
   dummyImgName,
   defaultImgExt,
   dateFormat,
-  originOrder,
+  materialOrder,
   typeOrder,
 };

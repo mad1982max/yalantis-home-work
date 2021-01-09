@@ -1,9 +1,9 @@
-import { originOrder, typeOrder } from "Helpers/config";
+import { materialOrder, typeOrder } from "Helpers/config";
 
 const nameParser = (fullName) => {
-  const origin = fullName.split(" ")[originOrder].toLowerCase();
+  const material = fullName.split(" ")[materialOrder].toLowerCase();
   const type = fullName.split(" ")[typeOrder].toLowerCase();
-  return { origin, type };
+  return { material, type };
 };
 
 export default nameParser;

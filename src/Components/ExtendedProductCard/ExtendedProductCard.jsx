@@ -11,16 +11,16 @@ const ExtendedProductCardFn = (Card) => {
   const ExtendedComp = ({ product }) => {
     const { basket, setBasket } = useContext(basketCTX);
 
-    const addToCart = (id, e) => {
+    const addToCart = (e, product, adder) => {
       e.preventDefault();
 
       setBasket((prevBasket) => {
-        let productInBasket = prevBasket.find((item) => item.id === id);
+        let productInBasket = prevBasket.find((item) => item.id === product.id);
         if (productInBasket) {
           let quantity = productInBasket.quantity + 1;
           return [
-            ...prevBasket.map((product) =>
-              product.id === id ? { ...product, quantity } : product
+            ...prevBasket.map((item) =>
+              item.id === product.id ? { ...item, quantity } : product
             ),
           ];
         } else {
@@ -31,8 +31,7 @@ const ExtendedProductCardFn = (Card) => {
       });
     };
 
-    const origin = nameParser(product.name).origin.toUpperCase();
-    const type = nameParser(product.name).type;
+    const { type } = nameParser(product.name);
     const imgSrc = getImageByName(type);
     const quantity = showCurrentProductKeyInBasket(
       product.id,
@@ -47,11 +46,11 @@ const ExtendedProductCardFn = (Card) => {
           key={product.id}
           name={product.name}
           price={product.price}
-          origin={origin}
+          origin={product.origin}
           imgSrc={imgSrc}
           id={product.id}
           quantity={quantity}
-          addToCart={(e) => addToCart(product.id, e)}
+          addToCart={(e) => addToCart(e, product, 1)}
         />
         <div className="additional-info">
           <div className="idWrapper-group">

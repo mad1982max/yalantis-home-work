@@ -8,45 +8,45 @@ import showCurrentProductKeyInBasket from "Helpers/showCurrentProductKeyInBasket
 const ListOfProducts = ({ goods }) => {
   const { basket, setBasket } = useContext(basketCTX);
 
-  const addToCart = (id, e) => {
+  const addToCart = (e, product, adder) => {
     e.preventDefault();
 
     setBasket((prevBasket) => {
-      let productInBasket = prevBasket.find((item) => item.id === id);
+      let productInBasket = prevBasket.find((item) => item.id === product.id);
       if (productInBasket) {
         let quantity = productInBasket.quantity + 1;
         return [
-          ...prevBasket.map((product) =>
-            product.id === id ? { ...product, quantity } : product
+          ...prevBasket.map((item) =>
+            item.id === product.id ? { ...item, quantity } : product
           ),
         ];
       } else {
-        const currentProduct = goods.find((product) => product.id === id);
-        currentProduct.quantity = 1;
+        product.quantity = 1;
 
-        return [...prevBasket, currentProduct];
+        return [...prevBasket, product];
       }
     });
   };
 
   return (
     <div className="list-of-goods">
-      {goods.map(({ id, name, price }) => {
-        const origin = nameParser(name).origin.toUpperCase();
-        const type = nameParser(name).type;
+      {goods.map((product) => {
+        const { type } = nameParser(product.name);
         const imgSrc = getImageByName(type);
-        const quantity = showCurrentProductKeyInBasket(id, basket, "quantity");
+        const quantity = showCurrentProductKeyInBasket(
+          product.id,
+          basket,
+          "quantity"
+        );
 
         return (
           <ProductCard
-            key={id}
-            name={name}
-            price={price}
-            origin={origin}
+            key={product.id}
+            {...product}
+            origin={product.origin}
             imgSrc={imgSrc}
-            id={id}
             quantity={quantity}
-            addToCart={(e) => addToCart(id, e)}
+            addToCart={(e) => addToCart(e, product, 1)}
           />
         );
       })}
