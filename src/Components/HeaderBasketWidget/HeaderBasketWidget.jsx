@@ -5,9 +5,8 @@ import "Components/HeaderBasketWidget/headerBasketWidget.css";
 const HeaderBasketWidget = () => {
   const { basket } = useContext(basketCTX);
 
-  const countQuantity = (arr, keyToCount) => {
-    return arr.reduce((accum, item) => accum + item[keyToCount], 0);
-  };
+  const countQuantity = (arr, keyToCount) =>
+    arr.reduce((accum, item) => accum + item[keyToCount], 0);
 
   const countSum = (arr, priceKey, quantityKey) => {
     return arr.reduce(

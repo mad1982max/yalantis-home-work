@@ -5,9 +5,7 @@ import "Components/BasketPage/basketPage.css";
 
 const BasketPage = () => {
   const history = useHistory();
-  const returnToMainPage = () => {
-    history.push("/");
-  };
+  const returnToMainPage = () => history.push("/");
 
   return (
     <div className="basket-page-wrapper">

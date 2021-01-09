@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Loader from "Components/Loader/Loader";
 import ExtendedProductCard from "Components/ExtendedProductCard/ExtendedProductCard";
-import api from "Services/api";
+import api from "Helpers/api";
 import "Components/ProductPage/productPage.css";
 
 const ProductPage = (props) => {
@@ -12,25 +12,22 @@ const ProductPage = (props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const history = useHistory();
+
   const goTo = (path) => {
     history.push(path);
   };
 
   useEffect(() => {
-    let timer;
     const getProduct = async (id) => {
       try {
         setIsLoading(true);
         const product = await api.getProductById(id);
-        console.log("--product--", product.data);
         setProduct(product.data);
-        timer = setTimeout(() => setIsLoading(false), 500);
+        setIsLoading(false);
       } catch (error) {
-        console.log("--error--", error);
         const msg = `${error.name}: ${error.message}`;
         history.push({ pathname: "/error", state: msg });
       }
-      return () => clearTimeout(timer);
     };
     getProduct(id);
   }, [id, history]);

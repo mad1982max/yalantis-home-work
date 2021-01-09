@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import api from "Services/api";
+import api from "Helpers/api";
 import { fetchedDataCTX } from "Context/localContext";
 import ProductCard from "Components/ProductCard/ProductCard";
 import Loader from "Components/Loader/Loader";
-import "Components/AllGoodsPage/allGoodsPage.css";
+import "Components/MainPage/allGoodsPage.css";
 
 const AllGoodsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +39,7 @@ const AllGoodsPage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div style={{ opacity: 1 }} className="list-of-goods">
+        <div className="list-of-goods">
           {allGoods.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

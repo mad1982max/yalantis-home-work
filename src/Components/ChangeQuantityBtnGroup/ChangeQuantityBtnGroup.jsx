@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { basketCTX } from "Context/localContext";
-import resycleBinIco from "Shares/img/recycle-bin.svg";
-import minus from "Shares/img/minus.svg";
-import plus from "Shares/img/plus.svg";
+import resycleBinIco from "Helpers/img/recycle-bin.svg";
+import minus from "Helpers/img/minus.svg";
+import plus from "Helpers/img/plus.svg";
 import "Components/ChangeQuantityBtnGroup/changeQuantityBtnGroup.css";
 
 const ChangeQuantityBtnGroup = ({ product }) => {
@@ -12,8 +12,7 @@ const ChangeQuantityBtnGroup = ({ product }) => {
     e.preventDefault();
     e.stopPropagation();
     let productInBasket = basket.find((product) => product.id === id);
-    if (productInBasket.quantity + adder < 1) {
-    } else {
+    if (productInBasket.quantity + adder >= 1) {
       setBasket((prev) => {
         let quantity = productInBasket.quantity + adder;
         return [

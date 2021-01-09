@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { basketCTX } from "Context/localContext";
-import getImageByName from "Services/getImage";
+import getImageByName from "Helpers/getImage";
 import ChangeQuantityBtnGroup from "Components/ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
 import "Components/ProductCard/productCard.css";
 

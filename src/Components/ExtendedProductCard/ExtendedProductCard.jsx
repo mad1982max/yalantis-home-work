@@ -1,10 +1,10 @@
 import ProductCard from "Components/ProductCard/ProductCard";
+import moment from "moment";
 import "Components/ExtendedProductCard/extendedProductCard.css";
 
 const extendedProductCardFn = (Card) => {
-  const extComp = (props) => {
-    const defineDate = (date) =>
-      new Intl.DateTimeFormat("ru-RU").format(new Date(date));
+  const extendedComp = (props) => {
+    const defineDate = (date) => moment(date).format("MM-DD-YYYY");
 
     return (
       <>
@@ -34,7 +34,7 @@ const extendedProductCardFn = (Card) => {
       </>
     );
   };
-  return extComp;
+  return extendedComp;
 };
 
 const ExtendedProductCard = extendedProductCardFn(ProductCard);
