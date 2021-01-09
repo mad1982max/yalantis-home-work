@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import ChangeQuantityBtnGroup from "Components/ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
 import { basketCTX } from "Context/localContext";
 import nameParser from "Helpers/takeNameParts";
-import showCurrentProductKeyInBasket from "Helpers/showCurrentProductKeyInBasket";
 import "Components/BasketTable/basketTable.css";
 
 const BasketTable = () => {
