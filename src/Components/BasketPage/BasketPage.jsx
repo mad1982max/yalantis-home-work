@@ -1,7 +1,7 @@
-import "./basketPage.css";
 import { useHistory } from "react-router-dom";
-import BasketBtnActionForAll from "../BasketBtnActionForAll/BasketBtnActionForAll";
-import BasketTable from "../BasketTable/BasketTable";
+import BasketBtnActionForAll from "Components/BasketBtnActionForAll/BasketBtnActionForAll";
+import BasketTable from "Components/BasketTable/BasketTable";
+import "Components/BasketPage/basketPage.css";
 
 const BasketPage = () => {
   const history = useHistory();

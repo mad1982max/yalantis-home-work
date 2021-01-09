@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import api from "../../Services/api";
-import "./allGoodsPage.css";
-import { fetchedDataCTX } from "../../Context/localContext";
-import ProductCard from "../ProductCard/ProductCard";
-import Loader from "../Loader/Loader";
+import api from "Services/api";
+import { fetchedDataCTX } from "Context/localContext";
+import ProductCard from "Components/ProductCard/ProductCard";
+import Loader from "Components/Loader/Loader";
+import "Components/AllGoodsPage/allGoodsPage.css";
 
 const AllGoodsPage = () => {
   const [isLoading, setIsLoading] = useState(true);

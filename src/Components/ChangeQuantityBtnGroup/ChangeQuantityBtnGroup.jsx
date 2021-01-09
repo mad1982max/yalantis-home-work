@@ -1,9 +1,9 @@
-import "./changeQuantityBtnGroup.css";
 import { useContext } from "react";
-import { basketCTX } from "../../Context/localContext";
-const resycleBinIco = require("../../Shares/img/recycle-bin.svg");
-const minus = require("../../Shares/img/minus.svg");
-const plus = require("../../Shares/img/plus.svg");
+import { basketCTX } from "Context/localContext";
+import resycleBinIco from "Shares/img/recycle-bin.svg";
+import minus from "Shares/img/minus.svg";
+import plus from "Shares/img/plus.svg";
+import "Components/ChangeQuantityBtnGroup/changeQuantityBtnGroup.css";
 
 const ChangeQuantityBtnGroup = ({ product }) => {
   const { basket, setBasket } = useContext(basketCTX);
@@ -36,17 +36,17 @@ const ChangeQuantityBtnGroup = ({ product }) => {
       <button
         onClick={(e) => adderFn(-1, product.id, e)}
         className="basket-btn-action minus-one">
-        <img src={minus.default} alt="minus" />
+        <img src={minus} alt="minus" />
       </button>
       <button
         onClick={(e) => adderFn(+1, product.id, e)}
         className="basket-btn-action plus-one">
-        <img src={plus.default} alt="plus" />
+        <img src={plus} alt="plus" />
       </button>
       <button
         onClick={(e) => dellProduct(product.id, e)}
         className="basket-btn-action del-all">
-        <img src={resycleBinIco.default} alt="bin" />
+        <img src={resycleBinIco} alt="bin" />
       </button>
     </div>
   );

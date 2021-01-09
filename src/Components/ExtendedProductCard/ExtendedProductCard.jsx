@@ -1,5 +1,5 @@
-import ProductCard from "../ProductCard/ProductCard";
-import "./extendedProductCard.css";
+import ProductCard from "Components/ProductCard/ProductCard";
+import "Components/ExtendedProductCard/extendedProductCard.css";
 
 const extendedProductCardFn = (Card) => {
   const extComp = (props) => {

@@ -1,6 +1,6 @@
-import { dummyImgName, defaultImgExt } from "../Shares/config";
+import { dummyImgName, defaultImgExt } from "Shares/config";
 
-const images = require.context("../Shares/img", true);
+const images = require.context("Shares/img", false);
 
 const getImageByName = (name) => {
   let currentImage;
@@ -8,6 +8,7 @@ const getImageByName = (name) => {
     currentImage = images(`./${name}.${defaultImgExt}`);
   } catch (e) {
     currentImage = images(`./${dummyImgName}.${defaultImgExt}`);
+    console.log("use default img");
   }
   return currentImage.default;
 };

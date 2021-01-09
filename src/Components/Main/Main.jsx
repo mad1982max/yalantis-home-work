@@ -1,9 +1,9 @@
 import { Switch, Route } from "react-router-dom";
-import AllGoodsPage from "../AllGoodsPage/AllGoodsPage";
-import Error404 from "../Error404/Error404";
-import ProductPage from "../ProductPage/ProductPage";
-import "./main.css";
-import BasketPage from "../BasketPage/BasketPage";
+import AllGoodsPage from "Components/AllGoodsPage/AllGoodsPage";
+import Error404 from "Components/Error404/Error404";
+import ProductPage from "Components/ProductPage/ProductPage";
+import BasketPage from "Components/BasketPage/BasketPage";
+import "Components/Main/main.css";
 
 const Main = () => (
   <main>

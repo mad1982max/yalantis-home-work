@@ -1,6 +1,6 @@
-import "./basketBtnActionForAll.css";
-import { basketCTX } from "../../Context/localContext";
+import { basketCTX } from "Context/localContext";
 import { useContext } from "react";
+import "Components/BasketBtnActionForAll/basketBtnActionForAll.css";
 
 const BasketBtnActionForAll = () => {
   const { basket, setBasket } = useContext(basketCTX);

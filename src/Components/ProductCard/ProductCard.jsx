@@ -1,10 +1,9 @@
 import { useContext } from "react";
-import { basketCTX } from "../../Context/localContext";
 import { Link } from "react-router-dom";
-import "./productCard.css";
-
-import getImageByName from "../../Services/getImage";
-import ChangeQuantityBtnGroup from "../ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
+import { basketCTX } from "Context/localContext";
+import getImageByName from "Services/getImage";
+import ChangeQuantityBtnGroup from "Components/ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
+import "Components/ProductCard/productCard.css";
 
 const ProductCard = (props) => {
   const { name, price, origin, id } = props.product;
@@ -37,16 +36,6 @@ const ProductCard = (props) => {
     if (productInBasket) return productInBasket.quantity;
     return 0;
   };
-
-  //how to use?
-  // const countQuantity = useCallback(
-  //   (id) => {
-  //     let productInBasket = basket.find((item) => item.id === id);
-  //     if (productInBasket) return productInBasket.quantity;
-  //     return 0;
-  //   },
-  //   [basket]
-  // );
 
   return (
     <div className="product-shadow-box">

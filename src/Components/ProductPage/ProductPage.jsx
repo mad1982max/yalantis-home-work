@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import api from "../../Services/api";
-import Loader from "../Loader/Loader";
-import "./productPage.css";
-import ExtendedProductCard from "../ExtendedProductCard/ExtendedProductCard";
+import Loader from "Components/Loader/Loader";
+import ExtendedProductCard from "Components/ExtendedProductCard/ExtendedProductCard";
+import api from "Services/api";
+import "Components/ProductPage/productPage.css";
 
 const ProductPage = (props) => {
   const id = props.match.params.id;

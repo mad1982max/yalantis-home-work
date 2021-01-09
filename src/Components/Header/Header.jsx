@@ -1,8 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
-import HeaderBasketWidget from "../HeaderBasketWidget/HeaderBasketWidget";
-import "./header.css";
-import { pathWithoutBasketWidget } from "../../Shares/config";
-const logo = require("../../Shares/img/logo.png");
+import HeaderBasketWidget from "Components/HeaderBasketWidget/HeaderBasketWidget";
+import { pathWithoutBasketWidget } from "Shares/config";
+import logo from "Shares/img/logo.png";
+import "Components/Header/header.css";
 
 const Header = () => {
   const currentPath = useLocation().pathname;
@@ -12,7 +12,7 @@ const Header = () => {
       <header className="header">
         <div className="header-logo">
           <Link to={"/"}>
-            <img src={logo.default} alt="logo" />
+            <img src={logo} alt="logo" />
           </Link>
         </div>
         {currentPath !== pathWithoutBasketWidget && (

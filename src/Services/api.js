@@ -1,5 +1,5 @@
 import axios from "axios";
-import { url, productsPerPage } from "../Shares/config";
+import { url, productsPerPage } from "Shares/config";
 
 const api = {
   getAll: () => axios.get(`${url}?perPage=${productsPerPage}`),

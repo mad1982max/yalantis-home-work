@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import "./basketTable.css";
-import ChangeQuantityBtnGroup from "../ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
-import { basketCTX } from "../../Context/localContext";
+import ChangeQuantityBtnGroup from "Components/ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
+import { basketCTX } from "Context/localContext";
+import "Components/BasketTable/basketTable.css";
 
 const BasketTable = () => {
   const { basket } = useContext(basketCTX);
