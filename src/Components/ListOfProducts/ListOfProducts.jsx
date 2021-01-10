@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useFirstAddTocart } from "Helpers/changeQuantityInCart";
 import ProductCard from "Components/ProductCard/ProductCard";
-import { basketCTX } from "Context/localContext";
+import basketCTX from "Helpers/basket/context";
 import nameParser from "Helpers/takeNameParts";
 import getImageByName from "Helpers/getImage";
 import showCurrentProductKeyInBasket from "Helpers/showCurrentProductKeyInBasket";

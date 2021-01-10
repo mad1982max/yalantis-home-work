@@ -1,36 +1,18 @@
-import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Loader from "Components/Loader/Loader";
 import ExtendedProductCard from "Components/ExtendedProductCard/ExtendedProductCard";
-import api from "Helpers/api";
+import useFetchedSingleData from "Helpers/singleProductFromServer/customHook";
 import "Components/SingleProductPage/singleProductPage.css";
 
 const SingleProductPage = (props) => {
   const id = props.match.params.id;
 
-  const [product, setProduct] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
+  const { product, isLoading } = useFetchedSingleData(id);
   const history = useHistory();
 
   const goTo = (path) => {
     history.push(path);
   };
-
-  useEffect(() => {
-    const getProduct = async (id) => {
-      try {
-        setIsLoading(true);
-        const product = await api.getProductById(id);
-        setProduct(product.data);
-        setIsLoading(false);
-      } catch (error) {
-        const msg = `${error.name}: ${error.message}`;
-        history.push({ pathname: "/error", state: msg });
-      }
-    };
-    getProduct(id);
-  }, [id, history]);
 
   return (
     <>
