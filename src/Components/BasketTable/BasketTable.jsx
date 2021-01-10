@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import ChangeQuantityBtnGroup from "Components/ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
+import BasketTableLine from "Components/BasketTableLine/BasketTableLine";
 import { basketCTX } from "Context/localContext";
 import nameParser from "Helpers/takeNameParts";
-import basketTotal from "Helpers/findBaskettTotals";
+import basketTotal from "Helpers/findBasketTotals";
 import "Components/BasketTable/basketTable.css";
 
 const BasketTable = ({ goToProduct }) => {
@@ -29,23 +29,15 @@ const BasketTable = ({ goToProduct }) => {
               const { material, type } = nameParser(product.name);
 
               return (
-                <tr
-                  key={product.id + i}
-                  onClick={() => goToProduct(product.id)}>
-                  <td>{++i}</td>
-                  <td>{type}</td>
-                  <td>{product.name}</td>
-                  <td>{product.origin}</td>
-                  <td>{material}</td>
-                  <td>
-                    <div className="quantity-changer">
-                      <ChangeQuantityBtnGroup id={product.id} />
-                      <div className="quantity">{product.quantity}</div>
-                    </div>
-                  </td>
-                  <td>{product.price}</td>
-                  <td>{product.quantity * product.price}</td>
-                </tr>
+                <BasketTableLine
+                  key={product.id}
+                  {...product}
+                  material={material}
+                  type={type}
+                  counter={i + 1}
+                  goToProduct={goToProduct}
+                  totalSumByProduct={basketTotal.lineSum(product)}
+                />
               );
             })}
           </tbody>
