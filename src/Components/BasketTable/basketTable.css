@@ -3,6 +3,7 @@
   width: 80%;
   margin: auto;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-collapse: collapse;
 }
 
 thead th:first-child {
@@ -39,6 +40,7 @@ tbody td {
 
 .basket-table tbody tr:hover {
   background-color: rgb(239, 242, 243);
+  cursor: pointer;
 }
 
 .basket-table th {
