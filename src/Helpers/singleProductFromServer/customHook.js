@@ -13,7 +13,6 @@ const useFetchedSingleData = (id) => {
       .get(`${url}/${id}`)
       .then((result) => {
         const product = result.data;
-        console.log("get data from server");
         setProduct(product);
         setIsLoading(false);
       })

@@ -6,6 +6,7 @@ const defaultImgExt = "png";
 const dateFormat = "MM-DD-YYYY";
 const materialOrder = 1;
 const typeOrder = 2;
+const question = "Are you sure?";
 
 export {
   url,
@@ -16,4 +17,5 @@ export {
   dateFormat,
   materialOrder,
   typeOrder,
+  question,
 };
