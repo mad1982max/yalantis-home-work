@@ -1,25 +1,26 @@
-import { basketCTX } from "Context/localContext";
 import { useContext } from "react";
+import { basketCTX } from "Context/localContext";
+import useActionForAllBasket from "Helpers/actionForAllBasket";
 import "Components/BasketBtnActionForAll/basketBtnActionForAll.css";
 
 const BasketBtnActionForAll = () => {
-  const { basket, setBasket } = useContext(basketCTX);
-
-  const deletebasket = () => {
-    let isConfirmed = window.confirm("Are you sure?");
-    if (isConfirmed) setBasket([]);
-  };
+  const { basket } = useContext(basketCTX);
+  const { buyAll, deleteAll } = useActionForAllBasket();
 
   return (
     <>
       <button
-        onClick={deletebasket}
+        onClick={deleteAll}
         disabled={basket.length === 0}
         type="button"
         id="del-basket">
         DELETE ALL
       </button>
-      <button type="button" disabled id="buy-basket">
+      <button
+        type="button"
+        disabled={basket.length === 0}
+        onClick={buyAll}
+        id="buy-basket">
         BUY ALL
       </button>
     </>
