@@ -1,33 +1,11 @@
-import { useContext } from "react";
-import { basketCTX } from "Context/localContext";
+import { useChangeQuantityFn } from "Helpers/changeQuantityInCart";
 import resycleBinIco from "Helpers/img/ico/recycle-bin.svg";
 import minus from "Helpers/img/ico/minus.svg";
 import plus from "Helpers/img/ico/plus.svg";
 import "Components/ChangeQuantityBtnGroup/changeQuantityBtnGroup.css";
 
 const ChangeQuantityBtnGroup = ({ id }) => {
-  const { basket, setBasket } = useContext(basketCTX);
-
-  const adderFn = (e, id, adder) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (adder === 0) {
-      setBasket((prev) => prev.filter((product) => product.id !== id));
-    } else {
-      let productInBasket = basket.find((product) => product.id === id);
-      if (productInBasket.quantity + adder >= 1) {
-        setBasket((prev) => {
-          let quantity = productInBasket.quantity + adder;
-          return [
-            ...prev.map((product) =>
-              product.id === id ? { ...product, quantity } : product
-            ),
-          ];
-        });
-      }
-    }
-  };
+  const { adderFn } = useChangeQuantityFn();
 
   return (
     <div className="adder-button-group">

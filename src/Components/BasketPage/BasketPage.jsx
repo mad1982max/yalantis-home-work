@@ -5,12 +5,16 @@ import "Components/BasketPage/basketPage.css";
 
 const BasketPage = () => {
   const history = useHistory();
+
   const returnToMainPage = () => history.push("/");
+  const goToProduct = (id) => {
+    history.push(`/product/${id}`);
+  };
 
   return (
     <div className="basket-page-wrapper">
       <div className="basket-name">Your Basket:</div>
-      <BasketTable />
+      <BasketTable goToProduct={goToProduct} />
       <div className="basket-btn-group">
         <button onClick={returnToMainPage} type="button" id="return">
           TO MAIN

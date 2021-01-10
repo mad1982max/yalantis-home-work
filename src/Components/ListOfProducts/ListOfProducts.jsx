@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useFirstAddTocart } from "Helpers/changeQuantityInCart";
 import ProductCard from "Components/ProductCard/ProductCard";
 import { basketCTX } from "Context/localContext";
 import nameParser from "Helpers/takeNameParts";
@@ -6,27 +7,8 @@ import getImageByName from "Helpers/getImage";
 import showCurrentProductKeyInBasket from "Helpers/showCurrentProductKeyInBasket";
 
 const ListOfProducts = ({ goods }) => {
-  const { basket, setBasket } = useContext(basketCTX);
-
-  const addToCart = (e, product, adder) => {
-    e.preventDefault();
-
-    setBasket((prevBasket) => {
-      let productInBasket = prevBasket.find((item) => item.id === product.id);
-      if (productInBasket) {
-        let quantity = productInBasket.quantity + 1;
-        return [
-          ...prevBasket.map((item) =>
-            item.id === product.id ? { ...item, quantity } : product
-          ),
-        ];
-      } else {
-        product.quantity = 1;
-
-        return [...prevBasket, product];
-      }
-    });
-  };
+  const { basket } = useContext(basketCTX);
+  const { adderFirstFn } = useFirstAddTocart();
 
   return (
     <div className="list-of-goods">
@@ -46,7 +28,7 @@ const ListOfProducts = ({ goods }) => {
             origin={product.origin}
             imgSrc={imgSrc}
             quantity={quantity}
-            addToCart={(e) => addToCart(e, product, 1)}
+            addToCart={(e) => adderFirstFn(e, product)}
           />
         );
       })}

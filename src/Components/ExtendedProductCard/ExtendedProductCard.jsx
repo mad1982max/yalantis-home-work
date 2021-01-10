@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useFirstAddTocart } from "Helpers/changeQuantityInCart";
 import ProductCard from "Components/ProductCard/ProductCard";
 import { basketCTX } from "Context/localContext";
 import defineDate from "Helpers/defineDate";
@@ -9,28 +10,8 @@ import "Components/ExtendedProductCard/extendedProductCard.css";
 
 const ExtendedProductCardFn = (Card) => {
   const ExtendedComp = ({ product }) => {
-    const { basket, setBasket } = useContext(basketCTX);
-
-    const addToCart = (e, product, adder) => {
-      e.preventDefault();
-
-      setBasket((prevBasket) => {
-        let productInBasket = prevBasket.find((item) => item.id === product.id);
-        if (productInBasket) {
-          let quantity = productInBasket.quantity + 1;
-          return [
-            ...prevBasket.map((item) =>
-              item.id === product.id ? { ...item, quantity } : product
-            ),
-          ];
-        } else {
-          product.quantity = 1;
-
-          return [...prevBasket, product];
-        }
-      });
-    };
-
+    const { basket } = useContext(basketCTX);
+    const { adderFirstFn } = useFirstAddTocart();
     const { type } = nameParser(product.name);
     const imgSrc = getImageByName(type);
     const quantity = showCurrentProductKeyInBasket(
@@ -39,7 +20,6 @@ const ExtendedProductCardFn = (Card) => {
       "quantity"
     );
 
-    console.log(product);
     return (
       <>
         <Card
@@ -50,7 +30,7 @@ const ExtendedProductCardFn = (Card) => {
           imgSrc={imgSrc}
           id={product.id}
           quantity={quantity}
-          addToCart={(e) => addToCart(e, product, 1)}
+          addToCart={(e) => adderFirstFn(e, product)}
         />
         <div className="additional-info">
           <div className="idWrapper-group">
