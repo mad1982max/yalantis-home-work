@@ -1,0 +1,126 @@
+.product-img {
+  width: 60%;
+  background: rgb(173, 173, 177);
+  margin: auto;
+  border-radius: 4px;
+}
+
+img {
+  width: 100%;
+  transition: transform 200ms;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
+}
+
+.product-wrapper img {
+  transform: scale(0.9);
+}
+
+.product-name {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.product-wrapper {
+  padding: 10px 0 0 0;
+  margin: 5px 10px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-shadow-box {
+  width: 100%;
+}
+
+.product-wrapper:hover {
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 5px 15px;
+  cursor: pointer;
+}
+
+.product-price {
+  font-weight: bold;
+}
+
+.basket-wrapper-card {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: rgba(13, 14, 14, 0.1);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  height: 50px;
+}
+
+.add-to-cart_button {
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  background: rgb(17, 129, 173);
+  color: aliceblue;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
+}
+
+.add-to-cart_button:hover {
+  background: rgb(228, 68, 28);
+  color: raliceblue;
+  cursor: pointer;
+}
+
+@media (min-width: 560px) {
+  .product-shadow-box {
+    width: 50%;
+  }
+}
+
+@media (min-width: 560px) and (min-width: 750px) {
+  .product-shadow-box {
+    width: 33%;
+  }
+}
+
+button:active,
+button:focus {
+  outline: none;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+.badge {
+  background: rgb(236, 172, 34);
+  color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 10px;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
+}
+
+.basket-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.replacer-add-to-cart-btn {
+  display: flex;
+}
+
+.bg-as-add-to-cart {
+  background: rgba(201, 202, 202, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

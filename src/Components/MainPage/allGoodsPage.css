@@ -1,0 +1,13 @@
+.list-of-goods {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.main-header-inList {
+  font-size: 24px;
+  margin-top: 10px;
+  padding: 0 12px;
+}

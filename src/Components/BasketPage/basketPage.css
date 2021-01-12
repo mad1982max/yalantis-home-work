@@ -1,0 +1,39 @@
+.basket-name {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.basket-btn-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.basket-btn-group button {
+  border: none;
+  margin: 0 10px;
+  border-radius: 4px;
+  background: rgb(78, 78, 78);
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+  color: #fdfdfd;
+}
+
+.basket-btn-group button:hover {
+  background: rgb(236, 172, 34);
+}
+
+.basket-btn-group button:disabled {
+  cursor: not-allowed;
+  background: rgb(197, 196, 196);
+  box-shadow: none;
+  color: rgb(34, 33, 33);
+}
+
+.quantity-changer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

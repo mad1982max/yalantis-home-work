@@ -1,11 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App.jsx";
+import React, { StrictMode } from "react";
+import { render } from "react-dom";
+import { HashRouter } from "react-router-dom";
+import App from "App.jsx";
+import "normalize.css";
+import "index.css";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+render(
+  <StrictMode>
+    <HashRouter basename="/">
+      <App />
+    </HashRouter>
+  </StrictMode>,
   document.getElementById("root")
 );
