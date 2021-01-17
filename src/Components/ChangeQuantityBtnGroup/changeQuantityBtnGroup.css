@@ -19,3 +19,18 @@
   cursor: pointer;
   background: none;
 }
+
+.add-to-cart_button {
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  background: rgb(17, 129, 173);
+  color: aliceblue;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
+}
+
+.add-to-cart_button:hover {
+  background: rgb(228, 68, 28);
+  color: raliceblue;
+  cursor: pointer;
+}

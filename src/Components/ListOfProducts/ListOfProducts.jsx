@@ -4,7 +4,11 @@ import ProductCard from "Components/ProductCard/ProductCard";
 import { nameParser } from "Helpers/takeNameParts";
 import { getImageByName } from "Helpers/getImage";
 import { showCurrentProductKeyInBasket } from "Helpers/showCurrentProductKeyInBasket";
-import { changeBasketQuantity } from "Helpers/basket/changeBasketQuantitySlicer";
+import {
+  increment,
+  deleteProduct,
+  decrement,
+} from "Helpers/basket/changeBasketQuantitySlicer";
 
 const ListOfProducts = ({ goods }) => {
   const dispatch = useDispatch();
@@ -26,10 +30,9 @@ const ListOfProducts = ({ goods }) => {
           <ProductCard
             key={product.id}
             product={extendedProduct}
-            addToCart={(e, description) => {
-              e.preventDefault();
-              dispatch(changeBasketQuantity({ product, description }));
-            }}
+            incrementBasket={() => dispatch(increment({ product }))}
+            decrementBasket={() => dispatch(decrement({ product }))}
+            deleteProductBasket={() => dispatch(deleteProduct({ product }))}
           />
         );
       })}
