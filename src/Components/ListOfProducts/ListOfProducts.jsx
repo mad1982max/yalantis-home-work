@@ -1,14 +1,14 @@
-import { useContext } from "react";
-import { useFirstAddTocart } from "Helpers/changeQuantityInCart";
+import { useSelector, useDispatch } from "react-redux";
+import { basketSelector } from "Helpers/basket/selectors";
 import ProductCard from "Components/ProductCard/ProductCard";
-import { basketCTX } from "Helpers/basket/context";
 import { nameParser } from "Helpers/takeNameParts";
 import { getImageByName } from "Helpers/getImage";
 import { showCurrentProductKeyInBasket } from "Helpers/showCurrentProductKeyInBasket";
+import { changeBasketQuantity } from "Helpers/basket/changeBasketQuantitySlicer";
 
 const ListOfProducts = ({ goods }) => {
-  const { basket } = useContext(basketCTX);
-  const { adderFirstFn } = useFirstAddTocart();
+  const dispatch = useDispatch();
+  const basket = useSelector(basketSelector);
 
   return (
     <div className="list-of-goods">
@@ -20,15 +20,16 @@ const ListOfProducts = ({ goods }) => {
           basket,
           "quantity"
         );
+        const extendedProduct = { ...product, imgSrc, quantity };
 
         return (
           <ProductCard
             key={product.id}
-            {...product}
-            origin={product.origin}
-            imgSrc={imgSrc}
-            quantity={quantity}
-            addToCart={(e) => adderFirstFn(e, product)}
+            product={extendedProduct}
+            addToCart={(e, description) => {
+              e.preventDefault();
+              dispatch(changeBasketQuantity({ product, description }));
+            }}
           />
         );
       })}
