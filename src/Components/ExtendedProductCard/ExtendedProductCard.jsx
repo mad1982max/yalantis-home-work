@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { useFirstAddTocart } from "Helpers/changeQuantityInCart";
 import ProductCard from "Components/ProductCard/ProductCard";
-import basketCTX from "Helpers/basket/context";
-import defineDate from "Helpers/defineDate";
-import nameParser from "Helpers/takeNameParts";
-import getImageByName from "Helpers/getImage";
-import showCurrentProductKeyInBasket from "Helpers/showCurrentProductKeyInBasket";
+import { basketCTX } from "Helpers/basket/context";
+import { defineDate } from "Helpers/defineDate";
+import { nameParser } from "Helpers/takeNameParts";
+import { getImageByName } from "Helpers/getImage";
+import { showCurrentProductKeyInBasket } from "Helpers/showCurrentProductKeyInBasket";
 import "Components/ExtendedProductCard/extendedProductCard.css";
 
 const ExtendedProductCardFn = (Card) => {

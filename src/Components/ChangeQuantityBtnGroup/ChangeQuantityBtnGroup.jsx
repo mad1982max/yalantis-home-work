@@ -1,7 +1,7 @@
 import { useChangeQuantityFn } from "Helpers/changeQuantityInCart";
-import resycleBinIco from "Helpers/img/ico/recycle-bin.svg";
-import minus from "Helpers/img/ico/minus.svg";
-import plus from "Helpers/img/ico/plus.svg";
+import resycleBinIco from "Assets/img/ico/recycle-bin.svg";
+import minus from "Assets/img/ico/minus.svg";
+import plus from "Assets/img/ico/plus.svg";
 import "Components/ChangeQuantityBtnGroup/changeQuantityBtnGroup.css";
 
 const ChangeQuantityBtnGroup = ({ id }) => {

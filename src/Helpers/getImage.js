@@ -1,6 +1,6 @@
-import { dummyImgName, defaultImgExt } from "Helpers/config";
+import { dummyImgName, defaultImgExt } from "Constants/config";
 
-const images = require.context("Helpers/img/cardImg", false);
+const images = require.context("Assets/img/cardImg", false);
 
 const getImageByName = (name) => {
   let currentImage;
@@ -12,4 +12,4 @@ const getImageByName = (name) => {
   return currentImage.default;
 };
 
-export default getImageByName;
+export { getImageByName };

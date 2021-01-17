@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { url, productsPerPage } from "Helpers/config";
+import { url, productsPerPage } from "Constants/config";
 
 const useFetchedData = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,4 +24,4 @@ const useFetchedData = () => {
   }, [setAllGoods, history]);
   return { allGoods, setAllGoods, isLoading };
 };
-export default useFetchedData;
+export { useFetchedData };

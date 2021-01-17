@@ -1,5 +1,5 @@
 import { useState } from "react";
-import basketCTX from "Helpers/basket/context";
+import { basketCTX } from "Helpers/basket/context";
 
 const BasketProvider = ({ children }) => {
   const [basket, setBasket] = useState([]);

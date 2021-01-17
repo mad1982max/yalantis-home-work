@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import basketCTX from "Helpers/basket/context";
-import { question } from "Helpers/config";
+import { basketCTX } from "Helpers/basket/context";
+import { question } from "Constants/config";
 
 const useActionForAllBasket = () => {
   const { setBasket } = useContext(basketCTX);
@@ -16,4 +16,4 @@ const useActionForAllBasket = () => {
   return { buyAll, deleteAll };
 };
 
-export default useActionForAllBasket;
+export { useActionForAllBasket };

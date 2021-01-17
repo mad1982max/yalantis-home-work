@@ -6,4 +6,4 @@ const basketTotal = {
   lineSum: (product) => product.quantity * product.price,
 };
 
-export default basketTotal;
+export { basketTotal };

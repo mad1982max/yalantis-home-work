@@ -1,4 +1,4 @@
-import { materialOrder, typeOrder } from "Helpers/config";
+import { materialOrder, typeOrder } from "Constants/config";
 
 const nameParser = (fullName) => {
   const material = fullName.split(" ")[materialOrder].toLowerCase();
@@ -6,4 +6,4 @@ const nameParser = (fullName) => {
   return { material, type };
 };
 
-export default nameParser;
+export { nameParser };

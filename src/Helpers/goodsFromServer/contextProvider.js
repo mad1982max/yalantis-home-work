@@ -1,5 +1,5 @@
-import fetchedDataCTX from "Helpers/goodsFromServer/context";
-import useFetchedData from "Helpers/goodsFromServer/customHook";
+import { fetchedDataCTX } from "Helpers/goodsFromServer/context";
+import { useFetchedData } from "Helpers/goodsFromServer/customHook";
 
 const GoodsFromServerProvider = ({ children }) => {
   const { allGoods, setAllGoods, isLoading } = useFetchedData();

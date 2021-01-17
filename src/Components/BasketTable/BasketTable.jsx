@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import BasketTableLine from "Components/BasketTableLine/BasketTableLine";
-import basketCTX from "Helpers/basket/context";
-import nameParser from "Helpers/takeNameParts";
-import basketTotal from "Helpers/findBasketTotals";
+import { basketCTX } from "Helpers/basket/context";
+import { nameParser } from "Helpers/takeNameParts";
+import { basketTotal } from "Helpers/findBasketTotals";
 import "Components/BasketTable/basketTable.css";
 
 const BasketTable = ({ goToProduct }) => {

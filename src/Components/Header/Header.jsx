@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import HeaderBasketWidget from "Components/HeaderBasketWidget/HeaderBasketWidget";
-import { pathWithoutBasketWidget } from "Helpers/config";
-import logo from "Helpers/img/logo.png";
+import { pathWithoutBasketWidget } from "Constants/config";
+import logo from "Assets/img/logo.png";
 import "Components/Header/header.css";
 
 const Header = () => {

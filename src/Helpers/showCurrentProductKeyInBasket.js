@@ -4,4 +4,4 @@ const showCurrentProductKeyInBasket = (id, basketArray, keyToShow) => {
   return 0;
 };
 
-export default showCurrentProductKeyInBasket;
+export { showCurrentProductKeyInBasket };
