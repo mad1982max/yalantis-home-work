@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 import Loader from "Components/Loader/Loader";
 import ExtendedProductCard from "Components/ExtendedProductCard/ExtendedProductCard";
 import { useFetchedSingleData } from "Helpers/singleProductFromServer/customHook";
-import "Components/SingleProductPage/singleProductPage.css";
+import "Containers/SingleProductPage/singleProductPage.css";
 
 const SingleProductPage = (props) => {
   const id = props.match.params.id;

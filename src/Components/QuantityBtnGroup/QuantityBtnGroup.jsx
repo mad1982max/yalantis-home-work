@@ -1,7 +1,7 @@
 import resycleBinIco from "Assets/img/ico/recycle-bin.svg";
 import minus from "Assets/img/ico/minus.svg";
 import plus from "Assets/img/ico/plus.svg";
-import "Components/ChangeQuantityBtnGroup/changeQuantityBtnGroup.css";
+import "Components/QuantityBtnGroup/quantityBtnGroup.css";
 
 const ChangeQuantityBtnGroup = ({
   product,

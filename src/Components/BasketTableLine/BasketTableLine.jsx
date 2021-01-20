@@ -1,4 +1,4 @@
-import ChangeQuantityBtnGroup from "Components/ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
+import ChangeQuantityBtnGroup from "Components/QuantityBtnGroup/QuantityBtnGroup";
 
 const BasketTableLine = (props) => (
   <tr onClick={() => props.goToProduct(props.id)}>

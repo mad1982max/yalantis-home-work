@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { fetchedDataCTX } from "Helpers/goodsFromServer/context";
 import ListOfProducts from "Components/ListOfProducts/ListOfProducts";
 import Loader from "Components/Loader/Loader";
-import "Components/MainPage/allGoodsPage.css";
+import "Containers/MainPage/allGoodsPage.css";
 
 const AllGoodsPage = () => {
   const { allGoods, isLoading } = useContext(fetchedDataCTX);

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ChangeQuantityBtnGroup from "Components/ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
+import QuantityBtnGroup from "Components/QuantityBtnGroup/QuantityBtnGroup";
 import "Components/ProductCard/productCard.css";
 
 const ProductCard = ({
@@ -21,7 +21,7 @@ const ProductCard = ({
             <div className="product-price">$ {product.price}</div>
 
             <div className="basket-group">
-              <ChangeQuantityBtnGroup
+              <QuantityBtnGroup
                 product={product}
                 incrementBasket={incrementBasket}
                 decrementBasket={decrementBasket}
