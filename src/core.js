@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import basketQuantuty from "Helpers/basket/changeBasketQuantitySlicer";
+import basketQuantuty from "Bus/Slicers/basketSlicer";
 
 const store = configureStore({ reducer: basketQuantuty });
 

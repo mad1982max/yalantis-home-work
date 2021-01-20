@@ -1,18 +1,12 @@
-import { useSelector, useDispatch } from "react-redux";
-import { basketSelector } from "Helpers/basket/selectors";
+import { useSelector } from "react-redux";
 import ProductCard from "Components/ProductCard/ProductCard";
-import { nameParser } from "Helpers/takeNameParts";
-import { getImageByName } from "Helpers/getImage";
-import { showCurrentProductKeyInBasket } from "Helpers/showCurrentProductKeyInBasket";
-import {
-  increment,
-  deleteProduct,
-  decrement,
-} from "Helpers/basket/changeBasketQuantitySlicer";
+import { basket } from "Bus/Selectors/selectors";
+import { nameParser } from "Bus/Helpers/takeNameParts";
+import { getImageByName } from "Bus/Helpers/getImage";
+import { showCurrentProductKeyInBasket } from "Bus/Helpers/showCurrentProductKeyInBasket";
 
 const ListOfProducts = ({ goods }) => {
-  const dispatch = useDispatch();
-  const basket = useSelector(basketSelector);
+  const goodsInBasket = useSelector(basket);
 
   return (
     <div className="list-of-goods">
@@ -21,20 +15,12 @@ const ListOfProducts = ({ goods }) => {
         const imgSrc = getImageByName(type);
         const quantity = showCurrentProductKeyInBasket(
           product.id,
-          basket,
+          goodsInBasket,
           "quantity"
         );
         const extendedProduct = { ...product, imgSrc, quantity };
 
-        return (
-          <ProductCard
-            key={product.id}
-            product={extendedProduct}
-            incrementBasket={() => dispatch(increment({ product }))}
-            decrementBasket={() => dispatch(decrement({ product }))}
-            deleteProductBasket={() => dispatch(deleteProduct({ product }))}
-          />
-        );
+        return <ProductCard key={product.id} product={extendedProduct} />;
       })}
     </div>
   );

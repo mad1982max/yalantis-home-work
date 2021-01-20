@@ -1,20 +1,24 @@
-import ChangeQuantityBtnGroup from "Components/QuantityBtnGroup/QuantityBtnGroup";
+import QuantityBtnGroupContainer from "Containers/QuantityBtnGroupContainer/QuantityBtnGroupContainer";
 
-const BasketTableLine = (props) => (
-  <tr onClick={() => props.goToProduct(props.id)}>
-    <td>{props.counter}</td>
-    <td>{props.type}</td>
-    <td>{props.name}</td>
-    <td>{props.origin}</td>
-    <td>{props.material}</td>
+const BasketTableLine = ({
+  product,
+  counter,
+  goToProduct,
+  totalSumByProduct,
+}) => (
+  <tr onClick={() => goToProduct(product.id)}>
+    <td>{counter}</td>
+    <td>{product.type}</td>
+    <td>{product.name}</td>
+    <td>{product.origin}</td>
+    <td>{product.material}</td>
     <td>
       <div className="quantity-changer">
-        <ChangeQuantityBtnGroup id={props.id} />
-        <div className="quantity">{props.quantity}</div>
+        <QuantityBtnGroupContainer product={product} />
       </div>
     </td>
-    <td>{props.price}</td>
-    <td>{props.totalSumByProduct}</td>
+    <td>{product.price}</td>
+    <td>{totalSumByProduct}</td>
   </tr>
 );
 

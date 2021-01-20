@@ -3,6 +3,14 @@
   justify-content: center;
   align-items: center;
   border-radius: 4px;
+  background: rgba(201, 202, 202, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
+  border-radius: 10px;
+}
+
+.replacer-add-to-cart-btn {
+  display: flex;
+  justify-content: space-between;
 }
 
 .basket-btn-action {
@@ -33,4 +41,15 @@
   background: rgb(228, 68, 28);
   color: raliceblue;
   cursor: pointer;
+}
+
+.badge {
+  background: rgb(236, 172, 34);
+  color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 0 0 10px;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
 }

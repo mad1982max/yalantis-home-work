@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
-import QuantityBtnGroup from "Components/QuantityBtnGroup/QuantityBtnGroup";
+import QuantityBtnGroupContainer from "Containers/QuantityBtnGroupContainer/QuantityBtnGroupContainer";
 import "Components/ProductCard/productCard.css";
 
-const ProductCard = ({
-  product,
-  incrementBasket,
-  decrementBasket,
-  deleteProductBasket,
-}) => {
+const ProductCard = ({ product }) => {
   return (
     <div className="product-shadow-box">
       <Link to={`/product/${product.id}`}>
@@ -21,12 +16,7 @@ const ProductCard = ({
             <div className="product-price">$ {product.price}</div>
 
             <div className="basket-group">
-              <QuantityBtnGroup
-                product={product}
-                incrementBasket={incrementBasket}
-                decrementBasket={decrementBasket}
-                deleteProductBasket={deleteProductBasket}
-              />
+              <QuantityBtnGroupContainer product={product} />
             </div>
           </div>
         </div>

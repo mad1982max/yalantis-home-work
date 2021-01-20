@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import { basketCTX } from "Helpers/basket/context";
+// import { useContext } from "react";
+// import { basketCTX } from "Helpers_/basket/context";
 import { question } from "Constants/config";
 
 const useActionForAllBasket = () => {
-  const { setBasket } = useContext(basketCTX);
+  // const { setBasket } = useContext(basketCTX);
 
   const buyAll = () => {
     console.log("--Buying are Not implemented yet--");
@@ -11,7 +11,7 @@ const useActionForAllBasket = () => {
 
   const deleteAll = () => {
     const isConfirmed = window.confirm(question);
-    if (isConfirmed) setBasket([]);
+    // if (isConfirmed) setBasket([]);
   };
   return { buyAll, deleteAll };
 };

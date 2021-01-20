@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const basketQuantuty = createSlice({
-  name: "basketQuantuty",
+export const basket = createSlice({
+  name: "basket",
   initialState: [],
   reducers: {
     increment(state, action) {
@@ -43,6 +43,6 @@ export const basketQuantuty = createSlice({
   },
 });
 
-export const { increment, decrement, deleteProduct } = basketQuantuty.actions;
+export const { increment, decrement, deleteProduct } = basket.actions;
 
-export default basketQuantuty.reducer;
+export default basket.reducer;

@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import {
   totalSumBasketSelector,
   totalQuantityBasketSelector,
-} from "Helpers/basket/selectors";
+} from "Bus/Selectors/selectors";
 import "Components/HeaderBasketWidget/headerBasketWidget.css";
 
 const HeaderBasketWidget = () => {

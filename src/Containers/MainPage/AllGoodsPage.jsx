@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { fetchedDataCTX } from "Helpers/goodsFromServer/context";
+import { fetchedDataCTX } from "Helpers_/goodsFromServer/context";
 import ListOfProducts from "Components/ListOfProducts/ListOfProducts";
 import Loader from "Components/Loader/Loader";
 import "Containers/MainPage/allGoodsPage.css";
