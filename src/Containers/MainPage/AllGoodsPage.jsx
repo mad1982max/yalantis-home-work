@@ -1,16 +1,15 @@
-import { useContext } from "react";
-import { fetchedDataCTX } from "Helpers_/goodsFromServer/context";
+import { useFetchedData } from "Bus/Hooks/allProductsServerHook";
 import ListOfProducts from "Components/ListOfProducts/ListOfProducts";
 import Loader from "Components/Loader/Loader";
 import "Containers/MainPage/allGoodsPage.css";
 
 const AllGoodsPage = () => {
-  const { allGoods, isLoading } = useContext(fetchedDataCTX);
+  const { allProductsAPI, isLoading } = useFetchedData();
 
   return (
     <>
       <div className="main-header-inList">List of goods:</div>
-      {isLoading ? <Loader /> : <ListOfProducts goods={allGoods} />}
+      {isLoading ? <Loader /> : <ListOfProducts goods={allProductsAPI} />}
     </>
   );
 };

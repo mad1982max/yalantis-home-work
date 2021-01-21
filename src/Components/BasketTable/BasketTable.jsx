@@ -20,8 +20,8 @@ const BasketTable = ({ goToProduct }) => {
               <th>Origin</th>
               <th>Material</th>
               <th>Quantity</th>
-              <th>Price, $</th>
-              <th>TOTAL, $</th>
+              <th>Price</th>
+              <th>TOTAL</th>
             </tr>
           </thead>
           <tbody>

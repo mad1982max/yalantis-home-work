@@ -25,7 +25,7 @@ const useFetchedSingleData = (id) => {
         const msg = `${error.name}: ${error.message}`;
         history.push({ pathname: "/error", state: msg });
       });
-  }, [id, history]);
+  }, [id, history, dispatch]);
 
   return { currentProduct, isLoading };
 };
