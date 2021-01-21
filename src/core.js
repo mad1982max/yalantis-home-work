@@ -1,6 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import basketQuantuty from "Bus/Slicers/basketSlicer";
+import basketQuantity from "Bus/Slicers/basketSlicer";
+import singleProduct from "Bus/Slicers/singleProductSlicer";
 
-const store = configureStore({ reducer: basketQuantuty });
+const store = configureStore({
+  reducer: { basket: basketQuantity, singleProduct },
+});
 
 export { store };

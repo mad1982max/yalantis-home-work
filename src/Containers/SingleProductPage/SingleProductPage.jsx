@@ -1,13 +1,15 @@
 import { useHistory } from "react-router-dom";
+
 import Loader from "Components/Loader/Loader";
 import ExtendedProductCard from "Components/ExtendedProductCard/ExtendedProductCard";
-import { useFetchedSingleData } from "Helpers_/singleProductFromServer/customHook";
+import { useFetchedSingleData } from "Bus/Hooks/singleProductServerHook";
+
 import "Containers/SingleProductPage/singleProductPage.css";
 
 const SingleProductPage = (props) => {
   const id = props.match.params.id;
 
-  const { product, isLoading } = useFetchedSingleData(id);
+  const { currentProduct, isLoading } = useFetchedSingleData(id);
   const history = useHistory();
 
   const goTo = (path) => {
@@ -18,7 +20,11 @@ const SingleProductPage = (props) => {
     <>
       <div className="product-header">Product:</div>
       <div className="product-page">
-        {isLoading ? <Loader /> : <ExtendedProductCard product={product} />}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <ExtendedProductCard product={currentProduct} />
+        )}
       </div>
 
       <div className="basket-btn-group">

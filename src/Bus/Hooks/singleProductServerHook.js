@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { setSingleProduct } from "Bus/Slicers/singleProductSlicer";
+import { singleProduct } from "Bus/Selectors/singleProductSelector";
 import axios from "axios";
 import { url } from "Constants/config";
 
 const useFetchedSingleData = (id) => {
-  const [product, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const currentProduct = useSelector(singleProduct);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios
       .get(`${url}/${id}`)
       .then((result) => {
         const product = result.data;
-        setProduct(product);
+        dispatch(setSingleProduct({ product }));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -21,8 +25,8 @@ const useFetchedSingleData = (id) => {
         const msg = `${error.name}: ${error.message}`;
         history.push({ pathname: "/error", state: msg });
       });
-  }, [id, setProduct, history]);
+  }, [id, history]);
 
-  return { product, setProduct, isLoading };
+  return { currentProduct, isLoading };
 };
 export { useFetchedSingleData };
