@@ -1,6 +1,7 @@
-import { useFetchedData } from "Bus/Hooks/allProductsServerHook";
+import { useFetchedData } from "Bus/Hooks/productsHook";
 import ListOfProducts from "Components/ListOfProducts/ListOfProducts";
 import Loader from "Components/Loader/Loader";
+import SearchRow from "Components/Search/SearchRow";
 import "Containers/MainPage/allGoodsPage.css";
 
 const AllGoodsPage = () => {
@@ -8,8 +9,10 @@ const AllGoodsPage = () => {
 
   return (
     <>
-      <div className="main-header-inList">List of goods:</div>
-      {isLoading ? <Loader /> : <ListOfProducts goods={allProductsAPI} />}
+      <div className="main-wrapper">
+        <SearchRow />
+        {isLoading ? <Loader /> : <ListOfProducts goods={allProductsAPI} />}
+      </div>
     </>
   );
 };

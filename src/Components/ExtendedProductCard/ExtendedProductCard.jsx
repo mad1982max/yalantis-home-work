@@ -4,7 +4,7 @@ import { defineDate } from "Bus/Helpers/defineDate";
 import { nameParser } from "Bus/Helpers/takeNameParts";
 import { getImageByName } from "Bus/Helpers/getImage";
 import { showCurrentProductKeyInBasket } from "Bus/Helpers/showCurrentProductKeyInBasket";
-import { basket } from "Bus/Selectors/selectors";
+import { basket } from "Bus/Selectors/basketSelector";
 import "Components/ExtendedProductCard/extendedProductCard.css";
 
 const ExtendedProductCardFn = (Card) => {

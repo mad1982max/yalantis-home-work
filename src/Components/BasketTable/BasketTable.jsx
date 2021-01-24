@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import BasketTableLine from "Components/BasketTableLine/BasketTableLine";
 import { nameParser } from "Bus/Helpers/takeNameParts";
 import { basketTotal } from "Bus/Helpers/findBasketTotals";
-import { basket } from "Bus/Selectors/selectors";
+import { basket } from "Bus/Selectors/basketSelector";
 import "Components/BasketTable/basketTable.css";
 
 const BasketTable = ({ goToProduct }) => {

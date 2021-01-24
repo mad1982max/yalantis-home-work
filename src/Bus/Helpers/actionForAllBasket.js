@@ -1,17 +1,16 @@
-// import { useContext } from "react";
-// import { basketCTX } from "Helpers_/basket/context";
+import { useDispatch } from "react-redux";
+import { deleteBasket } from "Bus/Slicers/basketSlicer";
 import { question } from "Constants/config";
 
 const useActionForAllBasket = () => {
-  // const { setBasket } = useContext(basketCTX);
-
+  const dispatch = useDispatch();
   const buyAll = () => {
     console.log("--Buying are Not implemented yet--");
   };
 
   const deleteAll = () => {
     const isConfirmed = window.confirm(question);
-    // if (isConfirmed) setBasket([]);
+    if (isConfirmed) dispatch(deleteBasket());
   };
   return { buyAll, deleteAll };
 };

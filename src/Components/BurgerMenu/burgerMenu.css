@@ -1,0 +1,10 @@
+.portal {
+  position: absolute;
+  background: rgb(228, 74, 74);
+  top: 160px;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  color: aliceblue;
+  font-size: 16px;
+}

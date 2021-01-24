@@ -1,0 +1,40 @@
+.to-page-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.prev-next-page,
+.perPageBtn {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  margin: 5px;
+}
+
+.perPageBtn {
+  margin: 2px;
+}
+
+.perPageBtn:last-of-type {
+  margin-right: 10px;
+}
+
+.prev-next-page img {
+  box-shadow: none;
+}
+
+.currPage {
+  width: 20px;
+  font-size: 20px;
+}
+
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.current-per-page {
+  background: rgb(44, 41, 216);
+  color: white;
+}

@@ -1,0 +1,32 @@
+.filterMenu {
+  padding: 10px;
+}
+
+.hideMenu {
+  width: 20px;
+  background: rgb(203, 206, 205);
+  border: none;
+  padding: 0;
+}
+
+.filter-header-wrapper {
+  background: rgb(203, 206, 205);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-header-wrapper > * {
+  padding: 10px;
+}
+
+.filter-header-wrapper input {
+  border: none;
+  border-radius: 5px;
+}
+
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

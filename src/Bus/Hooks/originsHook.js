@@ -1,23 +1,23 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setSingleProduct } from "Bus/Slicers/singleProductSlicer";
-import { singleProduct } from "Bus/Selectors/singleProductSelector";
-import axios from "axios";
-import { url } from "Constants/config";
+import { setAllOrigins } from "Bus/Slicers/originsSlicer";
+import { originArr } from "Bus/Selectors/originsSelector";
+import { urlOrigins } from "Constants/config";
 
-const useFetchedSingleData = (id) => {
+const useFetchedOrigins = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const currentProduct = useSelector(singleProduct);
+  const origins = useSelector(originArr);
   const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
     axios
-      .get(`${url}/${id}`)
+      .get(urlOrigins)
       .then((result) => {
-        const product = result.data;
-        dispatch(setSingleProduct({ product }));
+        const origins = result.data.items;
+        dispatch(setAllOrigins({ origins }));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -25,8 +25,8 @@ const useFetchedSingleData = (id) => {
         const msg = `${error.name}: ${error.message}`;
         history.push({ pathname: "/error", state: msg });
       });
-  }, [id, history, dispatch]);
+  }, [history, dispatch]);
 
-  return { currentProduct, isLoading };
+  return { origins, isLoading };
 };
-export { useFetchedSingleData };
+export { useFetchedOrigins };

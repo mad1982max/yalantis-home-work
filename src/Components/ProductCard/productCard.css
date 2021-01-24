@@ -59,13 +59,13 @@ a {
   height: 50px;
 }
 
-@media (min-width: 560px) {
+@media (min-width: 750px) {
   .product-shadow-box {
     width: 50%;
   }
 }
 
-@media (min-width: 560px) and (min-width: 750px) {
+@media (min-width: 560px) and (min-width: 1200px) {
   .product-shadow-box {
     width: 33%;
   }

@@ -40,9 +40,18 @@ export const basket = createSlice({
       const { product } = action.payload;
       return state.filter((item) => item.id !== product.id);
     },
+
+    deleteBasket(state, action) {
+      return [];
+    },
   },
 });
 
-export const { increment, decrement, deleteProduct } = basket.actions;
+export const {
+  increment,
+  decrement,
+  deleteProduct,
+  deleteBasket,
+} = basket.actions;
 
 export default basket.reducer;

@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { useActionForAllBasket } from "Bus/Helpers/actionForAllBasket";
-import { basket } from "Bus/Selectors/selectors";
-import "Components/BasketBtnActionForAll/basketBtnActionForAll.css";
+import { basket } from "Bus/Selectors/basketSelector";
 
 const BasketBtnActionForAll = () => {
   const goodsInBasket = useSelector(basket);

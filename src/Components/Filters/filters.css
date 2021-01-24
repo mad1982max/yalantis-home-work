@@ -1,0 +1,51 @@
+.filter-wrapper {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.origin-filter-wrapper {
+  width: 300px;
+}
+
+.filter-wrapper > * {
+  margin: 5px;
+}
+
+.filter-name {
+  padding: 5px;
+}
+
+.price {
+  width: 35px;
+}
+
+.price-filter-wrapper {
+  display: flex;
+}
+
+.filter-wrapper button,
+.min-max-wrapper input,
+.perPage-filter-wrapper input {
+  outline: none;
+  border: none;
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.min-max-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+label {
+  margin: 5px;
+}
+
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

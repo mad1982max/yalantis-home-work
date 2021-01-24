@@ -10,3 +10,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+button {
+  border: none;
+  border-radius: 4px;
+}
+
+button:disabled {
+  background: rgb(172, 170, 170);
+  cursor: not-allowed;
+  transform: none;
+}

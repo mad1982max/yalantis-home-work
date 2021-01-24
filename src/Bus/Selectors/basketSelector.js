@@ -14,7 +14,3 @@ export const totalQuantityBasketSelector = () =>
     .basket.reduce((collector, item) => collector + item.quantity, 0);
 
 export const basket = () => store.getState().basket;
-
-export const basketSelector = () => store.getState().basket;
-
-export const basketLength = () => store.getState().basket.length;
