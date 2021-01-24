@@ -2,14 +2,29 @@
   padding: 5px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.rest-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 760px) {
+  .filter-wrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .origin-filter-wrapper {
-  width: 300px;
+  width: 360px;
 }
 
-.filter-wrapper > * {
+.rest-filters > * {
   margin: 5px;
 }
 
@@ -25,7 +40,7 @@
   display: flex;
 }
 
-.filter-wrapper button,
+.rest-filters button,
 .min-max-wrapper input,
 .perPage-filter-wrapper input {
   outline: none;
@@ -38,6 +53,7 @@
 .min-max-wrapper {
   display: flex;
   align-items: center;
+  margin: 0 15px;
 }
 
 label {

@@ -1,5 +1,6 @@
 .filterMenu {
   padding: 10px;
+  display: none;
 }
 
 .hideMenu {
@@ -12,8 +13,18 @@
 .filter-header-wrapper {
   background: rgb(203, 206, 205);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap-reverse;
+}
+
+@media (min-width: 1000px) {
+  .filter-header-wrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .filter-header-wrapper > * {

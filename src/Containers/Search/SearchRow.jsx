@@ -12,7 +12,7 @@ import { setFilter } from "Bus/Slicers/filtersSlicer";
 import { useFetchedOrigins } from "Bus/Hooks/originsHook";
 import { perPageVars } from "Constants/config";
 import menuIco from "Assets/img/ico/menu.png";
-import "Components/Search/searchRow.css";
+import "Containers/Search/searchRow.css";
 
 const SearchRow = () => {
   const { origins } = useFetchedOrigins();

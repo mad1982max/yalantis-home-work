@@ -50,7 +50,7 @@ th {
 .basket-table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  background: rgb(17, 129, 173);
+  background: rgb(15, 114, 153);
   color: white;
 }
 
@@ -58,15 +58,14 @@ th {
   font-weight: bold;
 }
 
-.total {
-  float: right;
-}
-
 .total .quantity {
   background: rgba(228, 68, 28, 0.9);
+  border-radius: 1px;
+  padding: 5px;
 }
 
 .quantity {
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,6 +75,7 @@ th {
   color: #fff;
   border-radius: 50%;
   box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
+  margin: auto;
 }
 
 .sum {

@@ -31,9 +31,3 @@
   box-shadow: none;
   color: rgb(34, 33, 33);
 }
-
-.quantity-changer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}

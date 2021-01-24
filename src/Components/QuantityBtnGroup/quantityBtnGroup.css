@@ -10,7 +10,7 @@
 
 .replacer-add-to-cart-btn {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .basket-btn-action {

@@ -13,9 +13,7 @@ const BasketTableLine = ({
     <td>{product.origin}</td>
     <td>{product.material}</td>
     <td>
-      <div className="quantity-changer">
-        <QuantityBtnGroupContainer product={product} />
-      </div>
+      <QuantityBtnGroupContainer product={product} />
     </td>
     <td>{product.price}</td>
     <td>{totalSumByProduct}</td>
