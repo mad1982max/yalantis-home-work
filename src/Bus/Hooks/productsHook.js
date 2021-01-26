@@ -1,19 +1,21 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { allFilters } from "Bus/Selectors/filtersSelector";
+import { productsAreLoaded } from "Bus/Selectors/pageSelector";
 import { allProducts } from "Bus/Selectors/productsSelector";
 import { setAllProduct } from "Bus/Slicers/productsSlicer";
 import { setFilter } from "Bus/Slicers/filtersSlicer";
+import { setProductsAreLoaded } from "Bus/Slicers/menuSlicer";
 import { stringBuilder } from "Bus/Helpers/requestStringBuilder";
 import { url, defaultRequest } from "Constants/config";
 
 const useFetchedData = () => {
   const filterObj = useSelector(allFilters);
-  const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
   const allProductsAPI = useSelector(allProducts);
+  const areLoaded = useSelector(productsAreLoaded);
   const dispatch = useDispatch();
 
   const sendRequest = (newOptions) => {
@@ -33,10 +35,10 @@ const useFetchedData = () => {
           totalItems,
         };
         dispatch(setFilter(newFilterObj));
-        setIsLoading(false);
+        dispatch(setProductsAreLoaded(true));
       })
       .catch((error) => {
-        setIsLoading(false);
+        dispatch(setProductsAreLoaded(true));
         const msg = `${error.name}: ${error.message}`;
         history.push({ pathname: "/error", state: msg });
       });
@@ -46,6 +48,6 @@ const useFetchedData = () => {
     sendRequest(defaultRequest);
   }, []);
 
-  return { sendRequest, allProductsAPI, isLoading };
+  return { sendRequest, allProductsAPI, areLoaded };
 };
 export { useFetchedData };

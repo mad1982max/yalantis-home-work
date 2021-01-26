@@ -1,16 +1,11 @@
-import { store } from "core";
+import { createSelector } from "reselect";
 
-export const totalSumBasketSelector = () =>
-  store
-    .getState()
-    .basket.reduce(
-      (collector, item) => collector + item.price * item.quantity,
-      0
-    );
+export const basket = (state) => state.basket;
 
-export const totalQuantityBasketSelector = () =>
-  store
-    .getState()
-    .basket.reduce((collector, item) => collector + item.quantity, 0);
+export const totalSumBasketSelector = createSelector(basket, (items) =>
+  items.reduce((collector, item) => collector + item.price * item.quantity, 0)
+);
 
-export const basket = () => store.getState().basket;
+export const totalQuantityBasketSelector = createSelector(basket, (items) =>
+  items.reduce((collector, item) => collector + item.quantity, 0)
+);

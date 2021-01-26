@@ -7,7 +7,7 @@ import "Containers/SingleProductPage/singleProductPage.css";
 const SingleProductPage = (props) => {
   const id = props.match.params.id;
 
-  const { currentProduct, isLoading } = useFetchedSingleData(id);
+  const { currentProduct, areLoaded } = useFetchedSingleData(id);
   const history = useHistory();
 
   const goTo = (path) => {
@@ -18,7 +18,7 @@ const SingleProductPage = (props) => {
     <>
       <div className="product-header">Product:</div>
       <div className="product-page">
-        {isLoading ? (
+        {!areLoaded ? (
           <Loader />
         ) : (
           <ExtendedProductCard product={currentProduct} />

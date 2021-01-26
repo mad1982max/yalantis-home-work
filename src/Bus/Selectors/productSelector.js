@@ -1,3 +1,1 @@
-import { store } from "core";
-
-export const singleProduct = () => store.getState().singleProduct;
+export const singleProduct = (state) => state.singleProduct;
