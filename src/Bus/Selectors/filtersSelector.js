@@ -1,3 +1,1 @@
-import { store } from "core";
-
-export const allFilters = () => store.getState().allFilters;
+export const allFilters = (state) => state.allFilters;

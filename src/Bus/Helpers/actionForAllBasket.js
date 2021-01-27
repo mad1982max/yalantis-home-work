@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { deleteBasket } from "Bus/Slicers/basketSlicer";
-import { question } from "Constants/config";
+import { QUESTION } from "Constants/constants";
 
 const useActionForAllBasket = () => {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const useActionForAllBasket = () => {
   };
 
   const deleteAll = () => {
-    const isConfirmed = window.confirm(question);
+    const isConfirmed = window.confirm(QUESTION);
     if (isConfirmed) dispatch(deleteBasket());
   };
   return { buyAll, deleteAll };

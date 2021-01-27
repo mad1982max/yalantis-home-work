@@ -54,7 +54,9 @@ const Filters = ({
         </div>
 
         <div className="searchBtn">
-          <button onClick={searchFn}>SEARCH</button>
+          <button type="button" onClick={searchFn}>
+            SEARCH
+          </button>
         </div>
       </div>
     </div>

@@ -2,11 +2,17 @@ import { useSelector } from "react-redux";
 import BasketTableLine from "Components/BasketTableLine/BasketTableLine";
 import { nameParser } from "Bus/Helpers/takeNameParts";
 import { basketTotal } from "Bus/Helpers/findBasketTotals";
-import { basket } from "Bus/Selectors/basketSelector";
+import {
+  basket,
+  totalSumBasketSelector,
+  totalQuantityBasketSelector,
+} from "Bus/Selectors/basketSelector";
 import "Components/BasketTable/basketTable.css";
 
 const BasketTable = ({ goToProduct }) => {
   const goodsInBasket = useSelector(basket);
+  const totalSum = useSelector(totalSumBasketSelector);
+  const totalQuantity = useSelector(totalQuantityBasketSelector);
 
   return (
     <>
@@ -47,13 +53,11 @@ const BasketTable = ({ goToProduct }) => {
                 TOTAL
               </td>
               <td className="bold total">
-                <div className="quantity">
-                  {basketTotal.quantity(goodsInBasket)}
-                </div>
+                <div className="quantity">{totalSum}</div>
               </td>
               <td className="bold empty"></td>
               <td className="bold total">
-                <div className="quantity">{basketTotal.sum(goodsInBasket)}</div>
+                <div className="quantity">{totalQuantity}</div>
               </td>
             </tr>
           </tfoot>

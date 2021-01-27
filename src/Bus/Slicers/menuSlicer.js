@@ -5,6 +5,9 @@ export const page = createSlice({
   initialState: {
     menuVisibility: false,
     isFirstLoading: true,
+    productsAreLoaded: false,
+    productIsLoaded: false,
+    originsAreLoaded: false,
   },
   reducers: {
     setVisibility(state, action) {
@@ -13,9 +16,24 @@ export const page = createSlice({
     setFirstLoading(state, action) {
       return { ...state, isFirstLoading: false };
     },
+    setProductsAreLoaded(state, action) {
+      return { ...state, productsAreLoaded: action.payload };
+    },
+    setProductIsLoaded(state, action) {
+      return { ...state, productIsLoaded: action.payload };
+    },
+    setOriginsAreLoaded(state, action) {
+      return { ...state, originsAreLoaded: action.payload };
+    },
   },
 });
 
-export const { setVisibility, setFirstLoading } = page.actions;
+export const {
+  setVisibility,
+  setFirstLoading,
+  setProductsAreLoaded,
+  setProductIsLoaded,
+  setOriginsAreLoaded,
+} = page.actions;
 
 export default page.reducer;

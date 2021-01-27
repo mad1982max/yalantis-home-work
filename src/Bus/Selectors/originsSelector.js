@@ -1,4 +1,1 @@
-import { store } from "core";
-
-export const originArr = () =>
-  store.getState().allOrigins.map((item) => item.value);
+export const originArr = (state) => state.allOrigins.map((item) => item.value);

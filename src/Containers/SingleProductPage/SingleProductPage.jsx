@@ -7,7 +7,7 @@ import "Containers/SingleProductPage/singleProductPage.css";
 const SingleProductPage = (props) => {
   const id = props.match.params.id;
 
-  const { currentProduct, isLoading } = useFetchedSingleData(id);
+  const { currentProduct, areLoaded } = useFetchedSingleData(id);
   const history = useHistory();
 
   const goTo = (path) => {
@@ -18,7 +18,7 @@ const SingleProductPage = (props) => {
     <>
       <div className="product-header">Product:</div>
       <div className="product-page">
-        {isLoading ? (
+        {!areLoaded ? (
           <Loader />
         ) : (
           <ExtendedProductCard product={currentProduct} />
@@ -26,7 +26,7 @@ const SingleProductPage = (props) => {
       </div>
 
       <div className="basket-btn-group">
-        <button onClick={() => goTo("/")} type="button" id="return">
+        <button type="button" onClick={() => goTo("/")} id="return">
           TO MAIN
         </button>
         <button type="button" onClick={() => goTo("/basket")} id="basket">
