@@ -38,6 +38,10 @@ tbody td {
   text-align: center;
 }
 
+th {
+  padding: 6px;
+}
+
 .basket-table tbody tr:hover {
   background-color: rgb(239, 242, 243);
   cursor: pointer;
@@ -46,7 +50,7 @@ tbody td {
 .basket-table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  background: rgb(17, 129, 173);
+  background: rgb(15, 114, 153);
   color: white;
 }
 
@@ -54,15 +58,14 @@ tbody td {
   font-weight: bold;
 }
 
-.total {
-  float: right;
-}
-
 .total .quantity {
   background: rgba(228, 68, 28, 0.9);
+  border-radius: 1px;
+  padding: 5px;
 }
 
 .quantity {
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,6 +75,7 @@ tbody td {
   color: #fff;
   border-radius: 50%;
   box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
+  margin: auto;
 }
 
 .sum {

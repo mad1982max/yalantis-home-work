@@ -1,43 +1,22 @@
 import { Link } from "react-router-dom";
-import ChangeQuantityBtnGroup from "Components/ChangeQuantityBtnGroup/ChangeQuantityBtnGroup";
+import QuantityBtnGroupContainer from "Containers/QuantityBtnGroupContainer/QuantityBtnGroupContainer";
 import "Components/ProductCard/productCard.css";
 
-const ProductCard = ({
-  id,
-  name,
-  origin,
-  price,
-  imgSrc,
-  quantity,
-  addToCart,
-}) => {
+const ProductCard = ({ product }) => {
   return (
     <div className="product-shadow-box">
-      <Link to={`/product/${id}`}>
+      <Link to={`/product/${product.id}`}>
         <div className="product-wrapper">
           <div className="product-img">
-            <img src={imgSrc} alt="dummy img" />
+            <img src={product.imgSrc} alt="dummy img" />
           </div>
-          <div className="product-name">{name}</div>
-          <div className="product-origin">{origin}</div>
+          <div className="product-name">{product.name}</div>
+          <div className="product-origin">{product.origin}</div>
           <div className="basket-wrapper-card">
-            <div className="product-price">$ {price}</div>
+            <div className="product-price">$ {product.price}</div>
 
             <div className="basket-group">
-              {quantity !== 0 ? (
-                <>
-                  <div className="replacer-add-to-cart-btn">
-                    <div className="bg-as-add-to-cart">
-                      <ChangeQuantityBtnGroup id={id} />
-                    </div>
-                    <div className="badge">{quantity}</div>
-                  </div>
-                </>
-              ) : (
-                <button className="add-to-cart_button" onClick={addToCart}>
-                  ADD TO CART
-                </button>
-              )}
+              <QuantityBtnGroupContainer product={product} />
             </div>
           </div>
         </div>

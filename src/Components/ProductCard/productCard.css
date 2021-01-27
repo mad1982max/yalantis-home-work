@@ -59,28 +59,13 @@ a {
   height: 50px;
 }
 
-.add-to-cart_button {
-  border-radius: 10px;
-  border: none;
-  padding: 10px;
-  background: rgb(17, 129, 173);
-  color: aliceblue;
-  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
-}
-
-.add-to-cart_button:hover {
-  background: rgb(228, 68, 28);
-  color: raliceblue;
-  cursor: pointer;
-}
-
-@media (min-width: 560px) {
+@media (min-width: 750px) {
   .product-shadow-box {
     width: 50%;
   }
 }
 
-@media (min-width: 560px) and (min-width: 750px) {
+@media (min-width: 560px) and (min-width: 1200px) {
   .product-shadow-box {
     width: 33%;
   }
@@ -93,34 +78,4 @@ button:focus {
 
 button:active {
   transform: translateY(2px);
-}
-
-.badge {
-  background: rgb(236, 172, 34);
-  color: #fff;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  margin: 0 10px;
-  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
-}
-
-.basket-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.replacer-add-to-cart-btn {
-  display: flex;
-}
-
-.bg-as-add-to-cart {
-  background: rgba(201, 202, 202, 0.3);
-  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

@@ -1,0 +1,67 @@
+.filter-wrapper {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.rest-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 760px) {
+  .filter-wrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.origin-filter-wrapper {
+  width: 360px;
+}
+
+.rest-filters > * {
+  margin: 5px;
+}
+
+.filter-name {
+  padding: 5px;
+}
+
+.price {
+  width: 35px;
+}
+
+.price-filter-wrapper {
+  display: flex;
+}
+
+.rest-filters button,
+.min-max-wrapper input,
+.perPage-filter-wrapper input {
+  outline: none;
+  border: none;
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.min-max-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 0 15px;
+}
+
+label {
+  margin: 5px;
+}
+
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

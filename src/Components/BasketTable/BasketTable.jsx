@@ -1,16 +1,22 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 import BasketTableLine from "Components/BasketTableLine/BasketTableLine";
-import basketCTX from "Helpers/basket/context";
-import nameParser from "Helpers/takeNameParts";
-import basketTotal from "Helpers/findBasketTotals";
+import { nameParser } from "Bus/Helpers/takeNameParts";
+import { basketTotal } from "Bus/Helpers/findBasketTotals";
+import {
+  basket,
+  totalSumBasketSelector,
+  totalQuantityBasketSelector,
+} from "Bus/Selectors/basketSelector";
 import "Components/BasketTable/basketTable.css";
 
 const BasketTable = ({ goToProduct }) => {
-  const { basket } = useContext(basketCTX);
+  const goodsInBasket = useSelector(basket);
+  const totalSum = useSelector(totalSumBasketSelector);
+  const totalQuantity = useSelector(totalQuantityBasketSelector);
 
   return (
     <>
-      {basket.length > 0 ? (
+      {goodsInBasket.length > 0 ? (
         <table className="basket-table">
           <thead>
             <tr>
@@ -20,23 +26,23 @@ const BasketTable = ({ goToProduct }) => {
               <th>Origin</th>
               <th>Material</th>
               <th>Quantity</th>
-              <th>Price, $</th>
-              <th>TOTAL, $</th>
+              <th>Price</th>
+              <th>TOTAL</th>
             </tr>
           </thead>
           <tbody>
-            {basket.map((product, i) => {
+            {goodsInBasket.map((product, i) => {
               const { material, type } = nameParser(product.name);
+              const totalSumByProduct = basketTotal.lineSum(product);
+              const extendedproduct = { ...product, material, type };
 
               return (
                 <BasketTableLine
                   key={product.id}
-                  {...product}
-                  material={material}
-                  type={type}
+                  product={extendedproduct}
                   counter={i + 1}
                   goToProduct={goToProduct}
-                  totalSumByProduct={basketTotal.lineSum(product)}
+                  totalSumByProduct={totalSumByProduct}
                 />
               );
             })}
@@ -47,10 +53,12 @@ const BasketTable = ({ goToProduct }) => {
                 TOTAL
               </td>
               <td className="bold total">
-                <div className="quantity">{basketTotal.quantity(basket)}</div>
+                <div className="quantity">{totalQuantity}</div>
               </td>
               <td className="bold empty"></td>
-              <td className="bold sum">{basketTotal.sum(basket)}</td>
+              <td className="bold total">
+                <div className="quantity">{totalSum}</div>
+              </td>
             </tr>
           </tfoot>
         </table>
