@@ -10,7 +10,7 @@ import { nextPrevBtnAvaliable } from "Bus/Helpers/nextPrevPageAvaliability";
 import { createOptionsForReactSelector } from "Bus/Helpers/reactSelectExtractData";
 import { setFilter } from "Bus/Slicers/filtersSlicer";
 import { useFetchedOrigins } from "Bus/Hooks/originsHook";
-import { perPageVars } from "Constants/config";
+import { PER_PAGE_VARS } from "Constants/constants";
 import menuIco from "Assets/img/ico/menu.png";
 import "Containers/Search/searchRow.css";
 
@@ -22,30 +22,22 @@ const SearchRow = () => {
 
   const { sendRequest } = useFetchedData();
 
-  const menuShow = () => {
-    dispatch(setVisibility());
-  };
+  const menuShow = () => dispatch(setVisibility());
 
   const nextPage = (counter) => {
     let newPage = filterObj.currentPage + counter;
     sendRequest({ ...filterObj, currentPage: newPage });
   };
 
-  const choosePerPage = (number) => {
-    sendRequest({ ...filterObj, perPage: number });
-  };
+  const choosePerPage = (number) =>
+    sendRequest({ ...filterObj, perPage: number, currentPage: 1 });
 
-  const clearFiltersBtn = () => {
+  const clearFiltersBtn = () =>
     dispatch(setFilter({ minPrice: "", maxPrice: "", origin: [] }));
-  };
 
-  const searchFn = () => {
-    sendRequest({ ...filterObj, currentPage: 1 });
-  };
+  const searchFn = () => sendRequest({ ...filterObj, currentPage: 1 });
 
-  const setFilterFn = (obj) => {
-    dispatch(setFilter(obj));
-  };
+  const setFilterFn = (obj) => dispatch(setFilter(obj));
 
   const optionsForSelector = createOptionsForReactSelector(origins);
 
@@ -54,39 +46,37 @@ const SearchRow = () => {
   );
 
   return (
-    <>
-      <div className="filter-header-wrapper">
-        <div className="filterMenu">
-          <button onClick={menuShow} className="hideMenu">
-            <img src={menuIco} alt="menu" />
-          </button>
-        </div>
-        {burgerMenuvisibility && <BurgerMenuPortal />}
-
-        <Filters
-          options={optionsForSelector}
-          currentValue={currentReactSelectorValue || []}
-          clearFilter={clearFiltersBtn}
-          searchFn={searchFn}
-          setFilter={setFilterFn}
-          min={filterObj.minPrice || ""}
-          max={filterObj.maxPrice || ""}
-        />
-
-        <Pagination
-          currentPerPage={filterObj.perPage}
-          choosePerPage={choosePerPage}
-          chooseNextPage={nextPage}
-          currentPage={filterObj.currentPage}
-          nextPrevAvaliable={nextPrevBtnAvaliable(
-            filterObj.currentPage,
-            filterObj.perPage,
-            filterObj.totalItems
-          )}
-          perPageVars={perPageVars}
-        />
+    <div className="filter-header-wrapper">
+      <div className="filterMenu">
+        <button type="button" onClick={menuShow} className="hideMenu">
+          <img src={menuIco} alt="menu" />
+        </button>
       </div>
-    </>
+      {burgerMenuvisibility && <BurgerMenuPortal />}
+
+      <Filters
+        options={optionsForSelector}
+        currentValue={currentReactSelectorValue || []}
+        clearFilter={clearFiltersBtn}
+        searchFn={searchFn}
+        setFilter={setFilterFn}
+        min={filterObj.minPrice || ""}
+        max={filterObj.maxPrice || ""}
+      />
+
+      <Pagination
+        currentPerPage={filterObj.perPage}
+        choosePerPage={choosePerPage}
+        chooseNextPage={nextPage}
+        currentPage={filterObj.currentPage}
+        nextPrevAvaliable={nextPrevBtnAvaliable(
+          filterObj.currentPage,
+          filterObj.perPage,
+          filterObj.totalItems
+        )}
+        perPageVars={PER_PAGE_VARS}
+      />
+    </div>
   );
 };
 

@@ -16,6 +16,7 @@ const ChangeQuantityBtnGroup = ({
           <div className="replacer-add-to-cart-btn">
             <div className="adder-button-group">
               <button
+                type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
@@ -25,6 +26,7 @@ const ChangeQuantityBtnGroup = ({
                 <img src={minus} alt="minus" />
               </button>
               <button
+                type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
@@ -34,6 +36,7 @@ const ChangeQuantityBtnGroup = ({
                 <img src={plus} alt="plus" />
               </button>
               <button
+                type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
@@ -48,6 +51,7 @@ const ChangeQuantityBtnGroup = ({
         </>
       ) : (
         <button
+          type="button"
           className="add-to-cart_button"
           onClick={(e) => {
             e.preventDefault();

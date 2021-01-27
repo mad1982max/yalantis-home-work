@@ -1,5 +1,5 @@
 import moment from "moment";
-import { dateFormat } from "Constants/config";
+import { DATE_FORMAT } from "Constants/constants";
 
-const defineDate = (date) => moment(date).format(dateFormat);
+const defineDate = (date) => moment(date).format(DATE_FORMAT);
 export { defineDate };

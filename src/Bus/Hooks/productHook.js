@@ -6,7 +6,7 @@ import { setSingleProduct } from "Bus/Slicers/productSlicer";
 import { singleProduct } from "Bus/Selectors/productSelector";
 import { productIsLoaded } from "Bus/Selectors/pageSelector";
 import { setProductIsLoaded } from "Bus/Slicers/menuSlicer";
-import { url } from "Constants/config";
+import { URL } from "Constants/constants";
 
 const useFetchedSingleData = (id) => {
   const currentProduct = useSelector(singleProduct);
@@ -16,7 +16,7 @@ const useFetchedSingleData = (id) => {
 
   useEffect(() => {
     axios
-      .get(`${url}/${id}`)
+      .get(`${URL}/${id}`)
       .then((result) => {
         const product = result.data;
         dispatch(setSingleProduct({ product }));

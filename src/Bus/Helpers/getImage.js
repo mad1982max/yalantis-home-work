@@ -1,15 +1,13 @@
-import { dummyImgName, defaultImgExt } from "Constants/config";
+import { DUMMY_IMG, DEFAULT_EXT } from "Constants/constants";
 
 const images = require.context("Assets/img/cardImg", false);
 
 const getImageByName = (name) => {
-  let currentImage;
   try {
-    currentImage = images(`./${name}.${defaultImgExt}`);
+    return images(`./${name}.${DEFAULT_EXT}`).default;
   } catch (e) {
-    currentImage = images(`./${dummyImgName}.${defaultImgExt}`);
+    return images(`./${DUMMY_IMG}.${DEFAULT_EXT}`).default;
   }
-  return currentImage.default;
 };
 
 export { getImageByName };

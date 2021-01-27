@@ -6,7 +6,7 @@ import { setAllOrigins } from "Bus/Slicers/originsSlicer";
 import { originArr } from "Bus/Selectors/originsSelector";
 import { originsAreLoaded } from "Bus/Selectors/pageSelector";
 import { setOriginsAreLoaded } from "Bus/Slicers/menuSlicer";
-import { urlOrigins } from "Constants/config";
+import { URL_ORIGINS } from "Constants/constants";
 
 const useFetchedOrigins = () => {
   const origins = useSelector(originArr);
@@ -16,7 +16,7 @@ const useFetchedOrigins = () => {
 
   useEffect(() => {
     axios
-      .get(urlOrigins)
+      .get(URL_ORIGINS)
       .then((result) => {
         const origins = result.data.items;
         dispatch(setAllOrigins({ origins }));

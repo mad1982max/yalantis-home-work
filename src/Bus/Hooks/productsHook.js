@@ -9,7 +9,7 @@ import { setAllProduct } from "Bus/Slicers/productsSlicer";
 import { setFilter } from "Bus/Slicers/filtersSlicer";
 import { setProductsAreLoaded } from "Bus/Slicers/menuSlicer";
 import { stringBuilder } from "Bus/Helpers/requestStringBuilder";
-import { url, defaultRequest } from "Constants/config";
+import { URL, DEFAULT_REQUEST } from "Constants/constants";
 
 const useFetchedData = () => {
   const filterObj = useSelector(allFilters);
@@ -19,16 +19,16 @@ const useFetchedData = () => {
   const dispatch = useDispatch();
 
   const sendRequest = (newOptions) => {
-    const options = { ...defaultRequest, ...newOptions };
+    const options = { ...DEFAULT_REQUEST, ...newOptions };
     const str = stringBuilder(options);
     axios
-      .get(`${url}?${str}`)
+      .get(`${URL}?${str}`)
       .then((result) => {
         const { items, page, perPage, totalItems } = result.data;
         dispatch(setAllProduct({ goods: items }));
 
         const newFilterObj = {
-          ...defaultRequest,
+          ...DEFAULT_REQUEST,
           ...filterObj,
           currentPage: page,
           perPage,
@@ -45,7 +45,7 @@ const useFetchedData = () => {
   };
 
   useEffect(() => {
-    sendRequest(defaultRequest);
+    sendRequest(DEFAULT_REQUEST);
   }, []);
 
   return { sendRequest, allProductsAPI, areLoaded };

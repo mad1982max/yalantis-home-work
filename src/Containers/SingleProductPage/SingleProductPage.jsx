@@ -26,7 +26,7 @@ const SingleProductPage = (props) => {
       </div>
 
       <div className="basket-btn-group">
-        <button onClick={() => goTo("/")} type="button" id="return">
+        <button type="button" onClick={() => goTo("/")} id="return">
           TO MAIN
         </button>
         <button type="button" onClick={() => goTo("/basket")} id="basket">

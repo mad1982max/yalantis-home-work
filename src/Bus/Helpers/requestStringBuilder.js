@@ -1,6 +1,4 @@
 const stringBuilder = (options) => {
-  console.log("options", options);
-
   let requestString = "";
   if (options.perPage) {
     requestString += `perPage=${options.perPage}&`;

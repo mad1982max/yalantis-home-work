@@ -5,12 +5,12 @@ import {
   totalSumBasketSelector,
   totalQuantityBasketSelector,
 } from "Bus/Selectors/basketSelector";
-import { pathWithoutBasketWidget } from "Constants/config";
+import { EXCLUDE_BASKET_PASS } from "Constants/constants";
 import logo from "Assets/img/logo.png";
 import "Components/Header/header.css";
 
 const Header = () => {
-  const currentPath = useLocation().pathname;
+  const { pathname } = useLocation();
   const quantity = useSelector(totalQuantityBasketSelector);
   const sum = useSelector(totalSumBasketSelector);
 
@@ -18,12 +18,12 @@ const Header = () => {
     <>
       <header className="header">
         <div className="header-logo">
-          <Link to={"/"}>
+          <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
         </div>
-        {currentPath !== pathWithoutBasketWidget && (
-          <Link to={"/basket"}>
+        {pathname !== EXCLUDE_BASKET_PASS && (
+          <Link to="/basket">
             <HeaderBasketWidget sum={sum} quantity={quantity} />
           </Link>
         )}

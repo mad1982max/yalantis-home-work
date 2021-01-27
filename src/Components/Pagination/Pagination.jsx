@@ -30,6 +30,7 @@ const Pagination = ({
 
         <div className="to-page-wrapper">
           <button
+            type="button"
             disabled={!isPrev}
             className="prev-next-page"
             onClick={() => chooseNextPage(-1)}>
@@ -39,6 +40,7 @@ const Pagination = ({
           <div className="currPage">{currentPage}</div>
 
           <button
+            type="button"
             disabled={!isNext}
             className="prev-next-page"
             onClick={() => chooseNextPage(1)}>
