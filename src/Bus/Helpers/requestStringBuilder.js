@@ -1,20 +1,19 @@
 const stringBuilder = (options) => {
-  let requestString = "";
-  if (options.perPage) {
-    requestString += `perPage=${options.perPage}&`;
-  }
-  if (options.origin?.length > 0) {
-    requestString += `origins=${options.origin}&`;
-  }
-  if (options.minPrice) {
-    requestString += `minPrice=${options.minPrice}&`;
-  }
-  if (options.maxPrice) {
-    requestString += `maxPrice=${options.maxPrice}&`;
-  }
-  if (options.currentPage) {
-    requestString += `page=${options.currentPage}&`;
-  }
+  const perPgePart = `perPage=${options.perPage}`;
+  const originPart =
+    options.origin?.length > 0 ? `origins=${options.origin}` : "";
+  const minPricePart = `minPrice=${options.minPrice}`;
+  const maxPricePart = `maxPrice=${options.maxPrice}`;
+  const currPagePart = `page=${options.currentPage}`;
+
+  const requestString = [
+    perPgePart,
+    originPart,
+    minPricePart,
+    maxPricePart,
+    currPagePart,
+  ].join("&");
+
   return requestString;
 };
 
