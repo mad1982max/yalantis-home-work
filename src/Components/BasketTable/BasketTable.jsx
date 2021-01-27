@@ -53,11 +53,11 @@ const BasketTable = ({ goToProduct }) => {
                 TOTAL
               </td>
               <td className="bold total">
-                <div className="quantity">{totalSum}</div>
+                <div className="quantity">{totalQuantity}</div>
               </td>
               <td className="bold empty"></td>
               <td className="bold total">
-                <div className="quantity">{totalQuantity}</div>
+                <div className="quantity">{totalSum}</div>
               </td>
             </tr>
           </tfoot>
