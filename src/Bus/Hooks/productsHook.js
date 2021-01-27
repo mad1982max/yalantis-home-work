@@ -45,7 +45,9 @@ const useFetchedData = () => {
   };
 
   useEffect(() => {
-    sendRequest(DEFAULT_REQUEST);
+    if (allProductsAPI.length === 0) {
+      sendRequest(DEFAULT_REQUEST);
+    }
   }, []);
 
   return { sendRequest, allProductsAPI, areLoaded };
