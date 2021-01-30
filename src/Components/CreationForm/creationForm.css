@@ -1,0 +1,35 @@
+.creationForm {
+  top: 100px;
+  background: rgb(224, 223, 223);
+  width: 500px;
+  position: relative;
+  border-radius: 5px;
+  margin: auto;
+}
+
+input {
+  border: none;
+  width: 70%;
+  height: 30px;
+}
+
+.formik {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error-msg {
+  font-size: 16px;
+  color: red;
+}
+
+label {
+  margin-top: 20px;
+}
+
+.newProductSubmit {
+  margin: 40px 0;
+  font-size: 20px;
+  padding: 10px;
+}

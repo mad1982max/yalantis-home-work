@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import BurgerMenuPortal from "Components/BurgerMenu/BurgerMenu";
+// import BurgerMenuPortal from "Components/BurgerMenu/BurgerMenu";
 import Pagination from "Components/Pagination/Pagination";
 import Filters from "Components/Filters/Filters";
 import { useFetchedData } from "Bus/Hooks/productsHook";
 import { setVisibility } from "Bus/Slicers/menuSlicer";
 import { allFilters } from "Bus/Selectors/filtersSelector";
-import { menuVisibility } from "Bus/Selectors/pageSelector";
+// import { menuVisibility } from "Bus/Selectors/pageSelector";
 import { nextPrevBtnAvaliable } from "Bus/Helpers/nextPrevPageAvaliability";
 import { createOptionsForReactSelector } from "Bus/Helpers/reactSelectExtractData";
 import { setFilter } from "Bus/Slicers/filtersSlicer";
@@ -17,7 +17,7 @@ import "Containers/Search/searchRow.css";
 const SearchRow = () => {
   const { origins } = useFetchedOrigins();
   const filterObj = useSelector(allFilters);
-  const burgerMenuvisibility = useSelector(menuVisibility);
+  // const burgerMenuvisibility = useSelector(menuVisibility);
   const dispatch = useDispatch();
 
   const { sendRequest } = useFetchedData();
@@ -52,7 +52,7 @@ const SearchRow = () => {
           <img src={menuIco} alt="menu" />
         </button>
       </div>
-      {burgerMenuvisibility && <BurgerMenuPortal />}
+      {/* {burgerMenuvisibility && <BurgerMenuPortal />} */}
 
       <Filters
         options={optionsForSelector}

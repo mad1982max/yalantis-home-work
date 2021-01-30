@@ -1,11 +1,15 @@
 import "Components/HeaderBasketWidget/headerBasketWidget.css";
 
-const HeaderBasketWidget = ({ sum, quantity }) => {
+const HeaderBasketWidget = ({ sum, quantity, visibility }) => {
   return (
-    <div className="basket-wrapper">
-      <div className="basket-number">{quantity}</div>
-      <div className="basket-value">{quantity > 0 ? sum + " $" : ""}</div>
-    </div>
+    <>
+      {visibility && (
+        <div className="basket-wrapper">
+          <div className="basket-number">{quantity}</div>
+          {quantity > 0 && <div className="basket-value">{sum}</div>}
+        </div>
+      )}
+    </>
   );
 };
 

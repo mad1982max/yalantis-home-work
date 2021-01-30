@@ -12,6 +12,12 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.widget-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .header-logo {
   width: 150px;
   display: flex;
@@ -23,4 +29,11 @@
 .header-logo a {
   display: flex;
   justify-content: center;
+}
+
+.newProduct {
+  width: 45px;
+  background: none;
+  display: flex;
+  align-items: center;
 }

@@ -14,6 +14,8 @@ const DEFAULT_REQUEST = {
   currentPage: 1,
 };
 const PER_PAGE_VARS = [10, 25, 50];
+const PRIVATE_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6IkJlenJvZG55aSBNYWtzeW0iLCJpYXQiOjE2MTExNzQwNDIsImV4cCI6MTYxNjM1ODA0Mn0.frUwenJ8gtPoXQXvbe9M06m8_vyCHAEBnvY1-h6Yo8k";
 
 export {
   URL,
@@ -27,4 +29,5 @@ export {
   QUESTION,
   DEFAULT_REQUEST,
   PER_PAGE_VARS,
+  PRIVATE_KEY,
 };
