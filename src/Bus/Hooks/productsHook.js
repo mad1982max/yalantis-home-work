@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { historyLib } from "Libs/history";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { allFilters } from "Bus/Selectors/filtersSelector";
@@ -13,7 +13,6 @@ import { URL, DEFAULT_REQUEST } from "Constants/constants";
 
 const useFetchedData = () => {
   const filterObj = useSelector(allFilters);
-  const history = useHistory();
   const allProductsAPI = useSelector(allProducts);
   const areLoaded = useSelector(productsAreLoaded);
   const dispatch = useDispatch();
@@ -40,7 +39,7 @@ const useFetchedData = () => {
       .catch((error) => {
         dispatch(setProductsAreLoaded(true));
         const msg = `${error.name}: ${error.message}`;
-        history.push({ pathname: "/error", state: msg });
+        historyLib.push({ pathname: "/error", state: msg });
       });
   };
 
@@ -48,7 +47,7 @@ const useFetchedData = () => {
     if (allProductsAPI.length === 0) {
       sendRequest(DEFAULT_REQUEST);
     }
-  }, []);
+  }, [allProductsAPI.length]);
 
   return { sendRequest, allProductsAPI, areLoaded };
 };

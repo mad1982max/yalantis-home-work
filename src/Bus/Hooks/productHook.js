@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { historyLib } from "Libs/history";
 import axios from "axios";
 import { setSingleProduct } from "Bus/Slicers/productSlicer";
 import { singleProduct } from "Bus/Selectors/productSelector";
@@ -11,7 +11,6 @@ import { URL } from "Constants/constants";
 const useFetchedSingleData = (id) => {
   const currentProduct = useSelector(singleProduct);
   const areLoaded = useSelector(productIsLoaded);
-  const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,9 +24,9 @@ const useFetchedSingleData = (id) => {
       .catch((error) => {
         dispatch(setProductIsLoaded(true));
         const msg = `${error.name}: ${error.message}`;
-        history.push({ pathname: "/error", state: msg });
+        historyLib.push({ pathname: "/error", state: msg });
       });
-  }, [id, history, dispatch]);
+  }, [id, dispatch]);
 
   return { currentProduct, areLoaded };
 };

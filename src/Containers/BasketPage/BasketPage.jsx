@@ -1,14 +1,14 @@
-import { useHistory } from "react-router-dom";
+import { historyLib } from "Libs/history";
 import BasketBtnActionForAll from "Components/BasketBtnActionForAll/BasketBtnActionForAll";
 import BasketTable from "Components/BasketTable/BasketTable";
 import "Containers/BasketPage/basketPage.css";
 
 const BasketPage = () => {
-  const history = useHistory();
-
-  const returnToMainPage = () => history.push("/");
+  const returnToMainPage = () => {
+    historyLib.push("/");
+  };
   const goToProduct = (id) => {
-    history.push(`/product/${id}`);
+    historyLib.push(`/product/${id}`);
   };
 
   return (

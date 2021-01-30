@@ -1,13 +1,14 @@
 import React from "react";
 import { render } from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
+import { historyLib } from "Libs/history";
 import App from "App.jsx";
 import "normalize.css";
 import "index.css";
 
 render(
-  <BrowserRouter basename="/">
+  <Router history={historyLib} basename="/">
     <App />
-  </BrowserRouter>,
+  </Router>,
   document.getElementById("root")
 );

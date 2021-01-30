@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import HeaderBasketWidget from "Components/HeaderBasketWidget/HeaderBasketWidget";
 import { useSelector } from "react-redux";
+import HeaderBasketWidget from "Components/HeaderBasketWidget/HeaderBasketWidget";
 import {
   totalSumBasketSelector,
   totalQuantityBasketSelector,

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { historyLib } from "Libs/history";
 import { setAllOrigins } from "Bus/Slicers/originsSlicer";
 import { originArr } from "Bus/Selectors/originsSelector";
 import { originsAreLoaded } from "Bus/Selectors/pageSelector";
@@ -11,7 +11,6 @@ import { URL_ORIGINS } from "Constants/constants";
 const useFetchedOrigins = () => {
   const origins = useSelector(originArr);
   const areLoaded = useSelector(originsAreLoaded);
-  const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,9 +24,9 @@ const useFetchedOrigins = () => {
       .catch((error) => {
         dispatch(setOriginsAreLoaded(true));
         const msg = `${error.name}: ${error.message}`;
-        history.push({ pathname: "/error", state: msg });
+        historyLib.push({ pathname: "/error", state: msg });
       });
-  }, [history, dispatch]);
+  }, [dispatch]);
 
   return { origins, areLoaded };
 };
