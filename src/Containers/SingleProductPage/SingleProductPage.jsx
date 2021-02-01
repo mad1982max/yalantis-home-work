@@ -18,7 +18,7 @@ const SingleProductPage = (props) => {
     <>
       <div className="product-header">Product:</div>
       <div className="product-page">
-        {!areLoaded ? (
+        {areLoaded ? (
           <Loader />
         ) : (
           <ExtendedProductCard product={currentProduct} />

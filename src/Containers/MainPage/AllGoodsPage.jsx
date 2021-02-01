@@ -10,7 +10,7 @@ const AllGoodsPage = () => {
   return (
     <div className="main-wrapper">
       <SearchRow />
-      {!areLoaded ? <Loader /> : <ListOfProducts goods={allProductsAPI} />}
+      {areLoaded ? <Loader /> : <ListOfProducts goods={allProductsAPI} />}
     </div>
   );
 };

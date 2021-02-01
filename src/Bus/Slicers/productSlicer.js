@@ -1,16 +1,32 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { getById } from "Bus/API/product";
+
+export const getProductById = createAsyncThunk(
+  "product/getById",
+  async (id) => await getById(id).data
+);
 
 export const singleProduct = createSlice({
   name: "product",
-  initialState: {},
-  reducers: {
-    setSingleProduct(state, action) {
-      const { product } = action.payload;
-      return product;
+  initialState: {
+    loading: "idle",
+    product: "",
+    error: null,
+  },
+  reducers: {},
+  extraReducers: {
+    [getProductById.pending]: (state, action) => {
+      state.loading = "pending";
+    },
+    [getProductById.fulfilled]: (state, action) => {
+      state.loading = "idle";
+      state.product = action.payload;
+    },
+    [getProductById.rejected]: (state, action) => {
+      state.loading = "idle";
+      state.error = action.error;
     },
   },
 });
-
-export const { setSingleProduct } = singleProduct.actions;
 
 export default singleProduct.reducer;
