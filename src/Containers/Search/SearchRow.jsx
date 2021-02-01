@@ -4,11 +4,11 @@ import Pagination from "Components/Pagination/Pagination";
 import Filters from "Components/Filters/Filters";
 import { useFetchedData } from "Bus/Hooks/productsHook";
 import { setVisibility } from "Bus/Slicers/menuSlicer";
-import { allFilters } from "Bus/Selectors/filtersSelector";
+import { requestParams } from "Bus/Selectors/productsSelector";
 // import { menuVisibility } from "Bus/Selectors/pageSelector";
 import { nextPrevBtnAvaliable } from "Bus/Helpers/nextPrevPageAvaliability";
 import { createOptionsForReactSelector } from "Bus/Helpers/reactSelectExtractData";
-import { setFilter } from "Bus/Slicers/filtersSlicer";
+import { setFilter, clearFilter } from "Bus/Slicers/productsSlicer";
 import { useFetchedOrigins } from "Bus/Hooks/originsHook";
 import { PER_PAGE_VARS } from "Constants/constants";
 import menuIco from "Assets/img/ico/menu.png";
@@ -16,13 +16,12 @@ import "Containers/Search/searchRow.css";
 
 const SearchRow = () => {
   const { origins } = useFetchedOrigins();
-  const filterObj = useSelector(allFilters);
-  // const burgerMenuvisibility = useSelector(menuVisibility);
+  const filterObj = useSelector(requestParams);
   const dispatch = useDispatch();
 
   const { sendRequest } = useFetchedData();
 
-  const menuShow = () => dispatch(setVisibility());
+  const showMenu = () => dispatch(setVisibility());
 
   const nextPage = (counter) => {
     let newPage = filterObj.currentPage + counter;
@@ -32,8 +31,10 @@ const SearchRow = () => {
   const choosePerPage = (number) =>
     sendRequest({ ...filterObj, perPage: number, currentPage: 1 });
 
-  const clearFiltersBtn = () =>
-    dispatch(setFilter({ minPrice: "", maxPrice: "", origin: [] }));
+  const clearFiltersBtn = () => {
+    dispatch(clearFilter());
+    sendRequest();
+  };
 
   const searchFn = () => sendRequest({ ...filterObj, currentPage: 1 });
 
@@ -48,7 +49,7 @@ const SearchRow = () => {
   return (
     <div className="filter-header-wrapper">
       <div className="filterMenu">
-        <button type="button" onClick={menuShow} className="hideMenu">
+        <button type="button" onClick={showMenu} className="hideMenu">
           <img src={menuIco} alt="menu" />
         </button>
       </div>

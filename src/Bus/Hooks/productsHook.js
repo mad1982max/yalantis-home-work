@@ -1,40 +1,27 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { allFilters } from "Bus/Selectors/filtersSelector";
 import {
   allProducts,
   allProductsLoading,
-  pageParams,
 } from "Bus/Selectors/productsSelector";
 import { getAllProducts } from "Bus/Slicers/productsSlicer";
-import { setFilter } from "Bus/Slicers/filtersSlicer";
 import { stringBuilder } from "Bus/Helpers/requestStringBuilder";
 import { DEFAULT_REQUEST } from "Constants/constants";
 
 const useFetchedData = () => {
-  const filterObj = useSelector(allFilters);
   const allProductsAPI = useSelector(allProducts);
   const areLoaded = useSelector(allProductsLoading) === "pending";
-  const pageParams_ = useSelector(pageParams);
   const dispatch = useDispatch();
 
-  const sendRequest = (newOptions) => {
+  const sendRequest = (newOptions = DEFAULT_REQUEST) => {
     const options = { ...DEFAULT_REQUEST, ...newOptions };
     const query = stringBuilder(options);
     dispatch(getAllProducts(query));
-
-    const newFilterObj = {
-      ...DEFAULT_REQUEST,
-      ...filterObj,
-      ...pageParams_,
-    };
-
-    dispatch(setFilter(newFilterObj));
   };
 
   useEffect(() => {
     if (allProductsAPI.length === 0) {
-      sendRequest(DEFAULT_REQUEST);
+      sendRequest();
     }
   }, [allProductsAPI.length]);
 

@@ -22,6 +22,9 @@ export const allProducts = createSlice({
     setFilter(state, action) {
       state.filters = { ...state.filters, ...action.payload };
     },
+    clearFilter(state, action) {
+      state.filters = {};
+    },
   },
   extraReducers: {
     [getAllProducts.pending]: (state, action) => {
@@ -40,6 +43,6 @@ export const allProducts = createSlice({
   },
 });
 
-export const { setFilter } = allProducts.actions;
+export const { setFilter, clearFilter } = allProducts.actions;
 
 export default allProducts.reducer;
