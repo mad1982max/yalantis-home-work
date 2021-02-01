@@ -18,7 +18,7 @@ const useFetchedData = () => {
   const pageParams_ = useSelector(pageParams);
   const dispatch = useDispatch();
 
-  const sendRequest = (newOptions = {}) => {
+  const sendRequest = (newOptions) => {
     const options = { ...DEFAULT_REQUEST, ...newOptions };
     const query = stringBuilder(options);
     dispatch(getAllProducts(query));
