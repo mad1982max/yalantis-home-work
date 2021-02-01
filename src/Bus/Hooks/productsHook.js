@@ -21,7 +21,6 @@ const useFetchedData = () => {
   const sendRequest = (newOptions = {}) => {
     const options = { ...DEFAULT_REQUEST, ...newOptions };
     const query = stringBuilder(options);
-    console.log(query);
     dispatch(getAllProducts(query));
 
     const newFilterObj = {
@@ -29,8 +28,6 @@ const useFetchedData = () => {
       ...filterObj,
       ...pageParams_,
     };
-
-    console.log(newFilterObj);
 
     dispatch(setFilter(newFilterObj));
   };

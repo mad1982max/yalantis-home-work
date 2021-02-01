@@ -1,10 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getAll } from "Bus/API/product";
 
-export const getAllProducts = createAsyncThunk(
-  "products/getAll",
-  async (query) => await getAll(query)
-);
+const p = "products/gettAll";
+
+export const getAllProducts = createAsyncThunk(p, async (query) => {
+  let answer = await getAll(query);
+  return answer.data;
+});
 
 export const allProducts = createSlice({
   name: "products",
@@ -20,9 +22,9 @@ export const allProducts = createSlice({
       state.loading = "pending";
     },
     [getAllProducts.fulfilled]: (state, action) => {
-      console.log("--2--", action.payload);
+      console.log("--2--", action);
       state.loading = "idle";
-      const { items, page, perPage, totalItems } = action.payload.data;
+      const { items, page, perPage, totalItems } = action.payload;
       state.products = items;
       state.pageParams = { currentPage: page, perPage, totalItems };
     },

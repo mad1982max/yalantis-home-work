@@ -3,7 +3,11 @@ import { getById } from "Bus/API/product";
 
 export const getProductById = createAsyncThunk(
   "product/getById",
-  async (id) => await getById(id).data
+
+  async (id) => {
+    const answer = await getById(id);
+    return answer.data;
+  }
 );
 
 export const singleProduct = createSlice({

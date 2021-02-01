@@ -9,7 +9,6 @@ const SingleProductPage = (props) => {
 
   const { currentProduct, areLoaded } = useFetchedSingleData(id);
   const history = useHistory();
-
   const goTo = (path) => {
     history.push(path);
   };
