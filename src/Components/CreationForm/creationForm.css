@@ -19,11 +19,6 @@ input {
   align-items: center;
 }
 
-.error-msg {
-  font-size: 16px;
-  color: red;
-}
-
 label {
   margin-top: 20px;
 }

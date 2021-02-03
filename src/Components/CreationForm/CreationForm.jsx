@@ -1,6 +1,8 @@
 import { useFormik } from "formik";
 import { useSelector } from "react-redux";
 import * as Yup from "yup";
+import ErrorMsg from "Components/ErrorMsg/ErrorMsg";
+import Input from "Components/Input/Input";
 import { originArr } from "Bus/Selectors/originsSelector";
 import "Components/CreationForm/creationForm.css";
 
@@ -28,49 +30,47 @@ const CreationForm = () => {
         .required("Required"),
     }),
     onSubmit: (values) => {
-      const object = { ...values, createdOn: new Date() };
-      alert(JSON.stringify(object, null, 2));
+      alert(JSON.stringify(values, null, 2));
     },
   });
 
   return (
     <div className="creationForm">
       <form className="formik" onSubmit={formik.handleSubmit}>
-        <label htmlFor="productName">Name</label>
-        <input
-          id="productName"
+        <Input
+          htmlName="Name"
           name="productName"
+          className="productName"
           type="text"
           onChange={formik.handleChange}
           value={formik.values.name}
         />
-        {formik.errors.productName ? (
-          <div className="error-msg">{formik.errors.productName}</div>
-        ) : null}
-        <label htmlFor="productOrigin">Origin</label>
-        <input
-          id="productOrigin"
-          name="productOrigin"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.name}
-        />
-        {formik.errors.productOrigin ? (
-          <div className="error-msg">{formik.errors.productOrigin}</div>
-        ) : null}
-        <label htmlFor="productPrice">Price</label>
-        <input
-          id="productPrice"
-          name="productPrice"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.name}
-        />
-        {formik.errors.productPrice ? (
-          <div className="error-msg">{formik.errors.productPrice}</div>
-        ) : null}
+        <ErrorMsg msg={formik.errors.productName} />
 
-        <button className="newProductSubmit" type="submit">
+        <Input
+          htmlName="Origin"
+          name="productOrigin"
+          className="productOrigin"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.name}
+        />
+        <ErrorMsg msg={formik.errors.productOrigin} />
+
+        <Input
+          htmlName="Price"
+          name="productPrice"
+          className="productPrice"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.name}
+        />
+        <ErrorMsg msg={formik.errors.productPrice} />
+
+        <button
+          disabled={!(formik.isValid && formik.dirty)}
+          className="newProductSubmit"
+          type="submit">
           Submit
         </button>
       </form>

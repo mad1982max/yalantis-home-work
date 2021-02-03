@@ -9,8 +9,12 @@ const getAll = (query) => {
   return axios.get(`${URL}?${query}`);
 };
 
+const createProduct = (product) => {
+  return axios.post(URL, product);
+};
+
 const getAllOrigins = () => {
   return axios.get(URL_ORIGINS);
 };
 
-export { getById, getAll, getAllOrigins };
+export { getById, getAll, getAllOrigins, createProduct };
