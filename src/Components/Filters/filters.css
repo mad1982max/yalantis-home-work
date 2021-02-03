@@ -36,10 +36,6 @@
   width: 35px;
 }
 
-.price-filter-wrapper {
-  display: flex;
-}
-
 .rest-filters button,
 .min-max-wrapper input,
 .perPage-filter-wrapper input {
@@ -51,9 +47,7 @@
 }
 
 .min-max-wrapper {
-  display: flex;
-  align-items: center;
-  margin: 0 15px;
+  margin-right: 25px;
 }
 
 label {

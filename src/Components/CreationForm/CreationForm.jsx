@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import ErrorMsg from "Components/ErrorMsg/ErrorMsg";
 import Input from "Components/Input/Input";
 import { originArr } from "Bus/Selectors/originsSelector";
+import { MIN_LENGTH_NAME, MAX_LENGTH_NAME } from "Constants/constants";
 import "Components/CreationForm/creationForm.css";
 
 const CreationForm = () => {
@@ -18,8 +19,8 @@ const CreationForm = () => {
     validationSchema: Yup.object({
       productName: Yup.string()
         .matches(/^\D+$/, "Must be a string")
-        .min(3, "Must be more then 3 characters")
-        .max(20, "Must be 20 characters or less")
+        .min(MIN_LENGTH_NAME, `Must be more then ${MIN_LENGTH_NAME} characters`)
+        .max(MAX_LENGTH_NAME, `Must be ${MAX_LENGTH_NAME} characters or less`)
         .required("Required"),
       productPrice: Yup.number()
         .typeError("Must be a number")

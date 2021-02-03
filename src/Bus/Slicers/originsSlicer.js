@@ -3,7 +3,6 @@ import { getAllOrigins } from "Bus/API/product";
 
 export const getOrigins = createAsyncThunk("origins/getAll", async () => {
   const answer = await getAllOrigins();
-  console.log(answer.data);
   return answer.data.items;
 });
 
