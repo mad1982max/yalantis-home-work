@@ -1,4 +1,4 @@
-import { historyLib } from "Libs/history";
+import { historyLib } from "Bus/Libs/history";
 import BasketBtnActionForAll from "Components/BasketBtnActionForAll/BasketBtnActionForAll";
 import BasketTable from "Components/BasketTable/BasketTable";
 import "Containers/BasketPage/basketPage.css";

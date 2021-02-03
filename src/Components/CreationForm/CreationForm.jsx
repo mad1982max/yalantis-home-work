@@ -3,35 +3,40 @@ import { useSelector } from "react-redux";
 import * as Yup from "yup";
 import ErrorMsg from "Components/ErrorMsg/ErrorMsg";
 import Input from "Components/Input/Input";
+import { useCreateProduct } from "Bus/Hooks/addProductHook";
 import { originArr } from "Bus/Selectors/originsSelector";
 import { MIN_LENGTH_NAME, MAX_LENGTH_NAME } from "Constants/constants";
 import "Components/CreationForm/creationForm.css";
 
 const CreationForm = () => {
   const origins = useSelector(originArr);
+  const { createNew } = useCreateProduct();
 
   const formik = useFormik({
     initialValues: {
-      productName: "",
-      productPrice: "",
-      productOrigin: "",
+      name: "",
+      price: "",
+      origin: "",
     },
     validationSchema: Yup.object({
-      productName: Yup.string()
+      name: Yup.string()
         .matches(/^\D+$/, "Must be a string")
         .min(MIN_LENGTH_NAME, `Must be more then ${MIN_LENGTH_NAME} characters`)
         .max(MAX_LENGTH_NAME, `Must be ${MAX_LENGTH_NAME} characters or less`)
         .required("Required"),
-      productPrice: Yup.number()
+      price: Yup.number()
         .typeError("Must be a number")
         .positive("Must be a positive number")
         .required("Required"),
-      productOrigin: Yup.string()
+      origin: Yup.string()
         .oneOf(origins, `must be one of: ${origins.join(", ").toUpperCase()}`)
         .required("Required"),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: ({ name, price, origin }) => {
+      const productJSON = JSON.stringify({
+        product: { name, origin, price: +price },
+      });
+      createNew(productJSON);
     },
   });
 
@@ -40,33 +45,33 @@ const CreationForm = () => {
       <form className="formik" onSubmit={formik.handleSubmit}>
         <Input
           htmlName="Name"
-          name="productName"
-          className="productName"
+          name="name"
+          className="name"
           type="text"
           onChange={formik.handleChange}
           value={formik.values.name}
         />
-        <ErrorMsg msg={formik.errors.productName} />
+        <ErrorMsg msg={formik.errors.name} />
 
         <Input
           htmlName="Origin"
-          name="productOrigin"
-          className="productOrigin"
+          name="origin"
+          className="origin"
           type="text"
           onChange={formik.handleChange}
-          value={formik.values.name}
+          value={formik.values.origin}
         />
-        <ErrorMsg msg={formik.errors.productOrigin} />
+        <ErrorMsg msg={formik.errors.origin} />
 
         <Input
           htmlName="Price"
-          name="productPrice"
-          className="productPrice"
+          name="price"
+          className="price"
           type="text"
           onChange={formik.handleChange}
-          value={formik.values.name}
+          value={formik.values.price}
         />
-        <ErrorMsg msg={formik.errors.productPrice} />
+        <ErrorMsg msg={formik.errors.price} />
 
         <button
           disabled={!(formik.isValid && formik.dirty)}
