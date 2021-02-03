@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { useSelector } from "react-redux";
-import { originArr } from "Bus/Selectors/originsSelector";
 import * as Yup from "yup";
+import { originArr } from "Bus/Selectors/originsSelector";
 import "Components/CreationForm/creationForm.css";
 
 const CreationForm = () => {

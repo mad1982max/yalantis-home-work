@@ -9,7 +9,6 @@ import {
 const useFetchedSingleData = (id) => {
   const currentProduct = useSelector(singleProduct);
   const areLoaded = useSelector(singleProductLoading) === "pending";
-
   const dispatch = useDispatch();
 
   useEffect(() => {
