@@ -7,7 +7,7 @@ import {
   totalSumBasketSelector,
   totalQuantityBasketSelector,
 } from "Bus/Selectors/basketSelector";
-import { setVisibility } from "Bus/Slicers/menuSlicer";
+import { setVisibility } from "Bus/Slicers/pageSlicer";
 import { EXCLUDE_BASKET_PASS } from "Constants/constants";
 import { menuVisibility } from "Bus/Selectors/pageSelector";
 import addNewIco from "Assets/img/ico/add.png";

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Pagination from "Components/Pagination/Pagination";
 import Filters from "Components/Filters/Filters";
 import { useFetchedData } from "Bus/Hooks/productsHook";
-import { setVisibility } from "Bus/Slicers/menuSlicer";
+import { setVisibility } from "Bus/Slicers/pageSlicer";
 import { requestParams } from "Bus/Selectors/productsSelector";
 // import { menuVisibility } from "Bus/Selectors/pageSelector";
 import { nextPrevBtnAvaliable } from "Bus/Helpers/nextPrevPageAvaliability";

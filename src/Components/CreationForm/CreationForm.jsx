@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { useSelector } from "react-redux";
 import * as Yup from "yup";
-import ErrorMsg from "Components/ErrorMsg/ErrorMsg";
+import Msg from "Components/Msg/Msg";
 import Input from "Components/Input/Input";
 import { useCreateProduct } from "Bus/Hooks/addProductHook";
 import { originArr } from "Bus/Selectors/originsSelector";
@@ -10,7 +10,7 @@ import "Components/CreationForm/creationForm.css";
 
 const CreationForm = () => {
   const origins = useSelector(originArr);
-  const { createNew } = useCreateProduct();
+  const { createNew, message } = useCreateProduct();
 
   const formik = useFormik({
     initialValues: {
@@ -51,7 +51,7 @@ const CreationForm = () => {
           onChange={formik.handleChange}
           value={formik.values.name}
         />
-        <ErrorMsg msg={formik.errors.name} />
+        <Msg type="alert" msg={formik.errors.name} />
 
         <Input
           htmlName="Origin"
@@ -61,7 +61,7 @@ const CreationForm = () => {
           onChange={formik.handleChange}
           value={formik.values.origin}
         />
-        <ErrorMsg msg={formik.errors.origin} />
+        <Msg type="alert" msg={formik.errors.origin} />
 
         <Input
           htmlName="Price"
@@ -71,14 +71,16 @@ const CreationForm = () => {
           onChange={formik.handleChange}
           value={formik.values.price}
         />
-        <ErrorMsg msg={formik.errors.price} />
+        <Msg type="alert" msg={formik.errors.price} />
 
         <button
           disabled={!(formik.isValid && formik.dirty)}
           className="newProductSubmit"
-          type="submit">
+          type="submit"
+        >
           Submit
         </button>
+        <Msg type={message.type} msg={message.msg} title={message.title} />
       </form>
     </div>
   );

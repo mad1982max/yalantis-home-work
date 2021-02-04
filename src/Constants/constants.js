@@ -13,6 +13,7 @@ const DEFAULT_REQUEST = {
   perPage: 10,
   currentPage: 1,
 };
+const MSG_TIMER = 3000;
 const MIN_LENGTH_NAME = 3;
 const MAX_LENGTH_NAME = 20;
 const PER_PAGE_VARS = [10, 25, 50];
@@ -34,4 +35,5 @@ export {
   PRIVATE_KEY,
   MIN_LENGTH_NAME,
   MAX_LENGTH_NAME,
+  MSG_TIMER,
 };
