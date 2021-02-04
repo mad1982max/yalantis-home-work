@@ -11,6 +11,7 @@ import { setVisibility } from "Bus/Slicers/pageSlicer";
 import { EXCLUDE_BASKET_PASS } from "Constants/constants";
 import { menuVisibility } from "Bus/Selectors/pageSelector";
 import addNewIco from "Assets/img/ico/add.png";
+import hideIco from "Assets/img/ico/hide.png";
 import logo from "Assets/img/logo.png";
 import "Components/Header/header.css";
 
@@ -37,7 +38,10 @@ const Header = () => {
             <div className="my-products">My products</div>
           </Link>
           <button onClick={menuShow} className="newProduct" type="button">
-            <img src={addNewIco} alt="addIco" />
+            <img
+              src={burgerMenuvisibility ? hideIco : addNewIco}
+              alt="addIco"
+            />
           </button>
           {burgerMenuvisibility && (
             <NewProductPortal>

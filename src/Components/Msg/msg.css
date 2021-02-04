@@ -8,6 +8,7 @@
 
 .title {
   font-size: 30px;
+  margin-top: 20px;
 }
 
 .msg {
@@ -16,5 +17,8 @@
 
 .message-wrapper {
   text-align: center;
-  margin: 20px 0;
+}
+
+.marginBottom {
+  margin-bottom: 20px;
 }

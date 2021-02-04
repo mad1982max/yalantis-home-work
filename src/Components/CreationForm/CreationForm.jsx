@@ -46,7 +46,7 @@ const CreationForm = () => {
         <Input
           htmlName="Name"
           name="name"
-          className="name"
+          className="formInput"
           type="text"
           onChange={formik.handleChange}
           value={formik.values.name}
@@ -56,7 +56,7 @@ const CreationForm = () => {
         <Input
           htmlName="Origin"
           name="origin"
-          className="origin"
+          className="formInput"
           type="text"
           onChange={formik.handleChange}
           value={formik.values.origin}
@@ -66,21 +66,23 @@ const CreationForm = () => {
         <Input
           htmlName="Price"
           name="price"
-          className="price"
+          className="formInput"
           type="text"
           onChange={formik.handleChange}
           value={formik.values.price}
         />
         <Msg type="alert" msg={formik.errors.price} />
 
-        <button
-          disabled={!(formik.isValid && formik.dirty)}
-          className="newProductSubmit"
-          type="submit"
-        >
-          Submit
-        </button>
-        <Msg type={message.type} msg={message.msg} title={message.title} />
+        {message.msg ? (
+          <Msg type={message.type} msg={message.msg} title={message.title} />
+        ) : (
+          <button
+            disabled={!(formik.isValid && formik.dirty)}
+            className="newProductSubmit"
+            type="submit">
+            Submit
+          </button>
+        )}
       </form>
     </div>
   );

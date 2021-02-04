@@ -7,10 +7,9 @@ const Msg = ({ msg, type, title = "" }) => (
           type === "alert"
             ? "error-msg message-wrapper"
             : "info-msg message-wrapper"
-        }
-      >
-        <div className="title">{title}</div>
-        <div className="msg">{msg}</div>
+        }>
+        {title && <div className="title">{title}</div>}
+        <div className={title ? "msg marginBottom" : "msg"}>{msg}</div>
       </div>
     ) : null}
   </>
