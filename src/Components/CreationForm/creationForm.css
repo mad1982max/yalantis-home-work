@@ -5,12 +5,14 @@
   position: relative;
   border-radius: 5px;
   margin: auto;
+  background: rgb(194, 195, 197);
 }
 
 input {
   border: none;
   width: 70%;
   height: 30px;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 1px 2px;
 }
 
 .formik {
@@ -24,7 +26,10 @@ label {
 }
 
 .newProductSubmit {
-  margin: 40px 0;
-  font-size: 20px;
+  color: aliceblue;
+  margin: 20px 0;
+  font-size: 30px;
   padding: 10px;
+  background-color: rgb(17, 129, 173);
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
 }
