@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import HeaderBasketWidget from "Components/HeaderBasketWidget/HeaderBasketWidget";
 import NewProductPortal from "Components/NewProductPortal/NewProductPortal";
@@ -18,32 +18,31 @@ import "Components/Header/header.css";
 const Header = () => {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
-  const burgerMenuvisibility = useSelector(menuVisibility);
+  const portalVisibility = useSelector(menuVisibility);
   const quantity = useSelector(totalQuantityBasketSelector);
   const sum = useSelector(totalSumBasketSelector);
   const widgetBasetVisibility = pathname !== EXCLUDE_BASKET_PASS;
-  const menuShow = () => dispatch(setVisibility());
+  const showPortal = () => dispatch(setVisibility());
 
   return (
     <>
       <header className="header">
-        <div className="header-logo">
-          <Link to="/">
+        <NavLink exact activeClassName="activeLogo" to="/">
+          <div className="header-logo">
             <img src={logo} alt="logo" />
-          </Link>
-        </div>
+          </div>
+        </NavLink>
 
         <div className="widget-group">
-          <Link to="/handMade">
+          <NavLink activeClassName="active" to="/myGoods">
             <div className="my-products">My products</div>
-          </Link>
-          <button onClick={menuShow} className="newProduct" type="button">
-            <img
-              src={burgerMenuvisibility ? hideIco : addNewIco}
-              alt="addIco"
-            />
+          </NavLink>
+
+          <button onClick={showPortal} className="newProduct" type="button">
+            <img src={portalVisibility ? hideIco : addNewIco} alt="addIco" />
           </button>
-          {burgerMenuvisibility && (
+
+          {portalVisibility && (
             <NewProductPortal>
               <CreationForm />
             </NewProductPortal>

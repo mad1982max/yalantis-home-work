@@ -1,13 +1,9 @@
 import axios from "axios";
 import { URL, URL_ORIGINS, PRIVATE_KEY } from "Constants/constants";
 
-const getById = (id) => {
-  return axios.get(`${URL}/${id}`);
-};
+const getById = (id) => axios.get(`${URL}/${id}`);
 
-const getAll = (query) => {
-  return axios.get(`${URL}?${query}`);
-};
+const getAll = (query) => axios.get(`${URL}?${query}`);
 
 const createProduct = (product) => {
   return axios.post(URL, product, {
@@ -18,8 +14,19 @@ const createProduct = (product) => {
   });
 };
 
-const getAllOrigins = () => {
-  return axios.get(URL_ORIGINS);
+const getAllMyGoods = (query) => {
+  return axios.get(URL, {
+    headers: {
+      Authorization: PRIVATE_KEY,
+      "content-type": "application/json",
+    },
+    params: {
+      ...query,
+      editable: true,
+    },
+  });
 };
 
-export { getById, getAll, getAllOrigins, createProduct };
+const getAllOrigins = () => axios.get(URL_ORIGINS);
+
+export { getById, getAll, getAllOrigins, createProduct, getAllMyGoods };

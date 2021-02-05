@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import Loader from "Components/Loader/Loader";
 import ExtendedProductCard from "Components/ExtendedProductCard/ExtendedProductCard";
-import { useFetchedSingleData } from "Bus/Hooks/productHook";
+import { useFetchedSingleData } from "Bus/Hooks/singleProductHook";
 import "Containers/SingleProductPage/singleProductPage.css";
 
 const SingleProductPage = (props) => {

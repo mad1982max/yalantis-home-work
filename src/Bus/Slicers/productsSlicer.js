@@ -1,10 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAll } from "Bus/API/product";
+import { getAll, getAllMyGoods } from "Bus/API/product";
 
 export const getAllProducts = createAsyncThunk(
   "products/gettAll",
   async (query) => {
-    let answer = await getAll(query);
+    const answer = await getAll(query);
+    return answer.data;
+  }
+);
+
+export const getAllMyProducts = createAsyncThunk(
+  "products/getAllMyProducts",
+  async (query) => {
+    const answer = await getAllMyGoods(query);
     return answer.data;
   }
 );
@@ -14,6 +22,7 @@ export const allProducts = createSlice({
   initialState: {
     loading: "idle",
     products: [],
+    myProducts: [],
     pageParams: {},
     filters: {},
     error: null,
@@ -37,6 +46,21 @@ export const allProducts = createSlice({
       state.pageParams = { currentPage: page, perPage, totalItems };
     },
     [getAllProducts.rejected]: (state, action) => {
+      state.loading = "idle";
+      state.error = action.error;
+    },
+
+    [getAllMyProducts.pending]: (state, action) => {
+      state.loading = "pending";
+    },
+    [getAllMyProducts.fulfilled]: (state, action) => {
+      state.loading = "idle";
+      console.log("++", action.payload.items);
+      const { items, page, perPage, totalItems } = action.payload;
+      state.myProducts = items;
+      state.pageParams = { currentPage: page, perPage, totalItems };
+    },
+    [getAllMyProducts.rejected]: (state, action) => {
       state.loading = "idle";
       state.error = action.error;
     },
