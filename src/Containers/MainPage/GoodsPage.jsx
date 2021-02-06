@@ -7,11 +7,7 @@ import "Containers/MainPage/goodsPage.css";
 
 const AllGoodsPage = (props) => {
   const source = props.location.state?.source || CURR_WORK_GOODS_ARR.ALL;
-  const { allProductsAPI, allMyProductsAPI, areLoaded } = useFetchedData(
-    source
-  );
-  const currentGoodsArr =
-    source === CURR_WORK_GOODS_ARR.MY ? allMyProductsAPI : allProductsAPI;
+  const { currentGoodsArr, areLoaded } = useFetchedData(source);
 
   return (
     <div className="main-wrapper">

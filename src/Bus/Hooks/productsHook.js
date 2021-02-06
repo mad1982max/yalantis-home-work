@@ -5,6 +5,7 @@ import {
   allProductsLoading,
   myProducts,
 } from "Bus/Selectors/productsSelector";
+import { CURR_WORK_GOODS_ARR } from "Constants/constants";
 import { useSearch } from "Bus/Hooks/searchHook";
 
 const useFetchedData = (source) => {
@@ -13,10 +14,13 @@ const useFetchedData = (source) => {
   const allMyProductsAPI = useSelector(myProducts);
   const areLoaded = useSelector(allProductsLoading) === "pending";
 
+  const currentGoodsArr =
+    source === CURR_WORK_GOODS_ARR.MY ? allMyProductsAPI : allProductsAPI;
+
   useEffect(() => {
     sendRequest(source);
   }, [sendRequest, source]);
 
-  return { allProductsAPI, allMyProductsAPI, areLoaded };
+  return { currentGoodsArr, areLoaded };
 };
 export { useFetchedData };
