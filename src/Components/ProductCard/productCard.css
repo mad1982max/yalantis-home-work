@@ -38,7 +38,7 @@ a {
   width: 100%;
 }
 
-.product-wrapper:hover {
+.product-wrapper-shadow:hover {
   box-shadow: rgba(0, 0, 0, 0.7) 0px 5px 15px;
   cursor: pointer;
 }
@@ -61,6 +61,10 @@ a {
 
 .disabled-link {
   pointer-events: none;
+}
+
+.enable-link {
+  pointer-events: visible;
 }
 
 @media (min-width: 750px) {

@@ -1,16 +1,13 @@
 import { useFormik } from "formik";
-import { useSelector } from "react-redux";
-import * as Yup from "yup";
 import Msg from "Components/Msg/Msg";
 import Input from "Components/Input/Input";
+import { useValidationHook } from "Bus/Hooks/validationFormHook";
 import { useCreateProduct } from "Bus/Hooks/addProductHook";
-import { originArr } from "Bus/Selectors/originsSelector";
-import { MIN_LENGTH_NAME, MAX_LENGTH_NAME } from "Constants/constants";
-import "Components/CreationForm/creationForm.css";
+import "Components/ModalForm/modalForm.css";
 
 const CreationForm = () => {
-  const origins = useSelector(originArr);
   const { createNew, message } = useCreateProduct();
+  const { createValidationScheme } = useValidationHook();
 
   const formik = useFormik({
     initialValues: {
@@ -18,20 +15,7 @@ const CreationForm = () => {
       price: "",
       origin: "",
     },
-    validationSchema: Yup.object({
-      name: Yup.string()
-        .matches(/^\D+$/, "Must be a string")
-        .min(MIN_LENGTH_NAME, `Must be more then ${MIN_LENGTH_NAME} characters`)
-        .max(MAX_LENGTH_NAME, `Must be ${MAX_LENGTH_NAME} characters or less`)
-        .required("Required"),
-      price: Yup.number()
-        .typeError("Must be a number")
-        .positive("Must be a positive number")
-        .required("Required"),
-      origin: Yup.string()
-        .oneOf(origins, `must be one of: ${origins.join(", ").toUpperCase()}`)
-        .required("Required"),
-    }),
+    validationSchema: createValidationScheme(),
     onSubmit: ({ name, price, origin }) => {
       const productJSON = JSON.stringify({
         product: { name, origin, price: +price },

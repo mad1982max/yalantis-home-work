@@ -1,14 +1,30 @@
 import { Link } from "react-router-dom";
 import QuantityBtnGroupContainer from "Containers/QuantityBtnGroupContainer/QuantityBtnGroupContainer";
+import PortalButton from "Containers/PortalButton/PortalButton";
 import "Components/ProductCard/productCard.css";
 
 const ProductCard = ({ product, linkEnable }) => {
+  const modalPayload = {
+    type: "editForm",
+    product,
+  };
+
   return (
     <div className="product-shadow-box">
       <Link
         to={`/product/${product.id}`}
-        className={linkEnable ? null : "disabled-link"}>
-        <div className="product-wrapper">
+        onClick={(e) => {
+          if (!linkEnable) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }}>
+        <div
+          className={
+            linkEnable
+              ? "product-wrapper product-wrapper-shadow"
+              : "product-wrapper"
+          }>
           <div className="product-img">
             <img src={product.imgSrc} alt="dummy img" />
           </div>
@@ -21,7 +37,9 @@ const ProductCard = ({ product, linkEnable }) => {
               {linkEnable ? (
                 <QuantityBtnGroupContainer product={product} />
               ) : (
-                <div>KEY</div>
+                <>
+                  <PortalButton modalPayload={modalPayload} />
+                </>
               )}
             </div>
           </div>
