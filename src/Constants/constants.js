@@ -1,6 +1,8 @@
 const URL = "https://yalantis-react-school-api.yalantis.com/api/v1/products";
 const URL_ORIGINS =
   "https://yalantis-react-school-api.yalantis.com/api/v1/products-origins";
+const PRIVATE_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6IkJlenJvZG55aSBNYWtzeW0iLCJpYXQiOjE2MTExNzQwNDIsImV4cCI6MTYxNjM1ODA0Mn0.frUwenJ8gtPoXQXvbe9M06m8_vyCHAEBnvY1-h6Yo8k";
 const EXCLUDE_BASKET_PASS = "/basket";
 const DUMMY_IMG = "dummy";
 const DEFAULT_EXT = "png";
@@ -9,16 +11,14 @@ const MAT_ORDER = 1;
 const TYPE_ORDER = 2;
 const QUESTION = "Are you sure?";
 const DEFAULT_REQUEST = {
-  origin: [],
+  origins: [],
   perPage: 10,
-  currentPage: 1,
+  page: 1,
 };
 const MSG_TIMER = 3000;
 const MIN_LENGTH_NAME = 3;
 const MAX_LENGTH_NAME = 20;
 const PER_PAGE_VARS = [10, 25, 50];
-const PRIVATE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6IkJlenJvZG55aSBNYWtzeW0iLCJpYXQiOjE2MTExNzQwNDIsImV4cCI6MTYxNjM1ODA0Mn0.frUwenJ8gtPoXQXvbe9M06m8_vyCHAEBnvY1-h6Yo8k";
 
 export {
   URL,

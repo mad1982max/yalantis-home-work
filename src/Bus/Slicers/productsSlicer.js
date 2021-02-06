@@ -43,7 +43,7 @@ export const allProducts = createSlice({
       state.loading = "idle";
       const { items, page, perPage, totalItems } = action.payload;
       state.products = items;
-      state.pageParams = { currentPage: page, perPage, totalItems };
+      state.pageParams = { page, perPage, totalItems };
     },
     [getAllProducts.rejected]: (state, action) => {
       state.loading = "idle";
@@ -55,10 +55,9 @@ export const allProducts = createSlice({
     },
     [getAllMyProducts.fulfilled]: (state, action) => {
       state.loading = "idle";
-      console.log("++", action.payload.items);
       const { items, page, perPage, totalItems } = action.payload;
       state.myProducts = items;
-      state.pageParams = { currentPage: page, perPage, totalItems };
+      state.pageParams = { page, perPage, totalItems };
     },
     [getAllMyProducts.rejected]: (state, action) => {
       state.loading = "idle";

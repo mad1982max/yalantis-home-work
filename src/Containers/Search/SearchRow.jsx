@@ -23,26 +23,26 @@ const SearchRow = () => {
   const showMenu = () => dispatch(setVisibility());
 
   const nextPage = (counter) => {
-    let newPage = filterObj.currentPage + counter;
-    sendRequest({ ...filterObj, currentPage: newPage });
+    let newPage = filterObj.page + counter;
+    sendRequest({ ...filterObj, page: newPage });
   };
 
   const choosePerPage = (number) =>
-    sendRequest({ ...filterObj, perPage: number, currentPage: 1 });
+    sendRequest({ ...filterObj, perPage: number, page: 1 });
 
   const clearFiltersBtn = () => {
     dispatch(clearFilter());
     sendRequest();
   };
 
-  const searchFn = () => sendRequest({ ...filterObj, currentPage: 1 });
+  const searchFn = () => sendRequest({ ...filterObj, page: 1 });
 
   const setFilterFn = (obj) => dispatch(setFilter(obj));
 
   const optionsForSelector = createOptionsForReactSelector(origins);
 
   const currentReactSelectorValue = createOptionsForReactSelector(
-    filterObj.origin
+    filterObj.origins
   );
 
   return (
@@ -68,9 +68,9 @@ const SearchRow = () => {
         currentPerPage={filterObj.perPage}
         choosePerPage={choosePerPage}
         chooseNextPage={nextPage}
-        currentPage={filterObj.currentPage}
+        page={filterObj.page}
         nextPrevAvaliable={nextPrevBtnAvaliable(
-          filterObj.currentPage,
+          filterObj.page,
           filterObj.perPage,
           filterObj.totalItems
         )}

@@ -1,5 +1,9 @@
 const stringBuilder = (options) => {
-  return new URLSearchParams(options).toString();
+  const { totalItems, origins, ...restOptions } = options;
+  if (origins.length === 0) {
+    return new URLSearchParams(restOptions).toString();
+  }
+  return new URLSearchParams({ ...restOptions, origins }).toString();
 };
 
 export { stringBuilder };

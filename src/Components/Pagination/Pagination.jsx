@@ -6,7 +6,7 @@ const Pagination = ({
   choosePerPage,
   currentPerPage,
   chooseNextPage,
-  currentPage,
+  page,
   perPageVars,
   nextPrevAvaliable: { isNext, isPrev },
 }) => {
@@ -37,7 +37,7 @@ const Pagination = ({
             <img src={prev} alt="prev" />
           </button>
 
-          <div className="currPage">{currentPage}</div>
+          <div className="currPage">{page}</div>
 
           <button
             type="button"
