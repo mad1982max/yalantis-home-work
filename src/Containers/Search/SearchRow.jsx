@@ -19,7 +19,11 @@ const SearchRow = () => {
   const filterObj = useSelector(requestParams);
   const dispatch = useDispatch();
 
-  const { sendRequest } = useFetchedData();
+  // const { sendRequest } = useFetchedData();
+  //test
+  const { sendRequest } = () => () => ({
+    sendRequest: (a) => console.log(a),
+  });
 
   const showMenu = () => dispatch(setVisibility());
 

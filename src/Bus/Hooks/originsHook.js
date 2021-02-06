@@ -9,8 +9,10 @@ const useFetchedOrigins = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getOrigins());
-  }, [dispatch]);
+    if (origins.length === 0) {
+      dispatch(getOrigins());
+    }
+  }, [dispatch, origins.length]);
 
   return { origins, areLoaded };
 };

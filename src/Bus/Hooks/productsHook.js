@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   allProducts,
@@ -13,17 +13,20 @@ const useFetchedData = () => {
   const areLoaded = useSelector(allProductsLoading) === "pending";
   const dispatch = useDispatch();
 
-  const sendRequest = (newOptions = DEFAULT_REQUEST) => {
-    const options = { ...DEFAULT_REQUEST, ...newOptions };
-    const query = stringBuilder(options);
-    dispatch(getAllProducts(query));
-  };
+  const sendRequest = useCallback(
+    (newOptions = DEFAULT_REQUEST) => {
+      const options = { ...DEFAULT_REQUEST, ...newOptions };
+      const query = stringBuilder(options);
+      dispatch(getAllProducts(query));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     if (allProductsAPI.length === 0) {
       sendRequest();
     }
-  }, [allProductsAPI.length]);
+  }, [allProductsAPI.length, sendRequest]);
 
   return { sendRequest, allProductsAPI, areLoaded };
 };
