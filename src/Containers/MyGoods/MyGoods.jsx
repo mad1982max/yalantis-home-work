@@ -9,7 +9,7 @@ const MyGoods = () => {
 
   return (
     <div className="main-wrapper">
-      <SearchRow />
+      <SearchRow source="my" />
       {areLoaded ? <Loader /> : <ListOfProducts goods={allMyProductsAPI} />}
     </div>
   );

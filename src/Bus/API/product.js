@@ -15,14 +15,10 @@ const createProduct = (product) => {
 };
 
 const getAllMyGoods = (query) => {
-  return axios.get(URL, {
+  return axios.get(`${URL}?${query}&editable=true`, {
     headers: {
       Authorization: PRIVATE_KEY,
       "content-type": "application/json",
-    },
-    params: {
-      ...query,
-      editable: true,
     },
   });
 };

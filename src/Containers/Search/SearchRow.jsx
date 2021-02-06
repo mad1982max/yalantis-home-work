@@ -14,7 +14,7 @@ import { PER_PAGE_VARS } from "Constants/constants";
 import menuIco from "Assets/img/ico/menu.png";
 import "Containers/Search/searchRow.css";
 
-const SearchRow = () => {
+const SearchRow = ({ source }) => {
   const { origins } = useFetchedOrigins();
   const filterObj = useSelector(requestParams);
   const dispatch = useDispatch();
@@ -22,20 +22,22 @@ const SearchRow = () => {
 
   const showMenu = () => dispatch(setVisibility());
 
+  const getFilteredData = () => {};
+
   const nextPage = (counter) => {
     let newPage = filterObj.page + counter;
-    sendRequest({ ...filterObj, page: newPage });
+    sendRequest(source, { ...filterObj, page: newPage });
   };
 
   const choosePerPage = (number) =>
-    sendRequest({ ...filterObj, perPage: number, page: 1 });
+    sendRequest(source, { ...filterObj, perPage: number, page: 1 });
 
   const clearFiltersBtn = () => {
     dispatch(clearFilter());
-    sendRequest();
+    sendRequest(source);
   };
 
-  const searchFn = () => sendRequest({ ...filterObj, page: 1 });
+  const searchFn = () => sendRequest(source, { ...filterObj, page: 1 });
 
   const setFilterFn = (obj) => dispatch(setFilter(obj));
 

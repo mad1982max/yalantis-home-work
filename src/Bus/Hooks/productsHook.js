@@ -12,11 +12,9 @@ const useFetchedData = () => {
   const areLoaded = useSelector(allProductsLoading) === "pending";
 
   useEffect(() => {
-    if (allProductsAPI.length === 0) {
-      sendRequest();
-    }
-  }, [allProductsAPI.length, sendRequest]);
+    sendRequest("all");
+  }, [sendRequest]);
 
-  return { sendRequest, allProductsAPI, areLoaded };
+  return { allProductsAPI, areLoaded };
 };
 export { useFetchedData };
