@@ -15,7 +15,7 @@ const useFetchedData = (source) => {
 
   useEffect(() => {
     sendRequest(source);
-  }, [sendRequest]);
+  }, [sendRequest, source]);
 
   return { allProductsAPI, allMyProductsAPI, areLoaded };
 };

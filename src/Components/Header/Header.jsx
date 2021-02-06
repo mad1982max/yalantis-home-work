@@ -8,7 +8,7 @@ import {
   totalQuantityBasketSelector,
 } from "Bus/Selectors/basketSelector";
 import { setVisibility } from "Bus/Slicers/pageSlicer";
-import { EXCLUDE_BASKET_PASS } from "Constants/constants";
+import { EXCLUDE_BASKET_PASS, CURR_WORK_GOODS_ARR } from "Constants/constants";
 import { menuVisibility } from "Bus/Selectors/pageSelector";
 import addNewIco from "Assets/img/ico/add.png";
 import hideIco from "Assets/img/ico/hide.png";
@@ -27,14 +27,22 @@ const Header = () => {
   return (
     <>
       <header className="header">
-        <NavLink exact activeClassName="activeLogo" to="/">
+        <NavLink
+          exact
+          activeClassName="activeLogo"
+          to={{ pathname: "/", state: { source: CURR_WORK_GOODS_ARR.ALL } }}>
           <div className="header-logo">
             <img src={logo} alt="logo" />
           </div>
         </NavLink>
 
         <div className="widget-group">
-          <NavLink activeClassName="active" to="/myGoods">
+          <NavLink
+            activeClassName="active"
+            to={{
+              pathname: "/myGoods",
+              state: { source: CURR_WORK_GOODS_ARR.MY },
+            }}>
             <div className="my-products">My products</div>
           </NavLink>
 

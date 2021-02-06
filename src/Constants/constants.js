@@ -19,6 +19,10 @@ const MSG_TIMER = 3000;
 const MIN_LENGTH_NAME = 3;
 const MAX_LENGTH_NAME = 20;
 const PER_PAGE_VARS = [10, 25, 50];
+const CURR_WORK_GOODS_ARR = {
+  ALL: "all",
+  MY: "my",
+};
 
 export {
   URL,
@@ -36,4 +40,5 @@ export {
   MIN_LENGTH_NAME,
   MAX_LENGTH_NAME,
   MSG_TIMER,
+  CURR_WORK_GOODS_ARR,
 };
