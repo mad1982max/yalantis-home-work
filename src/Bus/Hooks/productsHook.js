@@ -3,18 +3,20 @@ import { useSelector } from "react-redux";
 import {
   allProducts,
   allProductsLoading,
+  myProducts,
 } from "Bus/Selectors/productsSelector";
 import { useSearch } from "Bus/Hooks/searchHook";
 
-const useFetchedData = () => {
+const useFetchedData = (source) => {
   const { sendRequest } = useSearch();
   const allProductsAPI = useSelector(allProducts);
+  const allMyProductsAPI = useSelector(myProducts);
   const areLoaded = useSelector(allProductsLoading) === "pending";
 
   useEffect(() => {
-    sendRequest("all");
+    sendRequest(source);
   }, [sendRequest]);
 
-  return { allProductsAPI, areLoaded };
+  return { allProductsAPI, allMyProductsAPI, areLoaded };
 };
 export { useFetchedData };

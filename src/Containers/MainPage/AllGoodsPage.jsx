@@ -5,7 +5,7 @@ import SearchRow from "Containers/Search/SearchRow";
 import "Containers/MainPage/allGoodsPage.css";
 
 const AllGoodsPage = () => {
-  const { allProductsAPI, areLoaded } = useFetchedData();
+  const { allProductsAPI, areLoaded } = useFetchedData("all");
 
   return (
     <div className="main-wrapper">

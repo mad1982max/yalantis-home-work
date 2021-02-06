@@ -54,7 +54,6 @@ export const allProducts = createSlice({
       state.loading = "pending";
     },
     [getAllMyProducts.fulfilled]: (state, action) => {
-      console.log("fulfiled");
       state.loading = "idle";
       const { items, page, perPage, totalItems } = action.payload;
       state.myProducts = items;
