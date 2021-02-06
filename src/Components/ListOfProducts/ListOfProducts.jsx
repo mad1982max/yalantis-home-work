@@ -7,7 +7,7 @@ import { showCurrentProductKeyInBasket } from "Bus/Helpers/showCurrentProductKey
 import { QUANT_KEY } from "Constants/constants";
 import "Components/ListOfProducts/listOfProducts.css";
 
-const ListOfProducts = ({ goods, source, linkEnable }) => {
+const ListOfProducts = ({ goods, linkEnable }) => {
   const goodsInBasket = useSelector(basket);
 
   return (
@@ -25,7 +25,6 @@ const ListOfProducts = ({ goods, source, linkEnable }) => {
         return (
           <ProductCard
             key={product.id}
-            source={source}
             product={extendedProduct}
             linkEnable={linkEnable}
           />

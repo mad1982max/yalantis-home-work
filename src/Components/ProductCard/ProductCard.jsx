@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import QuantityBtnGroupContainer from "Containers/QuantityBtnGroupContainer/QuantityBtnGroupContainer";
-import { CURR_WORK_GOODS_ARR } from "Constants/constants";
 import "Components/ProductCard/productCard.css";
 
-const ProductCard = ({ product, source, linkEnable }) => {
+const ProductCard = ({ product, linkEnable }) => {
   return (
     <div className="product-shadow-box">
       <Link
@@ -19,7 +18,7 @@ const ProductCard = ({ product, source, linkEnable }) => {
             <div className="product-price">$ {product.price}</div>
 
             <div className="basket-group">
-              {source === CURR_WORK_GOODS_ARR.ALL ? (
+              {linkEnable ? (
                 <QuantityBtnGroupContainer product={product} />
               ) : (
                 <div>KEY</div>

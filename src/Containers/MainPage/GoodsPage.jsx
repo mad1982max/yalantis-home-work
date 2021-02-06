@@ -16,7 +16,6 @@ const AllGoodsPage = (props) => {
         <Loader />
       ) : (
         <ListOfProducts
-          source={source}
           goods={currentGoodsArr}
           linkEnable={source === CURR_WORK_GOODS_ARR.ALL}
         />
