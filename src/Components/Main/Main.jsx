@@ -1,5 +1,5 @@
 import { Switch, Route } from "react-router-dom";
-import AllGoodsPage from "Containers/MainPage/AllGoodsPage";
+import AllGoodsPage from "Containers/MainPage/GoodsPage";
 import Error404 from "Components/Error404/Error404";
 import SingleProductPage from "Containers/SingleProductPage/SingleProductPage";
 import BasketPage from "Containers/BasketPage/BasketPage";

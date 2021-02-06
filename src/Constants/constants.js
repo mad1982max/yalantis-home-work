@@ -23,6 +23,7 @@ const CURR_WORK_GOODS_ARR = {
   ALL: "all",
   MY: "my",
 };
+const QUANT_KEY = "quantity";
 
 export {
   URL,
@@ -41,4 +42,5 @@ export {
   MAX_LENGTH_NAME,
   MSG_TIMER,
   CURR_WORK_GOODS_ARR,
+  QUANT_KEY,
 };

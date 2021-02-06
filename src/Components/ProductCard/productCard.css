@@ -59,6 +59,10 @@ a {
   height: 50px;
 }
 
+.disabled-link {
+  pointer-events: none;
+}
+
 @media (min-width: 750px) {
   .product-shadow-box {
     width: 50%;
