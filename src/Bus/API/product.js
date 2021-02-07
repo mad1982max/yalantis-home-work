@@ -23,6 +23,23 @@ const getAllMyGoods = (query) => {
   });
 };
 
+const updateProduct = (id, product) => {
+  console.log(product);
+  return axios.patch(`${URL}/${id}`, product, {
+    headers: {
+      Authorization: PRIVATE_KEY,
+      "content-type": "application/json",
+    },
+  });
+};
+
 const getAllOrigins = () => axios.get(URL_ORIGINS);
 
-export { getById, getAll, getAllOrigins, createProduct, getAllMyGoods };
+export {
+  getById,
+  getAll,
+  getAllOrigins,
+  createProduct,
+  getAllMyGoods,
+  updateProduct,
+};

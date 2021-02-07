@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 import "Components/Portal/productPortal.css";
 
 const Portal = ({ type, children }) => {
-  console.log("props.type", type);
   const mount = document.getElementById(type);
   const el = document.createElement("div");
   el.classList.add("portal");

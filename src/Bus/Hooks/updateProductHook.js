@@ -1,18 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { createProduct } from "Bus/API/product";
+import { updateProduct } from "Bus/API/product";
 import { setPageMessage } from "Bus/Slicers/pageSlicer";
 import { pageMessage } from "Bus/Selectors/pageSelector";
 import { MSG_TIMER } from "Constants/constants";
 
-const useCreateProduct = () => {
-  const message = useSelector(pageMessage);
+const useUpdateProduct = () => {
+  const messageUpdated = useSelector(pageMessage);
   const dispatch = useDispatch();
-  const createNew = async (product) => {
+  const update = async (id, product) => {
     const serverMessage = {};
     try {
-      await createProduct(product);
+      await updateProduct(id, product);
       serverMessage.title = "Done!";
-      serverMessage.msg = "Your product is on server";
+      serverMessage.msg = "Product is updated!";
       serverMessage.type = "info";
     } catch (e) {
       const errorMsg = e.response.data.error.message || e.message;
@@ -23,6 +23,6 @@ const useCreateProduct = () => {
     dispatch(setPageMessage(serverMessage));
     setTimeout(() => dispatch(setPageMessage({})), MSG_TIMER);
   };
-  return { createNew, message };
+  return { update, messageUpdated };
 };
-export { useCreateProduct };
+export { useUpdateProduct };

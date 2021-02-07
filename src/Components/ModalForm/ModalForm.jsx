@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import Msg from "Components/Msg/Msg";
 import { useValidationHook } from "Bus/Hooks/validationFormHook";
 import { useCreateProduct } from "Bus/Hooks/addProductHook";
+import { useUpdateProduct } from "Bus/Hooks/updateProductHook";
 import "Components/ModalForm/modalForm.css";
 
 const CreationForm = ({
@@ -12,15 +13,15 @@ const CreationForm = ({
   id = "",
   origin = "",
 }) => {
-  console.log(type, name, price, origin, id);
   const { createNew, message } = useCreateProduct();
+  const { update, messageUpdated } = useUpdateProduct();
   const { createValidationScheme } = useValidationHook();
 
   const formik = useFormik({
     initialValues: {
-      name: name,
-      price: price,
-      origin: origin,
+      name,
+      price,
+      origin,
     },
     validationSchema: createValidationScheme(),
 
@@ -29,7 +30,7 @@ const CreationForm = ({
         product: { name, origin, price: +price },
       });
       if (type === "portal-edit") {
-        console.log("Should be update");
+        update(id, productJSON);
       } else {
         createNew(productJSON);
       }
@@ -72,8 +73,12 @@ const CreationForm = ({
         />
         <Msg type="alert" msg={formik.errors.price} />
 
-        {message.msg ? (
-          <Msg type={message.type} msg={message.msg} title={message.title} />
+        {message.msg || messageUpdated.msg ? (
+          <Msg
+            type={message.type || messageUpdated.type}
+            msg={message.msg || messageUpdated.msg}
+            title={message.title || messageUpdated.title}
+          />
         ) : (
           <button
             disabled={!(formik.isValid && formik.dirty)}

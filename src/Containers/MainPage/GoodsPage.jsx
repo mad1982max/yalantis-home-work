@@ -24,7 +24,6 @@ const AllGoodsPage = (props) => {
   const dispatch = useDispatch();
 
   const showPortal = (e, product) => {
-    console.log(product);
     dispatch(setProductToEdit(product));
     dispatch(setEditModalVisibility());
   };
