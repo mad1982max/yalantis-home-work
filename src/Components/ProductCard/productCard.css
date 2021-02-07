@@ -79,6 +79,10 @@ a {
   }
 }
 
+a.product-link:hover {
+  cursor: auto;
+}
+
 button:active,
 button:focus {
   outline: none;
@@ -86,4 +90,15 @@ button:focus {
 
 button:active {
   transform: translateY(2px);
+}
+
+.editBtn {
+  background: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  background: rgb(245, 139, 139);
 }

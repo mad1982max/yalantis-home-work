@@ -7,6 +7,7 @@ const ProductCard = ({ product, linkEnable, handleClick }) => {
   return (
     <div className="product-shadow-box">
       <Link
+        className="product-link"
         to={`/product/${product.id}`}
         onClick={(e) => {
           if (!linkEnable) {
@@ -35,7 +36,7 @@ const ProductCard = ({ product, linkEnable, handleClick }) => {
                 <>
                   <button
                     onClick={(e) => handleClick(e, product)}
-                    className="portalBtn newProduct"
+                    className="editBtn"
                     type="button">
                     <img src={wrench} alt="addIco" />
                   </button>

@@ -24,7 +24,6 @@ const getAllMyGoods = (query) => {
 };
 
 const updateProduct = (id, product) => {
-  console.log(product);
   return axios.patch(`${URL}/${id}`, product, {
     headers: {
       Authorization: PRIVATE_KEY,

@@ -1,9 +1,10 @@
 import { useFormik } from "formik";
 import Msg from "Components/Msg/Msg";
+import { useSearch } from "Bus/Hooks/searchHook";
 import { useValidationHook } from "Bus/Hooks/validationFormHook";
 import { useCreateProduct } from "Bus/Hooks/addProductHook";
 import { useUpdateProduct } from "Bus/Hooks/updateProductHook";
-import { PORTAL_EDIT_ROOT } from "Constants/constants";
+import { PORTAL_EDIT_ROOT, CURR_WORK_GOODS_ARR } from "Constants/constants";
 import "Components/ModalForm/modalForm.css";
 
 const CreationForm = ({
@@ -14,6 +15,7 @@ const CreationForm = ({
   id = "",
   origin = "",
 }) => {
+  const { sendRequest } = useSearch();
   const { createNew, message } = useCreateProduct();
   const {
     update,
@@ -31,6 +33,7 @@ const CreationForm = ({
       });
       update(id, productJSON);
       setConfirm(true);
+      sendRequest(CURR_WORK_GOODS_ARR.MY);
     } else {
       setConfirm(true);
     }
