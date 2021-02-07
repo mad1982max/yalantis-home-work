@@ -23,7 +23,7 @@ const ExtendedProductCardFn = (Card) => {
 
     return (
       <>
-        <Card product={extendedProduct} />
+        <Card product={extendedProduct} linkEnable={true} />
         <div className="additional-info">
           <div className="idWrapper-group">
             <div className="bold">ID:</div>
