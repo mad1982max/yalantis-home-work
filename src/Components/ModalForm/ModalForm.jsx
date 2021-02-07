@@ -4,15 +4,23 @@ import { useValidationHook } from "Bus/Hooks/validationFormHook";
 import { useCreateProduct } from "Bus/Hooks/addProductHook";
 import "Components/ModalForm/modalForm.css";
 
-const CreationForm = () => {
+const CreationForm = ({
+  type,
+  closeOnClick,
+  name = "",
+  price = "",
+  id = "",
+  origin = "",
+}) => {
+  console.log(type, name, price, origin, id);
   const { createNew, message } = useCreateProduct();
   const { createValidationScheme } = useValidationHook();
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      price: "",
-      origin: "",
+      name: name,
+      price: price,
+      origin: origin,
     },
     validationSchema: createValidationScheme(),
 
@@ -20,12 +28,19 @@ const CreationForm = () => {
       const productJSON = JSON.stringify({
         product: { name, origin, price: +price },
       });
-      createNew(productJSON);
+      if (type === "portal-edit") {
+        console.log("Should be update");
+      } else {
+        createNew(productJSON);
+      }
     },
   });
 
   return (
     <div className="creationForm">
+      <button type="button" className="close-edit-modal" onClick={closeOnClick}>
+        X
+      </button>
       <form className="formik" onSubmit={formik.handleSubmit}>
         <label htmlFor="name">NAME</label>
         <input
@@ -47,7 +62,7 @@ const CreationForm = () => {
         />
         <Msg type="alert" msg={formik.errors.origin} />
 
-        <label htmlFor="price">ORIGIN</label>
+        <label htmlFor="price">PRICE</label>
         <input
           type="text"
           onChange={formik.handleChange}
@@ -64,7 +79,7 @@ const CreationForm = () => {
             disabled={!(formik.isValid && formik.dirty)}
             className="newProductSubmit"
             type="submit">
-            Submit
+            {type === "portal-edit" ? "EDIT" : "SUBMIT"}
           </button>
         )}
       </form>

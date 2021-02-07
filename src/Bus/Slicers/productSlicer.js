@@ -15,8 +15,13 @@ export const singleProduct = createSlice({
     loading: "idle",
     product: "",
     error: null,
+    productToEdit: {},
   },
-  reducers: {},
+  reducers: {
+    setProductToEdit(state, action) {
+      state.productToEdit = action.payload;
+    },
+  },
   extraReducers: {
     [getProductById.pending]: (state, action) => {
       state.loading = "pending";
@@ -33,3 +38,5 @@ export const singleProduct = createSlice({
 });
 
 export default singleProduct.reducer;
+
+export const { setProductToEdit } = singleProduct.actions;

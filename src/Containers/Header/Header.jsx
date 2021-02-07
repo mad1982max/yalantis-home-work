@@ -4,7 +4,10 @@ import HeaderBasketWidget from "Components/HeaderBasketWidget/HeaderBasketWidget
 import CreationForm from "Components/ModalForm/ModalForm";
 import Portal from "Components/Portal/ProductPortal";
 import { modalCreateVisibility } from "Bus/Selectors/pageSelector";
-import { setCreateModalVisibility } from "Bus/Slicers/pageSlicer";
+import {
+  setCreateModalVisibility,
+  closeCreateModalVisibility,
+} from "Bus/Slicers/pageSlicer";
 import {
   totalSumBasketSelector,
   totalQuantityBasketSelector,
@@ -23,9 +26,9 @@ const Header = () => {
   const sum = useSelector(totalSumBasketSelector);
   const widgetBasetVisibility = pathname !== EXCLUDE_BASKET_PASS;
 
-  const showPortal = () => {
-    dispatch(setCreateModalVisibility());
-  };
+  const showPortal = () => dispatch(setCreateModalVisibility());
+
+  const closeOnClick = () => dispatch(closeCreateModalVisibility());
 
   return (
     <>
@@ -55,9 +58,10 @@ const Header = () => {
             type="button">
             <img src={modalVisibility ? hideIco : addNewIco} alt="addIco" />
           </button>
+
           {modalVisibility && (
             <Portal type="portal-create">
-              <CreationForm />
+              <CreationForm type="portal-create" closeOnClick={closeOnClick} />
             </Portal>
           )}
 

@@ -8,6 +8,17 @@
   background: rgb(194, 195, 197);
 }
 
+.close-edit-modal {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  position: absolute;
+  background: rgb(241, 84, 84);
+  color: white;
+  right: -10px;
+  top: -10px;
+}
+
 .formik {
   display: flex;
   flex-direction: column;

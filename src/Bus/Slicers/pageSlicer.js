@@ -4,9 +4,9 @@ export const page = createSlice({
   name: "pageTweaks",
   initialState: {
     modalCreateVisibility: false,
+    modalEditVisibility: false,
     isFirstLoading: true,
     pageMessage: {},
-    // originsAreLoaded: false,
   },
   reducers: {
     setCreateModalVisibility(state, action) {
@@ -14,6 +14,12 @@ export const page = createSlice({
     },
     closeCreateModalVisibility(state, action) {
       return { ...state, modalCreateVisibility: false };
+    },
+    setEditModalVisibility(state, action) {
+      return { ...state, modalEditVisibility: !state.modalEditVisibility };
+    },
+    closeEditModalVisibility(state, action) {
+      return { ...state, modalEditVisibility: false };
     },
     setFirstLoading(state, action) {
       return { ...state, isFirstLoading: false };
@@ -33,6 +39,8 @@ export const {
   setFirstLoading,
   setOriginsAreLoaded,
   setPageMessage,
+  setEditModalVisibility,
+  closeEditModalVisibility,
 } = page.actions;
 
 export default page.reducer;

@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
+
 import QuantityBtnGroupContainer from "Containers/QuantityBtnGroupContainer/QuantityBtnGroupContainer";
+
+import wrench from "Assets/img/ico/edit.png";
 import "Components/ProductCard/productCard.css";
 
-const ProductCard = ({ product, linkEnable }) => {
+const ProductCard = ({ product, linkEnable, handleClick }) => {
   return (
     <div className="product-shadow-box">
       <Link
@@ -32,8 +35,12 @@ const ProductCard = ({ product, linkEnable }) => {
                 <QuantityBtnGroupContainer product={product} />
               ) : (
                 <>
-                  <div>WRENCH</div>
-                  {/* <PortalButton modalPayload={{ type: "editForm", product }} /> */}
+                  <button
+                    onClick={(e) => handleClick(e, product)}
+                    className="portalBtn newProduct"
+                    type="button">
+                    <img src={wrench} alt="addIco" />
+                  </button>
                 </>
               )}
             </div>
