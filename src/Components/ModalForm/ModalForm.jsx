@@ -1,6 +1,5 @@
 import { useFormik } from "formik";
 import Msg from "Components/Msg/Msg";
-import Input from "Components/Input/Input";
 import { useValidationHook } from "Bus/Hooks/validationFormHook";
 import { useCreateProduct } from "Bus/Hooks/addProductHook";
 import "Components/ModalForm/modalForm.css";
@@ -16,6 +15,7 @@ const CreationForm = () => {
       origin: "",
     },
     validationSchema: createValidationScheme(),
+
     onSubmit: ({ name, price, origin }) => {
       const productJSON = JSON.stringify({
         product: { name, origin, price: +price },
@@ -27,33 +27,33 @@ const CreationForm = () => {
   return (
     <div className="creationForm">
       <form className="formik" onSubmit={formik.handleSubmit}>
-        <Input
-          htmlName="Name"
-          name="name"
-          className="formInput"
+        <label htmlFor="name">NAME</label>
+        <input
           type="text"
           onChange={formik.handleChange}
           value={formik.values.name}
+          name="name"
+          className="formInput"
         />
         <Msg type="alert" msg={formik.errors.name} />
 
-        <Input
-          htmlName="Origin"
-          name="origin"
-          className="formInput"
+        <label htmlFor="origin">ORIGIN</label>
+        <input
           type="text"
           onChange={formik.handleChange}
           value={formik.values.origin}
+          name="origin"
+          className="formInput"
         />
         <Msg type="alert" msg={formik.errors.origin} />
 
-        <Input
-          htmlName="Price"
-          name="price"
-          className="formInput"
+        <label htmlFor="price">ORIGIN</label>
+        <input
           type="text"
           onChange={formik.handleChange}
           value={formik.values.price}
+          name="price"
+          className="formInput"
         />
         <Msg type="alert" msg={formik.errors.price} />
 

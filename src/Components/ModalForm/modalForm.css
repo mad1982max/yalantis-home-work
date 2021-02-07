@@ -22,3 +22,15 @@
   background-color: rgb(17, 129, 173);
   box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
 }
+
+.formInput {
+  border: none;
+  width: 70%;
+  height: 30px;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 1px 2px;
+  border-radius: 4px;
+}
+
+label {
+  margin-top: 20px;
+}

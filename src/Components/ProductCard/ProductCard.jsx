@@ -1,14 +1,8 @@
 import { Link } from "react-router-dom";
 import QuantityBtnGroupContainer from "Containers/QuantityBtnGroupContainer/QuantityBtnGroupContainer";
-import PortalButton from "Containers/PortalButton/PortalButton";
 import "Components/ProductCard/productCard.css";
 
 const ProductCard = ({ product, linkEnable }) => {
-  const modalPayload = {
-    type: "editForm",
-    product,
-  };
-
   return (
     <div className="product-shadow-box">
       <Link
@@ -38,7 +32,8 @@ const ProductCard = ({ product, linkEnable }) => {
                 <QuantityBtnGroupContainer product={product} />
               ) : (
                 <>
-                  <PortalButton modalPayload={modalPayload} />
+                  <div>WRENCH</div>
+                  {/* <PortalButton modalPayload={{ type: "editForm", product }} /> */}
                 </>
               )}
             </div>

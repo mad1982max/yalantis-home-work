@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import "Components/NewProductPortal/newProductPortal.css";
+import "Components/Portal/productPortal.css";
 
-const NewProductPortal = ({ children }) => {
-  const mount = document.getElementById("product-portal-root");
+const Portal = ({ type, children }) => {
+  console.log("props.type", type);
+  const mount = document.getElementById(type);
   const el = document.createElement("div");
   el.classList.add("portal");
 
@@ -15,4 +16,4 @@ const NewProductPortal = ({ children }) => {
   return createPortal(children, el);
 };
 
-export default NewProductPortal;
+export default Portal;

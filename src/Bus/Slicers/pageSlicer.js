@@ -3,14 +3,17 @@ import { createSlice } from "@reduxjs/toolkit";
 export const page = createSlice({
   name: "pageTweaks",
   initialState: {
-    menuVisibility: false,
+    modalCreateVisibility: false,
     isFirstLoading: true,
     pageMessage: {},
     // originsAreLoaded: false,
   },
   reducers: {
-    setVisibility(state, action) {
-      return { ...state, menuVisibility: !state.menuVisibility };
+    setCreateModalVisibility(state, action) {
+      return { ...state, modalCreateVisibility: !state.modalCreateVisibility };
+    },
+    closeCreateModalVisibility(state, action) {
+      return { ...state, modalCreateVisibility: false };
     },
     setFirstLoading(state, action) {
       return { ...state, isFirstLoading: false };
@@ -25,7 +28,8 @@ export const page = createSlice({
 });
 
 export const {
-  setVisibility,
+  setCreateModalVisibility,
+  closeCreateModalVisibility,
   setFirstLoading,
   setOriginsAreLoaded,
   setPageMessage,
