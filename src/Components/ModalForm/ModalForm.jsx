@@ -3,6 +3,7 @@ import Msg from "Components/Msg/Msg";
 import { useValidationHook } from "Bus/Hooks/validationFormHook";
 import { useCreateProduct } from "Bus/Hooks/addProductHook";
 import { useUpdateProduct } from "Bus/Hooks/updateProductHook";
+import { PORTAL_EDIT_ROOT } from "Constants/constants";
 import "Components/ModalForm/modalForm.css";
 
 const CreationForm = ({
@@ -14,8 +15,26 @@ const CreationForm = ({
   origin = "",
 }) => {
   const { createNew, message } = useCreateProduct();
-  const { update, messageUpdated } = useUpdateProduct();
+  const {
+    update,
+    messageUpdated,
+    answerIsConfirmed,
+    setConfirm,
+  } = useUpdateProduct();
   const { createValidationScheme } = useValidationHook();
+
+  const confirmationFn = (e, isConfirm) => {
+    if (isConfirm) {
+      const { name, origin, price } = formik.values;
+      const productJSON = JSON.stringify({
+        product: { name, origin, price: +price },
+      });
+      update(id, productJSON);
+      setConfirm(true);
+    } else {
+      setConfirm(true);
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -29,8 +48,8 @@ const CreationForm = ({
       const productJSON = JSON.stringify({
         product: { name, origin, price: +price },
       });
-      if (type === "portal-edit") {
-        update(id, productJSON);
+      if (type === PORTAL_EDIT_ROOT) {
+        setConfirm(false);
       } else {
         createNew(productJSON);
       }
@@ -84,8 +103,24 @@ const CreationForm = ({
             disabled={!(formik.isValid && formik.dirty)}
             className="newProductSubmit"
             type="submit">
-            {type === "portal-edit" ? "EDIT" : "SUBMIT"}
+            {type === PORTAL_EDIT_ROOT ? "EDIT" : "SUBMIT"}
           </button>
+        )}
+        {answerIsConfirmed ? (
+          ""
+        ) : (
+          <div className="confirm-answer-wrapper">
+            <button
+              className="confirm-answer-yes"
+              onClick={(e) => confirmationFn(e, true)}>
+              YES
+            </button>
+            <button
+              className="confirm-answer-no"
+              onClick={(e) => confirmationFn(e, false)}>
+              NO
+            </button>
+          </div>
         )}
       </form>
     </div>

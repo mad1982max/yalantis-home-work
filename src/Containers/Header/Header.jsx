@@ -3,30 +3,47 @@ import { useSelector, useDispatch } from "react-redux";
 import HeaderBasketWidget from "Components/HeaderBasketWidget/HeaderBasketWidget";
 import CreationForm from "Components/ModalForm/ModalForm";
 import Portal from "Components/Portal/ProductPortal";
-import { modalCreateVisibility } from "Bus/Selectors/pageSelector";
+import {
+  modalEditVisibility,
+  modalCreateVisibility,
+} from "Bus/Selectors/pageSelector";
 import {
   setCreateModalVisibility,
+  closeEditModalVisibility,
   closeCreateModalVisibility,
 } from "Bus/Slicers/pageSlicer";
 import {
   totalSumBasketSelector,
   totalQuantityBasketSelector,
 } from "Bus/Selectors/basketSelector";
-import { EXCLUDE_BASKET_PASS, CURR_WORK_GOODS_ARR } from "Constants/constants";
+import { useUpdateProduct } from "Bus/Hooks/updateProductHook";
+import {
+  EXCLUDE_BASKET_PASS,
+  CURR_WORK_GOODS_ARR,
+  PORTAL_CREATE_ROOT,
+} from "Constants/constants";
 import addNewIco from "Assets/img/ico/add.png";
 import hideIco from "Assets/img/ico/hide.png";
 import logo from "Assets/img/logo.png";
 import "Containers/Header/header.css";
 
 const Header = () => {
+  const { setConfirm } = useUpdateProduct();
   const dispatch = useDispatch();
   const modalVisibility = useSelector(modalCreateVisibility);
+  const modalEditFormVisibility = useSelector(modalEditVisibility);
   const { pathname } = useLocation();
   const quantity = useSelector(totalQuantityBasketSelector);
   const sum = useSelector(totalSumBasketSelector);
   const widgetBasetVisibility = pathname !== EXCLUDE_BASKET_PASS;
 
-  const showPortal = () => dispatch(setCreateModalVisibility());
+  const showPortal = () => {
+    dispatch(setCreateModalVisibility());
+    if (modalEditFormVisibility) {
+      dispatch(closeEditModalVisibility());
+      setConfirm(true);
+    }
+  };
 
   const closeOnClick = () => dispatch(closeCreateModalVisibility());
 
@@ -60,8 +77,11 @@ const Header = () => {
           </button>
 
           {modalVisibility && (
-            <Portal type="portal-create">
-              <CreationForm type="portal-create" closeOnClick={closeOnClick} />
+            <Portal type={PORTAL_CREATE_ROOT}>
+              <CreationForm
+                type={PORTAL_CREATE_ROOT}
+                closeOnClick={closeOnClick}
+              />
             </Portal>
           )}
 

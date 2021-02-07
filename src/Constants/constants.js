@@ -24,6 +24,8 @@ const CURR_WORK_GOODS_ARR = {
   MY: "my",
 };
 const QUANT_KEY = "quantity";
+const PORTAL_EDIT_ROOT = "portal-edit";
+const PORTAL_CREATE_ROOT = "portal-create";
 
 export {
   URL,
@@ -31,6 +33,8 @@ export {
   EXCLUDE_BASKET_PASS,
   DUMMY_IMG,
   DEFAULT_EXT,
+  PORTAL_EDIT_ROOT,
+  PORTAL_CREATE_ROOT,
   DATE_FORMAT,
   MAT_ORDER,
   TYPE_ORDER,

@@ -1,12 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updateProduct } from "Bus/API/product";
-import { setPageMessage } from "Bus/Slicers/pageSlicer";
-import { pageMessage } from "Bus/Selectors/pageSelector";
+import { setPageMessage, setIsConfirmed } from "Bus/Slicers/pageSlicer";
+import { pageMessage, isConfirmed } from "Bus/Selectors/pageSelector";
 import { MSG_TIMER } from "Constants/constants";
 
 const useUpdateProduct = () => {
   const messageUpdated = useSelector(pageMessage);
+  const answerIsConfirmed = useSelector(isConfirmed);
   const dispatch = useDispatch();
+
+  const setConfirm = (value) => dispatch(setIsConfirmed(value));
+
   const update = async (id, product) => {
     const serverMessage = {};
     try {
@@ -23,6 +27,6 @@ const useUpdateProduct = () => {
     dispatch(setPageMessage(serverMessage));
     setTimeout(() => dispatch(setPageMessage({})), MSG_TIMER);
   };
-  return { update, messageUpdated };
+  return { update, messageUpdated, answerIsConfirmed, setConfirm };
 };
 export { useUpdateProduct };

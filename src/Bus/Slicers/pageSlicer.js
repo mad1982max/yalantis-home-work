@@ -5,27 +5,27 @@ export const page = createSlice({
   initialState: {
     modalCreateVisibility: false,
     modalEditVisibility: false,
-    isFirstLoading: true,
+    isConfirmed: true,
     pageMessage: {},
   },
   reducers: {
+    setIsConfirmed(state, action) {
+      state.isConfirmed = action.payload;
+    },
     setCreateModalVisibility(state, action) {
-      return { ...state, modalCreateVisibility: !state.modalCreateVisibility };
+      state.modalCreateVisibility = !state.modalCreateVisibility;
     },
     closeCreateModalVisibility(state, action) {
-      return { ...state, modalCreateVisibility: false };
+      state.modalCreateVisibility = false;
     },
     setEditModalVisibility(state, action) {
-      return { ...state, modalEditVisibility: !state.modalEditVisibility };
+      state.modalEditVisibility = !state.modalEditVisibility;
     },
     closeEditModalVisibility(state, action) {
-      return { ...state, modalEditVisibility: false };
-    },
-    setFirstLoading(state, action) {
-      return { ...state, isFirstLoading: false };
+      state.modalEditVisibility = false;
     },
     setOriginsAreLoaded(state, action) {
-      return { ...state, originsAreLoaded: action.payload };
+      state.originsAreLoaded = action.payload;
     },
     setPageMessage(state, action) {
       state.pageMessage = action.payload;
@@ -36,8 +36,8 @@ export const page = createSlice({
 export const {
   setCreateModalVisibility,
   closeCreateModalVisibility,
-  setFirstLoading,
   setOriginsAreLoaded,
+  setIsConfirmed,
   setPageMessage,
   setEditModalVisibility,
   closeEditModalVisibility,

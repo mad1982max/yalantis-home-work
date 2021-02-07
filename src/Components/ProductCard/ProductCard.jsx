@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-
 import QuantityBtnGroupContainer from "Containers/QuantityBtnGroupContainer/QuantityBtnGroupContainer";
-
 import wrench from "Assets/img/ico/edit.png";
 import "Components/ProductCard/productCard.css";
 
