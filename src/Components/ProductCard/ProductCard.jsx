@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import QuantityBtnGroupContainer from "Containers/QuantityBtnGroupContainer/QuantityBtnGroupContainer";
+import Button from "Components/Button/Button";
 import wrench from "Assets/img/ico/edit.png";
 import "Components/ProductCard/productCard.css";
 
@@ -34,12 +35,12 @@ const ProductCard = ({ product, linkEnable, handleClick }) => {
                 <QuantityBtnGroupContainer product={product} />
               ) : (
                 <>
-                  <button
+                  <Button
                     onClick={(e) => handleClick(e, product)}
                     className="editBtn"
-                    type="button">
-                    <img src={wrench} alt="addIco" />
-                  </button>
+                    type="button"
+                    image={wrench}
+                  />
                 </>
               )}
             </div>

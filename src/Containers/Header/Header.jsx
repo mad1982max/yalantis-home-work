@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import HeaderBasketWidget from "Components/HeaderBasketWidget/HeaderBasketWidget";
 import CreationForm from "Components/ModalForm/ModalForm";
 import Portal from "Components/Portal/ProductPortal";
+import Button from "Components/Button/Button";
 import {
   modalEditVisibility,
   modalCreateVisibility,
@@ -69,12 +70,12 @@ const Header = () => {
             <div className="my-products">My products</div>
           </NavLink>
 
-          <button
+          <Button
             onClick={showPortal}
             className="portalBtn newProduct"
-            type="button">
-            <img src={modalVisibility ? hideIco : addNewIco} alt="addIco" />
-          </button>
+            image={modalVisibility ? hideIco : addNewIco}
+            alt="addIco"
+          />
 
           {modalVisibility && (
             <Portal type={PORTAL_CREATE_ROOT}>

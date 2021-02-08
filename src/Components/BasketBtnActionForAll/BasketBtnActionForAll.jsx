@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useActionForAllBasket } from "Bus/Helpers/actionForAllBasket";
+import Button from "Components/Button/Button";
 import { basket } from "Bus/Selectors/basketSelector";
 
 const BasketBtnActionForAll = () => {
@@ -8,20 +9,17 @@ const BasketBtnActionForAll = () => {
 
   return (
     <>
-      <button
+      <Button
+        title="DELETE ALL"
         onClick={deleteAll}
         disabled={goodsInBasket.length === 0}
-        type="button"
-        id="del-basket">
-        DELETE ALL
-      </button>
-      <button
-        type="button"
-        disabled={goodsInBasket.length === 0}
+      />
+
+      <Button
+        title="BUY ALL"
         onClick={buyAll}
-        id="buy-basket">
-        BUY ALL
-      </button>
+        disabled={goodsInBasket.length === 0}
+      />
     </>
   );
 };

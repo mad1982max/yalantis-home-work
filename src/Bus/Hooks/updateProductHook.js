@@ -5,7 +5,7 @@ import { pageMessage, isConfirmed } from "Bus/Selectors/pageSelector";
 import {
   MSG_TIMER,
   TYPE_MSG,
-  UPDATE_MSG,
+  ANSWER_MSG,
   ALERT_MSG,
 } from "Constants/constants";
 
@@ -18,13 +18,14 @@ const useUpdateProduct = () => {
 
   const update = async (id, product) => {
     const serverMessage = {};
+    const { name, origin, price } = product;
     const productJSON = JSON.stringify({
-      product,
+      product: { name, origin, price: +price },
     });
     try {
       await updateProduct(id, productJSON);
-      serverMessage.title = UPDATE_MSG.TITLE;
-      serverMessage.msg = UPDATE_MSG.MSG;
+      serverMessage.title = ANSWER_MSG.TITLE;
+      serverMessage.msg = ANSWER_MSG.MSG_UPD;
       serverMessage.type = TYPE_MSG.INFO;
     } catch (e) {
       const errorMsg = e.response.data.error.message || e.message;

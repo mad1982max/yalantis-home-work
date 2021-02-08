@@ -1,5 +1,6 @@
 import Select from "react-select";
 import Input from "Components/Input/Input";
+import Button from "Components/Button/Button";
 import { optionReactSelectorToArray } from "Bus/Helpers/reactSelectExtractData";
 import "Components/Filters/filters.css";
 
@@ -47,17 +48,9 @@ const Filters = ({
         </div>
       </div>
 
-      <div className="clearFilters">
-        <button type="button" onClick={clearFilter}>
-          CLEAR
-        </button>
-      </div>
+      <Button title="CLEAR" onClick={clearFilter} className="clearFilters" />
 
-      <div className="searchBtn">
-        <button type="button" onClick={searchFn}>
-          SEARCH
-        </button>
-      </div>
+      <Button title="SEARCH" onClick={searchFn} className="searchBtn" />
     </div>
   </div>
 );

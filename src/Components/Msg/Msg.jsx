@@ -1,15 +1,21 @@
+import classNames from "classnames";
 import "Components/Msg/msg.css";
 const Msg = ({ msg, type, title = "" }) => (
   <>
     {msg ? (
       <div
-        className={
-          type === "alert"
-            ? "error-msg message-wrapper"
-            : "info-msg message-wrapper"
-        }>
+        className={classNames("message-wrapper", {
+          "error-msg": type === "alert",
+          "info-msg": type === "info",
+        })}>
         {title && <div className="title">{title}</div>}
-        <div className={title ? "msg marginBottom" : "msg"}>{msg}</div>
+
+        <div
+          className={classNames("msg", {
+            marginBottom: title,
+          })}>
+          {msg}
+        </div>
       </div>
     ) : null}
   </>

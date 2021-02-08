@@ -1,5 +1,3 @@
-import "Components/Input/Input";
-
 const Input = ({ name, type, onChange, value, className, title }) => {
   return (
     <>

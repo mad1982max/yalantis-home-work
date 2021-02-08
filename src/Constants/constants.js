@@ -25,11 +25,12 @@ const CURR_WORK_GOODS_ARR = {
 };
 const TYPE_MSG = {
   INFO: "info",
-  ALRT: "alert",
+  ALERT: "alert",
 };
-const UPDATE_MSG = {
+const ANSWER_MSG = {
   TITLE: "Done!",
-  MSG: "Product is updated!",
+  MSG_UPD: "Product is updated!",
+  MSG_CREATE: "Your product is on server",
 };
 const ALERT_MSG = {
   TITLE: "Error!",
@@ -42,7 +43,7 @@ export {
   URL,
   URL_ORIGINS,
   TYPE_MSG,
-  UPDATE_MSG,
+  ANSWER_MSG,
   ALERT_MSG,
   EXCLUDE_BASKET_PASS,
   DUMMY_IMG,
