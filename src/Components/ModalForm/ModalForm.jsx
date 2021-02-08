@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import Msg from "Components/Msg/Msg";
+import Input from "Components/Input/Input";
 import { useSearch } from "Bus/Hooks/searchHook";
 import { useValidationHook } from "Bus/Hooks/validationFormHook";
 import { useCreateProduct } from "Bus/Hooks/addProductHook";
@@ -61,33 +62,33 @@ const CreationForm = ({
         X
       </button>
       <form className="formik" onSubmit={formik.handleSubmit}>
-        <label htmlFor="name">NAME</label>
-        <input
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.name}
+        <Input
+          title="NAME"
           name="name"
           className="formInput"
+          onChange={formik.handleChange}
+          value={formik.values.name}
+          type="text"
         />
         <Msg type="alert" msg={formik.errors.name} />
 
-        <label htmlFor="origin">ORIGIN</label>
-        <input
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.origin}
+        <Input
+          title="ORIGIN"
           name="origin"
           className="formInput"
+          onChange={formik.handleChange}
+          value={formik.values.origin}
+          type="text"
         />
         <Msg type="alert" msg={formik.errors.origin} />
 
-        <label htmlFor="price">PRICE</label>
-        <input
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.price}
+        <Input
+          title="PRICE"
           name="price"
           className="formInput"
+          onChange={formik.handleChange}
+          value={formik.values.price}
+          type="text"
         />
         <Msg type="alert" msg={formik.errors.price} />
 

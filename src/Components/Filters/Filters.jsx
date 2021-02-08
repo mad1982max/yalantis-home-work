@@ -1,4 +1,5 @@
 import Select from "react-select";
+import Input from "Components/Input/Input";
 import { optionReactSelectorToArray } from "Bus/Helpers/reactSelectExtractData";
 import "Components/Filters/filters.css";
 
@@ -26,24 +27,22 @@ const Filters = ({
     <div className="rest-filters">
       <div className="price-filter-wrapper">
         <div className="min-max-wrapper">
-          <label htmlFor="min-price">MIN:</label>
-          <input
-            className="price"
-            type="text"
-            id="min-price"
-            value={min}
+          <Input
+            title="MIN:"
             name="min-price"
+            className="price"
             onChange={(e) => setFilter({ minPrice: e.target.value })}
+            value={min}
+            type="text"
           />
 
-          <label htmlFor="max-price">MAX:</label>
-          <input
-            className="price"
-            type="text"
-            id="max-price"
+          <Input
+            title="MAX:"
             name="max-price"
-            value={max}
+            className="price"
             onChange={(e) => setFilter({ maxPrice: e.target.value })}
+            value={max}
+            type="text"
           />
         </div>
       </div>
