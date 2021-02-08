@@ -49,7 +49,9 @@ const Filters = ({
       </div>
 
       <div className="clearFilters">
-        <button onClick={clearFilter}>CLEAR </button>
+        <button type="button" onClick={clearFilter}>
+          CLEAR
+        </button>
       </div>
 
       <div className="searchBtn">

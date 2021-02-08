@@ -17,6 +17,7 @@ const Pagination = ({
           {perPageVars.map((pageVar, i) => (
             <button
               key={pageVar + i}
+              type="button"
               onClick={() => choosePerPage(pageVar)}
               className={
                 currentPerPage === pageVar

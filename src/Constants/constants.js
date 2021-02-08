@@ -23,6 +23,17 @@ const CURR_WORK_GOODS_ARR = {
   ALL: "all",
   MY: "my",
 };
+const TYPE_MSG = {
+  INFO: "info",
+  ALRT: "alert",
+};
+const UPDATE_MSG = {
+  TITLE: "Done!",
+  MSG: "Product is updated!",
+};
+const ALERT_MSG = {
+  TITLE: "Error!",
+};
 const QUANT_KEY = "quantity";
 const PORTAL_EDIT_ROOT = "portal-edit";
 const PORTAL_CREATE_ROOT = "portal-create";
@@ -30,6 +41,9 @@ const PORTAL_CREATE_ROOT = "portal-create";
 export {
   URL,
   URL_ORIGINS,
+  TYPE_MSG,
+  UPDATE_MSG,
+  ALERT_MSG,
   EXCLUDE_BASKET_PASS,
   DUMMY_IMG,
   DEFAULT_EXT,

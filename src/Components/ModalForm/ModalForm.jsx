@@ -27,11 +27,7 @@ const CreationForm = ({
 
   const confirmationFn = (e, isConfirm) => {
     if (isConfirm) {
-      const { name, origin, price } = formik.values;
-      const productJSON = JSON.stringify({
-        product: { name, origin, price: +price },
-      });
-      update(id, productJSON);
+      update(id, formik.values);
       setConfirm(true);
       sendRequest(CURR_WORK_GOODS_ARR.MY);
     } else {
@@ -114,11 +110,13 @@ const CreationForm = ({
         ) : (
           <div className="confirm-answer-wrapper">
             <button
+              type="button"
               className="confirm-answer-yes"
               onClick={(e) => confirmationFn(e, true)}>
               YES
             </button>
             <button
+              type="button"
               className="confirm-answer-no"
               onClick={(e) => confirmationFn(e, false)}>
               NO

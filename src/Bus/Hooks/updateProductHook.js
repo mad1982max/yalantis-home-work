@@ -2,7 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateProduct } from "Bus/API/product";
 import { setPageMessage, setIsConfirmed } from "Bus/Slicers/pageSlicer";
 import { pageMessage, isConfirmed } from "Bus/Selectors/pageSelector";
-import { MSG_TIMER } from "Constants/constants";
+import {
+  MSG_TIMER,
+  TYPE_MSG,
+  UPDATE_MSG,
+  ALERT_MSG,
+} from "Constants/constants";
 
 const useUpdateProduct = () => {
   const messageUpdated = useSelector(pageMessage);
@@ -13,16 +18,19 @@ const useUpdateProduct = () => {
 
   const update = async (id, product) => {
     const serverMessage = {};
+    const productJSON = JSON.stringify({
+      product,
+    });
     try {
-      await updateProduct(id, product);
-      serverMessage.title = "Done!";
-      serverMessage.msg = "Product is updated!";
-      serverMessage.type = "info";
+      await updateProduct(id, productJSON);
+      serverMessage.title = UPDATE_MSG.TITLE;
+      serverMessage.msg = UPDATE_MSG.MSG;
+      serverMessage.type = TYPE_MSG.INFO;
     } catch (e) {
       const errorMsg = e.response.data.error.message || e.message;
-      serverMessage.title = "Error!";
+      serverMessage.title = ALERT_MSG.TITLE;
       serverMessage.msg = errorMsg;
-      serverMessage.type = "alert";
+      serverMessage.type = TYPE_MSG.ALERT;
     }
     dispatch(setPageMessage(serverMessage));
     setTimeout(() => dispatch(setPageMessage({})), MSG_TIMER);

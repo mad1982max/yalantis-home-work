@@ -36,9 +36,7 @@ const AllGoodsPage = (props) => {
     }
   };
 
-  const closeOnClick = () => {
-    dispatch(closeEditModalVisibility());
-  };
+  const closeOnClick = () => dispatch(closeEditModalVisibility());
 
   return (
     <div className="main-wrapper">
