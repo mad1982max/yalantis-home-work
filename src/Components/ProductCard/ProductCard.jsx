@@ -1,12 +1,27 @@
 import { Link } from "react-router-dom";
 import QuantityBtnGroupContainer from "Containers/QuantityBtnGroupContainer/QuantityBtnGroupContainer";
+import Button from "Components/Button/Button";
+import wrench from "Assets/img/ico/edit.png";
 import "Components/ProductCard/productCard.css";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, linkEnable, handleClick }) => {
   return (
     <div className="product-shadow-box">
-      <Link to={`/product/${product.id}`}>
-        <div className="product-wrapper">
+      <Link
+        className="product-link"
+        to={`/product/${product.id}`}
+        onClick={(e) => {
+          if (!linkEnable) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }}>
+        <div
+          className={
+            linkEnable
+              ? "product-wrapper product-wrapper-shadow"
+              : "product-wrapper"
+          }>
           <div className="product-img">
             <img src={product.imgSrc} alt="dummy img" />
           </div>
@@ -16,7 +31,18 @@ const ProductCard = ({ product }) => {
             <div className="product-price">$ {product.price}</div>
 
             <div className="basket-group">
-              <QuantityBtnGroupContainer product={product} />
+              {linkEnable ? (
+                <QuantityBtnGroupContainer product={product} />
+              ) : (
+                <>
+                  <Button
+                    onClick={(e) => handleClick(e, product)}
+                    className="editBtn"
+                    type="button"
+                    image={wrench}
+                  />
+                </>
+              )}
             </div>
           </div>
         </div>

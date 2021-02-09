@@ -1,0 +1,68 @@
+.creationForm {
+  top: 100px;
+  background: rgb(224, 223, 223);
+  width: 500px;
+  position: relative;
+  border-radius: 5px;
+  margin: auto;
+  background: rgb(194, 195, 197);
+}
+
+.close-edit-modal {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  position: absolute;
+  background: rgb(241, 84, 84);
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 1px 2px;
+  color: white;
+  right: -10px;
+  top: -10px;
+}
+
+.formik {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newProductSubmit {
+  color: aliceblue;
+  margin: 20px 0;
+  font-size: 30px;
+  padding: 10px;
+  background-color: rgb(17, 129, 173);
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
+}
+
+.formInput {
+  border: none;
+  width: 70%;
+  height: 30px;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 1px 2px;
+  border-radius: 4px;
+}
+
+label {
+  margin-top: 20px;
+}
+
+.confirm-answer-wrapper {
+  padding: 5px;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.confirm-answer-yes {
+  color: white;
+  margin-right: 10px;
+  background: rgb(65, 190, 190);
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 1px 2px;
+}
+
+.confirm-answer-no {
+  color: white;
+  margin-left: 10px;
+  background: rgb(241, 84, 84);
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 1px 2px;
+}

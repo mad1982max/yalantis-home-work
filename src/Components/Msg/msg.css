@@ -1,0 +1,24 @@
+.error-msg {
+  color: red;
+}
+
+.info-msg {
+  color: green;
+}
+
+.title {
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.msg {
+  padding: 5px;
+}
+
+.message-wrapper {
+  text-align: center;
+}
+
+.marginBottom {
+  margin-bottom: 20px;
+}

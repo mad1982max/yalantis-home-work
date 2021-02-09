@@ -1,5 +1,7 @@
-export const menuVisibility = (state) => state.menu.menuVisibility;
+export const modalCreateVisibility = (state) =>
+  state.menu.modalCreateVisibility;
+export const modalEditVisibility = (state) => state.menu.modalEditVisibility;
 export const firstLoading = (state) => state.menu.isFirstLoading;
-export const productsAreLoaded = (state) => state.menu.productsAreLoaded;
-export const productIsLoaded = (state) => state.menu.productIsLoaded;
 export const originsAreLoaded = (state) => state.menu.originsAreLoaded;
+export const pageMessage = (state) => state.menu.pageMessage;
+export const isConfirmed = (state) => state.menu.isConfirmed;

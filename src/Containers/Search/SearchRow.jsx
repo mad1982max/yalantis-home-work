@@ -1,59 +1,41 @@
 import { useSelector, useDispatch } from "react-redux";
-import BurgerMenuPortal from "Components/BurgerMenu/BurgerMenu";
 import Pagination from "Components/Pagination/Pagination";
 import Filters from "Components/Filters/Filters";
-import { useFetchedData } from "Bus/Hooks/productsHook";
-import { setVisibility } from "Bus/Slicers/menuSlicer";
-import { allFilters } from "Bus/Selectors/filtersSelector";
-import { menuVisibility } from "Bus/Selectors/pageSelector";
+import { requestParams } from "Bus/Selectors/productsSelector";
 import { nextPrevBtnAvaliable } from "Bus/Helpers/nextPrevPageAvaliability";
 import { createOptionsForReactSelector } from "Bus/Helpers/reactSelectExtractData";
-import { setFilter } from "Bus/Slicers/filtersSlicer";
+import { useSearch } from "Bus/Hooks/searchHook";
+import { setFilter, clearFilter } from "Bus/Slicers/productsSlicer";
 import { useFetchedOrigins } from "Bus/Hooks/originsHook";
 import { PER_PAGE_VARS } from "Constants/constants";
-import menuIco from "Assets/img/ico/menu.png";
 import "Containers/Search/searchRow.css";
 
-const SearchRow = () => {
+const SearchRow = ({ source }) => {
   const { origins } = useFetchedOrigins();
-  const filterObj = useSelector(allFilters);
-  const burgerMenuvisibility = useSelector(menuVisibility);
+  const filterObj = useSelector(requestParams);
   const dispatch = useDispatch();
-
-  const { sendRequest } = useFetchedData();
-
-  const menuShow = () => dispatch(setVisibility());
+  const { sendRequest } = useSearch();
 
   const nextPage = (counter) => {
-    let newPage = filterObj.currentPage + counter;
-    sendRequest({ ...filterObj, currentPage: newPage });
+    let newPage = filterObj.page + counter;
+    sendRequest(source, { ...filterObj, page: newPage });
   };
-
   const choosePerPage = (number) =>
-    sendRequest({ ...filterObj, perPage: number, currentPage: 1 });
-
-  const clearFiltersBtn = () =>
-    dispatch(setFilter({ minPrice: "", maxPrice: "", origin: [] }));
-
-  const searchFn = () => sendRequest({ ...filterObj, currentPage: 1 });
-
+    sendRequest(source, { ...filterObj, perPage: number, page: 1 });
+  const clearFiltersBtn = () => {
+    dispatch(clearFilter());
+    sendRequest(source);
+  };
+  const searchFn = () => sendRequest(source, { ...filterObj, page: 1 });
   const setFilterFn = (obj) => dispatch(setFilter(obj));
 
   const optionsForSelector = createOptionsForReactSelector(origins);
-
   const currentReactSelectorValue = createOptionsForReactSelector(
-    filterObj.origin
+    filterObj.origins
   );
 
   return (
     <div className="filter-header-wrapper">
-      <div className="filterMenu">
-        <button type="button" onClick={menuShow} className="hideMenu">
-          <img src={menuIco} alt="menu" />
-        </button>
-      </div>
-      {burgerMenuvisibility && <BurgerMenuPortal />}
-
       <Filters
         options={optionsForSelector}
         currentValue={currentReactSelectorValue || []}
@@ -68,9 +50,9 @@ const SearchRow = () => {
         currentPerPage={filterObj.perPage}
         choosePerPage={choosePerPage}
         chooseNextPage={nextPage}
-        currentPage={filterObj.currentPage}
+        page={filterObj.page}
         nextPrevAvaliable={nextPrevBtnAvaliable(
-          filterObj.currentPage,
+          filterObj.page,
           filterObj.perPage,
           filterObj.totalItems
         )}

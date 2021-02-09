@@ -1,3 +1,4 @@
+import Button from "Components/Button/Button";
 import resycleBinIco from "Assets/img/ico/recycle-bin.svg";
 import minus from "Assets/img/ico/minus.svg";
 import plus from "Assets/img/ico/plus.svg";
@@ -15,51 +16,49 @@ const ChangeQuantityBtnGroup = ({
         <>
           <div className="replacer-add-to-cart-btn">
             <div className="adder-button-group">
-              <button
-                type="button"
+              <Button
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
                   decrementBasket();
                 }}
-                className="basket-btn-action minus-one">
-                <img src={minus} alt="minus" />
-              </button>
-              <button
-                type="button"
+                className="basket-btn-action minus-one"
+                image={minus}
+              />
+
+              <Button
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
                   incrementBasket();
                 }}
-                className="basket-btn-action plus-one">
-                <img src={plus} alt="plus" />
-              </button>
-              <button
-                type="button"
+                className="basket-btn-action plus-one"
+                image={plus}
+              />
+
+              <Button
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
                   deleteProductBasket();
                 }}
-                className="basket-btn-action del-all">
-                <img src={resycleBinIco} alt="bin" />
-              </button>
+                className="basket-btn-action del-all"
+                image={resycleBinIco}
+              />
             </div>
             <div className="badge">{quantity}</div>
           </div>
         </>
       ) : (
-        <button
-          type="button"
+        <Button
           className="add-to-cart_button"
+          title="ADD TO CART"
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
             incrementBasket(e);
-          }}>
-          ADD TO CART
-        </button>
+          }}
+        />
       )}
     </>
   );

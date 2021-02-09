@@ -1,55 +1,26 @@
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { allFilters } from "Bus/Selectors/filtersSelector";
-import { productsAreLoaded } from "Bus/Selectors/pageSelector";
-import { allProducts } from "Bus/Selectors/productsSelector";
-import { setAllProduct } from "Bus/Slicers/productsSlicer";
-import { setFilter } from "Bus/Slicers/filtersSlicer";
-import { setProductsAreLoaded } from "Bus/Slicers/menuSlicer";
-import { stringBuilder } from "Bus/Helpers/requestStringBuilder";
-import { URL, DEFAULT_REQUEST } from "Constants/constants";
+import { useSelector } from "react-redux";
+import {
+  allProducts,
+  allProductsLoading,
+  myProducts,
+} from "Bus/Selectors/productsSelector";
+import { CURR_WORK_GOODS_ARR } from "Constants/constants";
+import { useSearch } from "Bus/Hooks/searchHook";
 
-const useFetchedData = () => {
-  const filterObj = useSelector(allFilters);
-  const history = useHistory();
+const useFetchedData = (source) => {
+  const { sendRequest } = useSearch();
   const allProductsAPI = useSelector(allProducts);
-  const areLoaded = useSelector(productsAreLoaded);
-  const dispatch = useDispatch();
+  const allMyProductsAPI = useSelector(myProducts);
+  const areLoaded = useSelector(allProductsLoading) === "pending";
 
-  const sendRequest = (newOptions) => {
-    const options = { ...DEFAULT_REQUEST, ...newOptions };
-    const str = stringBuilder(options);
-    axios
-      .get(`${URL}?${str}`)
-      .then((result) => {
-        const { items, page, perPage, totalItems } = result.data;
-        dispatch(setAllProduct({ goods: items }));
-
-        const newFilterObj = {
-          ...DEFAULT_REQUEST,
-          ...filterObj,
-          currentPage: page,
-          perPage,
-          totalItems,
-        };
-        dispatch(setFilter(newFilterObj));
-        dispatch(setProductsAreLoaded(true));
-      })
-      .catch((error) => {
-        dispatch(setProductsAreLoaded(true));
-        const msg = `${error.name}: ${error.message}`;
-        history.push({ pathname: "/error", state: msg });
-      });
-  };
+  const currentGoodsArr =
+    source === CURR_WORK_GOODS_ARR.MY ? allMyProductsAPI : allProductsAPI;
 
   useEffect(() => {
-    if (allProductsAPI.length === 0) {
-      sendRequest(DEFAULT_REQUEST);
-    }
-  }, []);
+    sendRequest(source);
+  }, [sendRequest, source]);
 
-  return { sendRequest, allProductsAPI, areLoaded };
+  return { currentGoodsArr, areLoaded };
 };
 export { useFetchedData };

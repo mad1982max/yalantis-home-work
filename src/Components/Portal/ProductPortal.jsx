@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import "Components/BurgerMenu/burgerMenu.css";
+import "Components/Portal/productPortal.css";
 
-const BurgerMenuPortal = ({ children }) => {
-  const mount = document.getElementById("portal-root");
+const Portal = ({ type, children }) => {
+  const mount = document.getElementById(type);
   const el = document.createElement("div");
-  el.innerHTML = "FUTURE PORTAL FOR FILTERS";
   el.classList.add("portal");
 
   useEffect(() => {
@@ -16,4 +15,4 @@ const BurgerMenuPortal = ({ children }) => {
   return createPortal(children, el);
 };
 
-export default BurgerMenuPortal;
+export default Portal;
