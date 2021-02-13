@@ -22,10 +22,12 @@ const SearchRow = ({ source }) => {
   };
   const choosePerPage = (number) =>
     sendRequest(source, { ...filterObj, perPage: number, page: 1 });
+
   const clearFiltersBtn = () => {
     dispatch(clearFilter());
     sendRequest(source);
   };
+
   const searchFn = () => sendRequest(source, { ...filterObj, page: 1 });
   const setFilterFn = (obj) => dispatch(setFilter(obj));
 
