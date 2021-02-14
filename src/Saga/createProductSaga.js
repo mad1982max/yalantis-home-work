@@ -1,15 +1,30 @@
-import { put, call, takeEvery } from "redux-saga/effects";
+import { put, call, takeEvery, delay } from "redux-saga/effects";
 import { sagaTypes } from "Saga/sagaTypes";
 import { createProduct } from "Bus/API/productsAPI";
-import { getAllProducts } from "Bus/Slicers/productsSlicer";
+import { setPageMessage } from "Bus/Slicers/pageSlicer";
+import {
+  MSG_TIMER,
+  TYPE_MSG,
+  ANSWER_MSG,
+  ALERT_MSG,
+} from "Constants/constants";
 
 export function* fetchCreateProductSaga(action) {
+  const serverMessage = {};
   try {
-    let result = yield call(createProduct, action.payload);
-    yield put(getAllProducts(result.data));
+    yield call(createProduct, action.payload);
+    serverMessage.title = ANSWER_MSG.TITLE;
+    serverMessage.msg = ANSWER_MSG.MSG_CREATE;
+    serverMessage.type = TYPE_MSG.INFO;
   } catch (e) {
-    yield put({ type: "TODO_FETCH_FAILED" });
+    const errorMsg = e.response.data.error.message || e.message;
+    serverMessage.title = ALERT_MSG.TITLE;
+    serverMessage.msg = errorMsg;
+    serverMessage.type = TYPE_MSG.ALERT;
   }
+  yield put(setPageMessage(serverMessage));
+  yield delay(MSG_TIMER);
+  yield put(setPageMessage({}));
 }
 
 export function* watchCreateProductSaga() {
