@@ -1,4 +1,4 @@
-import { sagaTypes } from "Saga/sagaTypes";
+import { sagaTypes } from "Bus/Saga/sagaTypes";
 
 export const fetchAllProductsAction = (query) => ({
   type: sagaTypes.FETCH_ALL_PRODUCTS_SAGA,

@@ -1,5 +1,5 @@
 import { put, takeEvery, call, delay } from "redux-saga/effects";
-import { sagaTypes } from "Saga/sagaTypes";
+import { sagaTypes } from "Bus/Saga/sagaTypes";
 import { updateProduct } from "Bus/API/productsAPI";
 import { setProductToEdit } from "Bus/Slicers/productSlicer";
 import { setPageMessage } from "Bus/Slicers/pageSlicer";

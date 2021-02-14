@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setIsConfirmed } from "Bus/Slicers/pageSlicer";
 import { pageMessage, isConfirmed } from "Bus/Selectors/pageSelector";
-import { fetchUpdateProductAction } from "Saga/sagaActions";
+import { fetchUpdateProductAction } from "Bus/Saga/sagaActions";
 
 const useUpdateProduct = () => {
   const messageUpdated = useSelector(pageMessage);

@@ -1,5 +1,5 @@
 import { put, call, takeEvery } from "redux-saga/effects";
-import { sagaTypes } from "Saga/sagaTypes";
+import { sagaTypes } from "Bus/Saga/sagaTypes";
 import { getAllMyGoods } from "Bus/API/productsAPI";
 import { getMyProducts } from "Bus/Slicers/productsSlicer";
 

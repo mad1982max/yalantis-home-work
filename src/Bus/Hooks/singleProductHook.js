@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSingleProductAction } from "Saga/sagaActions";
+import { fetchSingleProductAction } from "Bus/Saga/sagaActions";
 import {
   singleProduct,
   singleProductLoading,
