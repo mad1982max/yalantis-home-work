@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllOrigins } from "Bus/API/product";
+import { getAllOrigins } from "Bus/API/productsAPI";
 
 export const getOrigins = createAsyncThunk("origins/getAll", async () => {
   const answer = await getAllOrigins();

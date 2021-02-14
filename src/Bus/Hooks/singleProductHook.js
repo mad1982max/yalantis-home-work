@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductById } from "Bus/Slicers/productSlicer";
+import { fetchSingleProductAction } from "Saga/sagaActions";
 import {
   singleProduct,
   singleProductLoading,
@@ -12,7 +12,7 @@ const useFetchedSingleData = (id) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProductById(id));
+    dispatch(fetchSingleProductAction(id));
   }, [id, dispatch]);
 
   return { currentProduct, areLoaded };

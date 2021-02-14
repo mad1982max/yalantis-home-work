@@ -1,7 +1,10 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { stringBuilder } from "Bus/Helpers/requestStringBuilder";
-import { sagaActions } from "sagaActions";
+import {
+  fetchMyProductsAction,
+  fetchAllProductsAction,
+} from "Saga/sagaActions";
 import { DEFAULT_REQUEST, CURR_WORK_GOODS_ARR } from "Constants/constants";
 
 const useSearch = () => {
@@ -13,11 +16,9 @@ const useSearch = () => {
       const query = stringBuilder(options);
 
       if (source === CURR_WORK_GOODS_ARR.ALL) {
-        const l = { type: sagaActions.FETCH_ALL_PRODUCTS_SAGA, payload: query };
-        dispatch(l);
+        dispatch(fetchAllProductsAction(query));
       } else if (source === CURR_WORK_GOODS_ARR.MY) {
-        const l = { type: sagaActions.FETCH_MY_PRODUCTS_SAGA, payload: query };
-        dispatch(l);
+        dispatch(fetchMyProductsAction(query));
       } else {
         console.log("unknown source:", source);
       }

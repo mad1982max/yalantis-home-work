@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { updateProduct } from "Bus/API/product";
 import { setPageMessage, setIsConfirmed } from "Bus/Slicers/pageSlicer";
 import { pageMessage, isConfirmed } from "Bus/Selectors/pageSelector";
+import { fetchUpdateProductAction } from "Saga/sagaActions";
 import {
   MSG_TIMER,
   TYPE_MSG,
@@ -16,14 +16,15 @@ const useUpdateProduct = () => {
 
   const setConfirm = (value) => dispatch(setIsConfirmed(value));
 
-  const update = async (id, product) => {
+  const update = (id, product) => {
     const serverMessage = {};
     const { name, origin, price } = product;
     const productJSON = JSON.stringify({
       product: { name, origin, price: +price },
     });
     try {
-      await updateProduct(id, productJSON);
+      const updateObj = { id, product: productJSON };
+      dispatch(fetchUpdateProductAction(updateObj));
       serverMessage.title = ANSWER_MSG.TITLE;
       serverMessage.msg = ANSWER_MSG.MSG_UPD;
       serverMessage.type = TYPE_MSG.INFO;

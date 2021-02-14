@@ -5,7 +5,7 @@ import singleProduct from "Bus/Slicers/productSlicer";
 import allProducts from "Bus/Slicers/productsSlicer";
 import allOrigins from "Bus/Slicers/originsSlicer";
 import menu from "Bus/Slicers/pageSlicer";
-import rootSaga from "sagaTest";
+import rootSaga from "Saga/rootSaga";
 
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [...getDefaultMiddleware(), sagaMiddleware];
