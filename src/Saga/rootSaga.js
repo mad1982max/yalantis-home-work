@@ -4,6 +4,7 @@ import { watchFetchMyDataSaga } from "Saga/myProductsSaga";
 import { watchFetchSingleProductSaga } from "Saga/singleProductSaga";
 import { watchUpdateProductSaga } from "Saga/updateProductSaga";
 import { watchCreateProductSaga } from "Saga/createProductSaga";
+import { watchGetoriginsSaga } from "Saga/getOriginsSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -12,5 +13,6 @@ export default function* rootSaga() {
     watchFetchSingleProductSaga(),
     watchUpdateProductSaga(),
     watchCreateProductSaga(),
+    watchGetoriginsSaga(),
   ]);
 }

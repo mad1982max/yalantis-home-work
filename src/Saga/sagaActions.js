@@ -24,3 +24,7 @@ export const fetchCreateProductAction = (product) => ({
   type: sagaTypes.CREATE_PRODUCT,
   payload: product,
 });
+
+export const fetchGetOriginsAction = () => ({
+  type: sagaTypes.GET_ORIGINS,
+});

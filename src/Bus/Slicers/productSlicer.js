@@ -4,7 +4,7 @@ export const singleProduct = createSlice({
   name: "product",
   initialState: {
     loading: "idle",
-    product: "",
+    product: {},
     error: null,
     productToEdit: {},
   },

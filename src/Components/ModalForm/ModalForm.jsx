@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import Msg from "Components/Msg/Msg";
+import Msg from "Components/FormMessage/Msg";
 import Input from "Components/Input/Input";
 import Button from "Components/Button/Button";
 import { useSearch } from "Bus/Hooks/searchHook";

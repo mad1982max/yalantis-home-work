@@ -5,8 +5,8 @@ import {
   allProductsLoading,
   myProducts,
 } from "Bus/Selectors/productsSelector";
-import { CURR_WORK_GOODS_ARR } from "Constants/constants";
 import { useSearch } from "Bus/Hooks/searchHook";
+import { CURR_WORK_GOODS_ARR } from "Constants/constants";
 
 const useFetchedData = (source) => {
   const { sendRequest } = useSearch();

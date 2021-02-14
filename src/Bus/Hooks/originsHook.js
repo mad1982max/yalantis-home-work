@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrigins } from "Bus/Slicers/originsSlicer";
+import { fetchGetOriginsAction } from "Saga/sagaActions";
 import { originArr, origingsAreLoaded } from "Bus/Selectors/originsSelector";
 
 const useFetchedOrigins = () => {
@@ -10,7 +10,7 @@ const useFetchedOrigins = () => {
 
   useEffect(() => {
     if (origins.length === 0) {
-      dispatch(getOrigins());
+      dispatch(fetchGetOriginsAction());
     }
   }, [dispatch, origins.length]);
 
