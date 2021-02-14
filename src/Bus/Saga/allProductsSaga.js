@@ -1,7 +1,8 @@
-import { put, call, takeEvery } from "redux-saga/effects";
+import { put, call, debounce } from "redux-saga/effects";
 import { sagaTypes } from "Bus/Saga/sagaTypes";
 import { getAll } from "Bus/API/productsAPI";
 import { getAllProducts } from "Bus/Slicers/productsSlicer";
+import { DEBOUNCE_TIME } from "Constants/constants";
 
 export function* fetchAllDataSaga(action) {
   try {
@@ -13,5 +14,9 @@ export function* fetchAllDataSaga(action) {
 }
 
 export function* watchFetchDataSaga() {
-  yield takeEvery(sagaTypes.FETCH_ALL_PRODUCTS_SAGA, fetchAllDataSaga);
+  yield debounce(
+    DEBOUNCE_TIME,
+    sagaTypes.FETCH_ALL_PRODUCTS_SAGA,
+    fetchAllDataSaga
+  );
 }
