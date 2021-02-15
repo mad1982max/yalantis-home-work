@@ -20,8 +20,8 @@ const Filters = ({
         options={options}
         isMulti
         onChange={(item) => {
-          const originArr = optionReactSelectorToArray(item);
-          setFilter({ origins: originArr });
+          const origins = optionReactSelectorToArray(item);
+          setFilter({ origins });
         }}
       />
     </div>

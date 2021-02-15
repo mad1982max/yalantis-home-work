@@ -39,6 +39,7 @@ const DEBOUNCE_TIME = 300;
 const QUANT_KEY = "quantity";
 const PORTAL_EDIT_ROOT = "portal-edit";
 const PORTAL_CREATE_ROOT = "portal-create";
+const LOCALE_STORAGE_KEY = "filter";
 
 export {
   URL,
@@ -51,6 +52,7 @@ export {
   DEFAULT_EXT,
   PORTAL_EDIT_ROOT,
   PORTAL_CREATE_ROOT,
+  LOCALE_STORAGE_KEY,
   DATE_FORMAT,
   MAT_ORDER,
   TYPE_ORDER,

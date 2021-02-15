@@ -1,5 +1,7 @@
 import { useEffect } from "react";
+import { historyLib } from "Bus/Libs/history";
 import { useSelector } from "react-redux";
+import storage from "redux-persist/lib/storage";
 import {
   allProducts,
   allProductsLoading,
@@ -18,6 +20,16 @@ const useFetchedData = (source) => {
     source === CURR_WORK_GOODS_ARR.MY ? allMyProductsAPI : allProductsAPI;
 
   useEffect(() => {
+    const stateInLS = JSON.parse(localStorage.getItem("persist:root"));
+    const currentRoot = historyLib.location.pathname;
+
+    // if (
+    //   (currentRoot === "/" && stateInLS.allProducts.products.length !== 0) ||
+    //   (currentRoot === "/myGoods" &&
+    //     stateInLS.allProducts.myProducts.length !== 0)
+    // )
+    //   return;
+
     sendRequest(source);
   }, [sendRequest, source]);
 
