@@ -1,14 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleProductAction } from "Bus/Saga/sagaActions";
-import {
-  singleProduct,
-  singleProductLoading,
-} from "Bus/Selectors/productSelector";
+import { singleProduct, loading } from "Bus/Selectors/productSelector";
 
 const useFetchedSingleData = (id) => {
   const currentProduct = useSelector(singleProduct);
-  const areLoaded = useSelector(singleProductLoading) === "pending";
+  const areLoaded = useSelector(loading);
   const dispatch = useDispatch();
 
   useEffect(() => {

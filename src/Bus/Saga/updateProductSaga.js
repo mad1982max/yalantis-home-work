@@ -13,7 +13,7 @@ import {
 export function* fetchUpdateProductSaga(action) {
   const serverMessage = {};
   try {
-    let result = yield call(
+    const result = yield call(
       updateProduct,
       action.payload.id,
       action.payload.product

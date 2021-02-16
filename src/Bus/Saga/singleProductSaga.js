@@ -1,14 +1,17 @@
-import { put, call, takeEvery } from "redux-saga/effects";
+import { put, call, takeEvery, delay } from "redux-saga/effects";
 import { sagaTypes } from "Bus/Saga/sagaTypes";
 import { getById } from "Bus/API/productsAPI";
-import { getProductById } from "Bus/Slicers/productSlicer";
+import { getProductById, loading, error } from "Bus/Slicers/productSlicer";
 
 export function* fetchSingleProductSaga(action) {
   try {
-    let result = yield call(getById, action.payload);
+    yield put(loading(true));
+    const result = yield call(getById, action.payload);
     yield put(getProductById(result.data));
+    yield delay(500);
+    yield put(loading(false));
   } catch (e) {
-    yield put({ type: "TODO_FETCH_FAILED" });
+    yield put(error(e));
   }
 }
 

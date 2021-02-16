@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const allProducts = createSlice({
   name: "products",
   initialState: {
-    loading: "idle",
+    loading: false,
     products: [],
     myProducts: [],
     pageParams: {},
@@ -14,6 +14,15 @@ export const allProducts = createSlice({
     setFilter(state, action) {
       state.filters = { ...state.filters, ...action.payload };
     },
+
+    error(state, action) {
+      state.error = action.payload;
+    },
+
+    loading(state, action) {
+      state.loading = action.payload;
+    },
+
     clearFilter(state, action) {
       state.filters = {};
     },
@@ -37,6 +46,8 @@ export const {
   clearFilter,
   getMyProducts,
   getAllProducts,
+  error,
+  loading,
 } = allProducts.actions;
 
 export default allProducts.reducer;

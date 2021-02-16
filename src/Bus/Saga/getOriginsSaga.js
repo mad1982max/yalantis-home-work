@@ -5,10 +5,10 @@ import { getOrigins } from "Bus/Slicers/originsSlicer";
 
 export function* fetchGetoriginsSaga() {
   try {
-    let result = yield call(getAllOrigins);
+    const result = yield call(getAllOrigins);
     yield put(getOrigins(result.data.items));
   } catch (e) {
-    yield put({ type: "TODO_FETCH_FAILED" });
+    console.log("ERROR: ", e.message);
   }
 }
 
