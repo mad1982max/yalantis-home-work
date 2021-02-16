@@ -35,7 +35,7 @@ const ANSWER_MSG = {
 const ALERT_MSG = {
   TITLE: "Error!",
 };
-const DEBOUNCE_TIME = 300;
+const DEBOUNCE_TIME = 200;
 const QUANT_KEY = "quantity";
 const PORTAL_EDIT_ROOT = "portal-edit";
 const PORTAL_CREATE_ROOT = "portal-create";

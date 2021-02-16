@@ -6,24 +6,20 @@ import {
   fetchAllProductsAction,
 } from "Bus/Saga/sagaActions";
 
-import {
-  loadStateToLS,
-  loadStateFromLS,
-} from "Bus/Helpers/localeStorageLoading";
+import { loadStateFromLS } from "Bus/Helpers/localeStorageLoading";
 import { DEFAULT_REQUEST, CURR_WORK_GOODS_ARR } from "Constants/constants";
 
 const useSearch = () => {
   const dispatch = useDispatch();
 
   const sendRequest = useCallback(
-    (source, newOptions = DEFAULT_REQUEST) => {
+    (source, newOptions) => {
       const filtersFromLS = loadStateFromLS() || {};
 
-      console.log(filtersFromLS);
       const options = {
         ...DEFAULT_REQUEST,
-        ...newOptions,
         ...filtersFromLS,
+        ...newOptions,
       };
       const query = stringBuilder(options);
 

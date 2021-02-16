@@ -17,31 +17,34 @@ const Pagination = ({
     <>
       <div className="pagination-wrapper">
         <div className="perPage-wrapper">
-          {perPageVars.map((pageVar) => (
-            <Button
-              id={v4()}
-              key={v4()}
-              onClick={() => choosePerPage(pageVar)}
-              className={classNames("perPageBtn", {
-                "current-per-page": currentPerPage === pageVar,
-              })}
-              title={pageVar}
-            />
-          ))}
+          {perPageVars.map((pageVar) => {
+            const keyList = v4();
+            return (
+              <Button
+                id={keyList}
+                key={keyList}
+                onClick={(e) => choosePerPage(e, "perPage", pageVar)}
+                className={classNames("perPageBtn", {
+                  "current-per-page": currentPerPage === pageVar,
+                })}
+                title={pageVar}
+              />
+            );
+          })}
         </div>
 
         <div className="to-page-wrapper">
           <Button
             disabled={!isPrev}
             className="prev-next-page"
-            onClick={() => chooseNextPage(-1)}
+            onClick={(e) => chooseNextPage(e, "nextpage", -1)}
             image={prev}
           />
           <div className="currPage">{page}</div>
           <Button
             disabled={!isNext}
             className="prev-next-page"
-            onClick={() => chooseNextPage(+1)}
+            onClick={(e) => chooseNextPage(e, "nextpage", +1)}
             image={forward}
           />
         </div>

@@ -35,36 +35,20 @@ const SearchRow = ({ source }) => {
         sendRequest(source, { ...filterObj, page });
         break;
       case "perPage":
-        console.log("in perPage");
         loadStateToLS({ perPage: param, page: 1 });
         sendRequest(source, { ...filterObj, perPage: param, page: 1 });
         break;
       case "search":
-        console.log("in search");
+        loadStateToLS({ page: 1 });
         sendRequest(source, { ...filterObj, page: 1 });
         break;
     }
-  };
-
-  const nextPage = (counter) => {
-    const page = filterObj.page + counter;
-    loadStateToLS({ page });
-    sendRequest(source, { ...filterObj, page });
-  };
-
-  const choosePerPage = (number) => {
-    loadStateToLS({ perPage: number, page: 1 });
-    sendRequest(source, { ...filterObj, perPage: number, page: 1 });
   };
 
   const clearFiltersBtn = () => {
     loadStateToLS();
     dispatch(clearFilter());
     sendRequest(source);
-  };
-
-  const searchFn = () => {
-    sendRequest(source, { ...filterObj, page: 1 });
   };
 
   const setFilterFn = (obj) => {
@@ -92,8 +76,8 @@ const SearchRow = ({ source }) => {
 
       <Pagination
         currentPerPage={filterObj.perPage}
-        choosePerPage={choosePerPage}
-        chooseNextPage={nextPage}
+        choosePerPage={searchFn_}
+        chooseNextPage={searchFn_}
         page={filterObj.page}
         nextPrevAvaliable={nextPrevObjectAvaliab}
         perPageVars={PER_PAGE_VARS}
