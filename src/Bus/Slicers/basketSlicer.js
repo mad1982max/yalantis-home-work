@@ -6,7 +6,7 @@ export const basket = createSlice({
   reducers: {
     increment(state, action) {
       const { product } = action.payload;
-      let productInBasket = state.find((item) => item.id === product.id);
+      const productInBasket = state.find((item) => item.id === product.id);
       if (productInBasket) {
         const newQuantity = productInBasket.quantity + 1;
         return state.map((item) =>
@@ -20,7 +20,7 @@ export const basket = createSlice({
 
     decrement(state, action) {
       const { product } = action.payload;
-      let productInBasket = state.find((item) => item.id === product.id);
+      const productInBasket = state.find((item) => item.id === product.id);
       if (productInBasket) {
         const newQuantity = productInBasket.quantity - 1;
         if (newQuantity === 0) {

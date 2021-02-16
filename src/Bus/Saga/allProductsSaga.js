@@ -6,7 +6,7 @@ import { DEBOUNCE_TIME } from "Constants/constants";
 
 export function* fetchAllDataSaga(action) {
   try {
-    let result = yield call(getAll, action.payload);
+    const result = yield call(getAll, action.payload);
     yield put(getAllProducts(result.data));
   } catch (e) {
     yield put({ type: "TODO_FETCH_FAILED" });
