@@ -5,6 +5,11 @@ import {
   fetchMyProductsAction,
   fetchAllProductsAction,
 } from "Bus/Saga/sagaActions";
+
+import {
+  loadStateToLS,
+  loadStateFromLS,
+} from "Bus/Helpers/localeStorageLoading";
 import { DEFAULT_REQUEST, CURR_WORK_GOODS_ARR } from "Constants/constants";
 
 const useSearch = () => {
@@ -12,7 +17,14 @@ const useSearch = () => {
 
   const sendRequest = useCallback(
     (source, newOptions = DEFAULT_REQUEST) => {
-      const options = { ...DEFAULT_REQUEST, ...newOptions };
+      const filtersFromLS = loadStateFromLS() || {};
+
+      console.log(filtersFromLS);
+      const options = {
+        ...DEFAULT_REQUEST,
+        ...newOptions,
+        ...filtersFromLS,
+      };
       const query = stringBuilder(options);
 
       if (source === CURR_WORK_GOODS_ARR.ALL) {

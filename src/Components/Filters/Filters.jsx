@@ -50,7 +50,11 @@ const Filters = ({
 
       <Button title="CLEAR" onClick={clearFilter} className="clearFilters" />
 
-      <Button title="SEARCH" onClick={searchFn} className="searchBtn" />
+      <Button
+        title="SEARCH"
+        onClick={(e) => searchFn(e, "search")}
+        className="searchBtn"
+      />
     </div>
   </div>
 );

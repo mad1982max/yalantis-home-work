@@ -27,8 +27,27 @@ const SearchRow = ({ source }) => {
     filterObj.totalItems
   );
 
+  const searchFn_ = (e, type, param) => {
+    switch (type) {
+      case "nextpage":
+        const page = filterObj.page + param;
+        loadStateToLS({ page });
+        sendRequest(source, { ...filterObj, page });
+        break;
+      case "perPage":
+        console.log("in perPage");
+        loadStateToLS({ perPage: param, page: 1 });
+        sendRequest(source, { ...filterObj, perPage: param, page: 1 });
+        break;
+      case "search":
+        console.log("in search");
+        sendRequest(source, { ...filterObj, page: 1 });
+        break;
+    }
+  };
+
   const nextPage = (counter) => {
-    let page = filterObj.page + counter;
+    const page = filterObj.page + counter;
     loadStateToLS({ page });
     sendRequest(source, { ...filterObj, page });
   };
@@ -65,10 +84,10 @@ const SearchRow = ({ source }) => {
         options={optionsForSelector}
         currentValue={currentReactSelectorValue || []}
         clearFilter={clearFiltersBtn}
-        searchFn={searchFn}
+        searchFn={searchFn_}
         setFilter={setFilterFn}
-        min={filterObj.minPrice || filtersFromLS?.minPrice || ""}
-        max={filterObj.maxPrice || filtersFromLS?.maxPrice || ""}
+        min={filtersFromLS?.minPrice || filterObj.minPrice || ""}
+        max={filtersFromLS?.maxPrice || filterObj.maxPrice || ""}
       />
 
       <Pagination
