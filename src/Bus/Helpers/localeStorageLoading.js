@@ -14,14 +14,18 @@ export const loadStateFromLS = () => {
 };
 
 export const loadStateToLS = (stateObj = {}) => {
-  if (Object.keys(stateObj).length === 0)
-    return localStorage.removeItem(LOCALE_STORAGE_KEY);
+  try {
+    if (Object.keys(stateObj).length === 0)
+      return localStorage.removeItem(LOCALE_STORAGE_KEY);
 
-  const filterLS = localStorage.getItem(LOCALE_STORAGE_KEY);
-  if (filterLS) {
-    const newFilterObj = { ...JSON.parse(filterLS), ...stateObj };
-    localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify(newFilterObj));
-  } else {
-    localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify(stateObj));
+    const filterLS = localStorage.getItem(LOCALE_STORAGE_KEY);
+    if (filterLS) {
+      const newFilterObj = { ...JSON.parse(filterLS), ...stateObj };
+      localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify(newFilterObj));
+    } else {
+      localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify(stateObj));
+    }
+  } catch (e) {
+    console.log("ERROR while loading to LS: ", e.message);
   }
 };

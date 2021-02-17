@@ -3,21 +3,20 @@ import { useFetchedData } from "Bus/Hooks/productsHook";
 import ListOfProducts from "Components/ListOfProducts/ListOfProducts";
 import Loader from "Components/Loader/Loader";
 import CreationForm from "Components/ModalForm/ModalForm";
+import Portal from "Components/Portal/ProductPortal";
+import SearchRow from "Containers/Search/SearchRow";
 import { singleProductToEdit } from "Bus/Selectors/productSelector";
 import { setProductToEdit } from "Bus/Slicers/productSlicer";
 import {
   modalEditVisibility,
   modalCreateVisibility,
 } from "Bus/Selectors/pageSelector";
-import Portal from "Components/Portal/ProductPortal";
-import SearchRow from "Containers/Search/SearchRow";
 import {
   setEditModalVisibility,
   closeEditModalVisibility,
   closeCreateModalVisibility,
 } from "Bus/Slicers/pageSlicer";
 import { CURR_WORK_GOODS_ARR, PORTAL_EDIT_ROOT } from "Constants/constants";
-import "Containers/MainPage/goodsPage.css";
 
 const AllGoodsPage = (props) => {
   const source = props.location.state?.source || CURR_WORK_GOODS_ARR.ALL;

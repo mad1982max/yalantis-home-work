@@ -67,12 +67,12 @@ const Header = () => {
               pathname: "/myGoods",
               state: { source: CURR_WORK_GOODS_ARR.MY },
             }}>
-            <div className="my-products">My products</div>
+            <div className="my-products">CUSTOM</div>
           </NavLink>
 
           <Button
             onClick={showPortal}
-            className="portalBtn newProduct"
+            className="portalBtn new-product"
             image={modalVisibility ? hideIco : addNewIco}
             alt="addIco"
           />

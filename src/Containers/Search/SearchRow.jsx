@@ -42,6 +42,8 @@ const SearchRow = ({ source }) => {
         loadStateToLS({ page: 1 });
         sendRequest(source, { ...filterObj, page: 1 });
         break;
+      default:
+        console.log("unknown type: ", type);
     }
   };
 

@@ -22,7 +22,6 @@ export const singleProduct = createSlice({
     },
 
     getProductById(state, action) {
-      state.loading = "idle";
       state.product = action.payload;
     },
   },

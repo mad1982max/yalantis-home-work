@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGetOriginsAction } from "Bus/Saga/sagaActions";
-import { originArr, origingsAreLoaded } from "Bus/Selectors/originsSelector";
+import { originArr, loading } from "Bus/Selectors/originsSelector";
 
 const useFetchedOrigins = () => {
   const origins = useSelector(originArr);
-  const areLoaded = useSelector(origingsAreLoaded);
+  const areLoaded = useSelector(loading);
   const dispatch = useDispatch();
 
   useEffect(() => {

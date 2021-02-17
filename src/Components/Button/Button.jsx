@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import "Components/Button/button.css";
 
 const Button = ({
   className,

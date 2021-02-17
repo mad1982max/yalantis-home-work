@@ -23,6 +23,10 @@
   border: none;
 }
 
+.basket-btn-action img {
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 6px;
+}
+
 .adder-button-group button {
   cursor: pointer;
   background: none;
