@@ -1,42 +1,37 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getById } from "Bus/API/product";
-
-export const getProductById = createAsyncThunk(
-  "product/getById",
-  async (id) => {
-    const answer = await getById(id);
-    return answer.data;
-  }
-);
+import { createSlice } from "@reduxjs/toolkit";
 
 export const singleProduct = createSlice({
   name: "product",
   initialState: {
-    loading: "idle",
-    product: "",
+    loading: false,
+    product: {},
     error: null,
     productToEdit: {},
   },
   reducers: {
+    error(state, action) {
+      state.error = action.payload;
+    },
+
+    loading(state, action) {
+      state.loading = action.payload;
+    },
+
     setProductToEdit(state, action) {
       state.productToEdit = action.payload;
     },
-  },
-  extraReducers: {
-    [getProductById.pending]: (state, action) => {
-      state.loading = "pending";
-    },
-    [getProductById.fulfilled]: (state, action) => {
-      state.loading = "idle";
+
+    getProductById(state, action) {
       state.product = action.payload;
-    },
-    [getProductById.rejected]: (state, action) => {
-      state.loading = "idle";
-      state.error = action.error;
     },
   },
 });
 
 export default singleProduct.reducer;
 
-export const { setProductToEdit } = singleProduct.actions;
+export const {
+  setProductToEdit,
+  getProductById,
+  loading,
+  error,
+} = singleProduct.actions;

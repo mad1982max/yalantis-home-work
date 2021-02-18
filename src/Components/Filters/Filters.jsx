@@ -20,8 +20,8 @@ const Filters = ({
         options={options}
         isMulti
         onChange={(item) => {
-          const originArr = optionReactSelectorToArray(item);
-          setFilter({ origins: originArr });
+          const origins = optionReactSelectorToArray(item);
+          setFilter({ origins });
         }}
       />
     </div>
@@ -50,7 +50,11 @@ const Filters = ({
 
       <Button title="CLEAR" onClick={clearFilter} className="clearFilters" />
 
-      <Button title="SEARCH" onClick={searchFn} className="searchBtn" />
+      <Button
+        title="SEARCH"
+        onClick={(e) => searchFn(e, "search")}
+        className="searchBtn"
+      />
     </div>
   </div>
 );

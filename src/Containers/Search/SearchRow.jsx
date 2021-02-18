@@ -7,6 +7,10 @@ import { createOptionsForReactSelector } from "Bus/Helpers/reactSelectExtractDat
 import { useSearch } from "Bus/Hooks/searchHook";
 import { setFilter, clearFilter } from "Bus/Slicers/productsSlicer";
 import { useFetchedOrigins } from "Bus/Hooks/originsHook";
+import {
+  loadStateToLS,
+  loadStateFromLS,
+} from "Bus/Helpers/localeStorageLoading";
 import { PER_PAGE_VARS } from "Constants/constants";
 import "Containers/Search/searchRow.css";
 
@@ -16,22 +20,48 @@ const SearchRow = ({ source }) => {
   const dispatch = useDispatch();
   const { sendRequest } = useSearch();
 
-  const nextPage = (counter) => {
-    let newPage = filterObj.page + counter;
-    sendRequest(source, { ...filterObj, page: newPage });
+  const filtersFromLS = loadStateFromLS();
+  const nextPrevObjectAvaliab = nextPrevBtnAvaliable(
+    filterObj.page,
+    filterObj.perPage,
+    filterObj.totalItems
+  );
+
+  const searchFn_ = (e, type, param) => {
+    switch (type) {
+      case "nextpage":
+        const page = filterObj.page + param;
+        loadStateToLS({ page });
+        sendRequest(source, { ...filterObj, page });
+        break;
+      case "perPage":
+        loadStateToLS({ perPage: param, page: 1 });
+        sendRequest(source, { ...filterObj, perPage: param, page: 1 });
+        break;
+      case "search":
+        loadStateToLS({ page: 1 });
+        sendRequest(source, { ...filterObj, page: 1 });
+        break;
+      default:
+        console.log("unknown type: ", type);
+    }
   };
-  const choosePerPage = (number) =>
-    sendRequest(source, { ...filterObj, perPage: number, page: 1 });
+
   const clearFiltersBtn = () => {
+    loadStateToLS();
     dispatch(clearFilter());
     sendRequest(source);
   };
-  const searchFn = () => sendRequest(source, { ...filterObj, page: 1 });
-  const setFilterFn = (obj) => dispatch(setFilter(obj));
+
+  const setFilterFn = (obj) => {
+    loadStateToLS(obj);
+    dispatch(setFilter(obj));
+  };
 
   const optionsForSelector = createOptionsForReactSelector(origins);
+  const propsOriginsForSelector = filtersFromLS?.origins || filterObj.origins;
   const currentReactSelectorValue = createOptionsForReactSelector(
-    filterObj.origins
+    propsOriginsForSelector
   );
 
   return (
@@ -40,22 +70,18 @@ const SearchRow = ({ source }) => {
         options={optionsForSelector}
         currentValue={currentReactSelectorValue || []}
         clearFilter={clearFiltersBtn}
-        searchFn={searchFn}
+        searchFn={searchFn_}
         setFilter={setFilterFn}
-        min={filterObj.minPrice || ""}
-        max={filterObj.maxPrice || ""}
+        min={filtersFromLS?.minPrice || filterObj.minPrice || ""}
+        max={filtersFromLS?.maxPrice || filterObj.maxPrice || ""}
       />
 
       <Pagination
         currentPerPage={filterObj.perPage}
-        choosePerPage={choosePerPage}
-        chooseNextPage={nextPage}
+        choosePerPage={searchFn_}
+        chooseNextPage={searchFn_}
         page={filterObj.page}
-        nextPrevAvaliable={nextPrevBtnAvaliable(
-          filterObj.page,
-          filterObj.perPage,
-          filterObj.totalItems
-        )}
+        nextPrevAvaliable={nextPrevObjectAvaliab}
         perPageVars={PER_PAGE_VARS}
       />
     </div>

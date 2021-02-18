@@ -1,32 +1,25 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllOrigins } from "Bus/API/product";
-
-export const getOrigins = createAsyncThunk("origins/getAll", async () => {
-  const answer = await getAllOrigins();
-  return answer.data.items;
-});
+import { createSlice } from "@reduxjs/toolkit";
 
 export const allOrigins = createSlice({
-  name: "origins",
+  name: "allOrigins",
   initialState: {
-    loading: "idle",
     origins: [],
     error: null,
+    loading: false,
   },
-  reducers: {},
-  extraReducers: {
-    [getOrigins.pending]: (state, action) => {
-      state.loading = "pending";
-    },
-    [getOrigins.fulfilled]: (state, action) => {
-      state.loading = "idle";
+  reducers: {
+    getOrigins(state, action) {
       state.origins = action.payload;
     },
-    [getOrigins.rejected]: (state, action) => {
-      state.loading = "idle";
-      state.error = action.error;
+    error(state, action) {
+      state.error = action.payload;
+    },
+
+    loading(state, action) {
+      state.loading = action.payload;
     },
   },
 });
 
 export default allOrigins.reducer;
+export const { getOrigins, loading, error } = allOrigins.actions;

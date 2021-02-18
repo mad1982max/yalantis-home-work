@@ -1,26 +1,9 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAll, getAllMyGoods } from "Bus/API/product";
-
-export const getAllProducts = createAsyncThunk(
-  "products/gettAll",
-  async (query) => {
-    const answer = await getAll(query);
-    return answer.data;
-  }
-);
-
-export const getAllMyProducts = createAsyncThunk(
-  "products/getAllMyProducts",
-  async (query) => {
-    const answer = await getAllMyGoods(query);
-    return answer.data;
-  }
-);
+import { createSlice } from "@reduxjs/toolkit";
 
 export const allProducts = createSlice({
   name: "products",
   initialState: {
-    loading: "idle",
+    loading: false,
     products: [],
     myProducts: [],
     pageParams: {},
@@ -31,41 +14,40 @@ export const allProducts = createSlice({
     setFilter(state, action) {
       state.filters = { ...state.filters, ...action.payload };
     },
+
+    error(state, action) {
+      state.error = action.payload;
+    },
+
+    loading(state, action) {
+      state.loading = action.payload;
+    },
+
     clearFilter(state, action) {
       state.filters = {};
     },
-  },
-  extraReducers: {
-    [getAllProducts.pending]: (state, action) => {
-      state.loading = "pending";
-    },
-    [getAllProducts.fulfilled]: (state, action) => {
-      state.loading = "idle";
+
+    getAllProducts(state, action) {
       const { items, page, perPage, totalItems } = action.payload;
       state.products = items;
       state.pageParams = { page, perPage, totalItems };
     },
-    [getAllProducts.rejected]: (state, action) => {
-      state.loading = "idle";
-      state.error = action.error;
-    },
 
-    [getAllMyProducts.pending]: (state, action) => {
-      state.loading = "pending";
-    },
-    [getAllMyProducts.fulfilled]: (state, action) => {
-      state.loading = "idle";
+    getMyProducts(state, action) {
       const { items, page, perPage, totalItems } = action.payload;
       state.myProducts = items;
       state.pageParams = { page, perPage, totalItems };
     },
-    [getAllMyProducts.rejected]: (state, action) => {
-      state.loading = "idle";
-      state.error = action.error;
-    },
   },
 });
 
-export const { setFilter, clearFilter } = allProducts.actions;
+export const {
+  setFilter,
+  clearFilter,
+  getMyProducts,
+  getAllProducts,
+  error,
+  loading,
+} = allProducts.actions;
 
 export default allProducts.reducer;

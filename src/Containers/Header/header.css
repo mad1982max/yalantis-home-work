@@ -5,12 +5,12 @@
   top: 0;
   z-index: 10;
   color: aliceblue;
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #131921;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-size: 20px;
 }
 
 .widget-group {
@@ -20,17 +20,35 @@
 }
 
 .activeLogo {
-  border-right: 5px solid red;
-  padding-right: 5px;
-  box-sizing: content-box;
+  display: flex;
+  align-items: center;
 }
 
 .active {
-  border-left: 5px solid red;
-  padding-left: 5px;
+  display: flex;
+  align-items: center;
 }
-.my-products {
-  font-size: 20px;
+
+.activeLogo::after,
+.active::before {
+  font-size: 30px;
+  line-height: 25px;
+  color: aliceblue;
+  text-align: center;
+  padding: 0 5px;
+  height: 30px;
+  background: red;
+  border-radius: 4px;
+}
+
+.active::before {
+  content: "\21E8";
+  margin-right: 5px;
+}
+
+.activeLogo::after {
+  content: "\21E6";
+  margin-left: 5px;
 }
 
 .header-logo {
@@ -41,16 +59,7 @@
   padding-left: 10px;
 }
 
-.activeLogo img {
-  box-shadow: none;
-}
-
-.header-logo a {
-  display: flex;
-  justify-content: center;
-}
-
-.newProduct {
+.new-product {
   width: 45px;
   background: none;
   display: flex;

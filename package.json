@@ -1,5 +1,5 @@
 {
-  "homepage": "https://mad1982max.github.io/yalantis-home-work/",
+  "homepage": "https://mad1982max.github.io/",
   "name": "yalantis-home-work",
   "version": "0.1.0",
   "private": true,
@@ -16,6 +16,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-select": "^3.2.0",
+    "redux-saga": "^1.1.3",
     "uuid": "^8.3.2",
     "web-vitals": "^0.2.4",
     "yup": "^0.32.8"

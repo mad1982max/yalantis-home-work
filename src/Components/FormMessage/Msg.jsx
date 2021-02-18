@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import "Components/Msg/msg.css";
+import "Components/FormMessage/msg.css";
 const Msg = ({ msg, type, title = "" }) => (
   <>
     {msg ? (
